@@ -52,9 +52,13 @@ Route::get('/productos/crearProducto', function () {
     return view('crearProducto');
 })->name('crearProducto');
 
+Route::get('/productos/modificarProducto/{idProducto}', [ProductoController::class,'ListarUnProducto'])->name('modificarProducto');
+
+Route::post('/productos/modificarProducto/{idProducto}', [ProductoController::class,'ModificarProducto']);
+
 Route::post('/productos/crearProducto', [ProductoController::class,'InsertarProducto']);
 
-Route::get('/almacenes/listarProductos', [ProductoController::class,'ListarProductos'])->name('listarProductos');
+Route::get('/productos/listarProductos', [ProductoController::class,'ListarProductos'])->name('listarProductos');
 
-Route::delete('/almacenes/eliminarProducto/{idProducto}', [ProductoController::class,'ProductoAlmacen'])->name('eliminarProducto');
+Route::delete('/productos/eliminarProducto/{idProducto}', [ProductoController::class,'EliminarProducto'])->name('eliminarProducto');
 

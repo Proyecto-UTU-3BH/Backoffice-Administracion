@@ -27,7 +27,7 @@
             <p> Peso: {{ $producto->peso }} </p>
             <br>
             <div class="botones">
-                <a href="#"> <button> Modificar </button> </a>
+                <a href="{{ route('modificarProducto', ['idProducto' => $producto->id]) }}"> <button> Modificar </button> </a>
                 <form action="{{ route('eliminarProducto', ['idProducto' => $producto->id]) }}" method="POST">
                     @csrf
                     @method('DELETE') 

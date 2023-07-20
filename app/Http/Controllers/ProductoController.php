@@ -17,7 +17,11 @@ class ProductoController extends Controller
     }
 
     public function ListarUnProducto(Request $request, $idProducto){
-        return Producto::findOrFail($idProducto);
+        $producto = Producto::findOrFail($idProducto);
+
+        return view('modificarProducto', [
+            "producto" => $producto
+        ]);
     }
 
     public function InsertarProducto(Request $request){
@@ -40,9 +44,7 @@ class ProductoController extends Controller
 
         $producto -> delete();
 
-        return [
-            "mensaje" => "El producto con id $idProducto ha sido eliminado correctamente"
-        ];
+        return redirect()->route('listarProductos');
     }
 
     public function ModificarProducto(Request $request, $idProducto){
@@ -52,7 +54,7 @@ class ProductoController extends Controller
 
         $producto -> save();
 
-        return $producto;
+        return redirect()->route('listarProductos');
 
     }
 }
