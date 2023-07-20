@@ -43,7 +43,7 @@ h2 {
     margin-bottom: 30px;
 }
 
-.operacionesSobreAlmacen button{
+.operacionesCrud button{
   border: 1px solid #333;
   background-color: #f0f0f0;
   padding: 6px 12px;
@@ -54,7 +54,7 @@ h2 {
   font-size: 14px;
 }
 
-.operacionesSobreAlmacen button:hover{
+.operacionesCrud button:hover{
     color: #F5FFFA; 
     background-color: #000;
 }

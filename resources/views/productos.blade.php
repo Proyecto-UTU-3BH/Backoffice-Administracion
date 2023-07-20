@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <title>Almacenes</title>
+        <title>Productos</title>
 
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
 
@@ -15,18 +15,18 @@
 </head>
 <body>
     @include('layouts.navigation')
-    <h2>Almacenes</h2>
+    <h2>Productos</h2>
 
     <div id="container">
         <div class="operacionesCrud">
-            <p>Listar Almacenes</p>
+            <p>Listar Productos</p>
             <br>
-            <a href="{{ route('listarAlmacenes') }}"><button>Listar</button></a>
+            <a href="{{ route('listarProductos') }}"><button>Listar</button></a>
         </div>
         <div class="operacionesCrud">
-            <p>Crear Almacen</p>
+            <p>Crear Producto</p>
             <br>
-            <a href="{{ route('crearAlmacen') }}"><button>Crear</button></a>
+            <a href="{{ route('crearProducto') }}"><button>Crear</button></a>
         </div>
     </div>
 

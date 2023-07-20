@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AlmacenController;
+use App\Http\Controllers\ProductoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -42,4 +43,18 @@ Route::get('/almacenes/listarAlmacenes', [AlmacenController::class,'ListarAlmace
 
 Route::delete('/almacenes/eliminarAlmacen/{idAlmacen}', [AlmacenController::class,'EliminarAlmacen'])->name('eliminarAlmacen');
 
+
+Route::get('/productos', function () {
+    return view('productos');
+})->name('productos');
+
+Route::get('/productos/crearProducto', function () {
+    return view('crearProducto');
+})->name('crearProducto');
+
+Route::post('/productos/crearProducto', [ProductoController::class,'InsertarProducto']);
+
+Route::get('/almacenes/listarProductos', [ProductoController::class,'ListarProductos'])->name('listarProductos');
+
+Route::delete('/almacenes/eliminarProducto/{idProducto}', [ProductoController::class,'ProductoAlmacen'])->name('eliminarProducto');
 
