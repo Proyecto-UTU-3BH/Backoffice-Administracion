@@ -16,10 +16,10 @@ class UserController extends Controller
         ]);
     }
     
-    public function VerUsuario(Request $request, $idUsuario){
+    public function ListarUnUsuario(Request $request, $idUsuario){
         $usuario = User::findOrFail($idUsuario);
     
-        return view('verUsuario', [
+        return view('modificarUsuario', [
             "usuario" => $usuario
         ]);
     }

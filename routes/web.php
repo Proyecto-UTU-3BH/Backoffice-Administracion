@@ -74,7 +74,7 @@ Route::get('/usuarios/crearUsuario', function () {
 
 Route::get('/usuarios/modificarUsuario/{idUsuario}', [UserController::class,'ListarUnUsuario'])->name('modificarUsuario');
 
-Route::post('/usuarios/modificarUsuario/{idUsuario}', [UserController::class,'ModificarProducto']);
+Route::post('/usuarios/modificarUsuario/{idUsuario}', [UserController::class,'ModificarUsuario']);
 
 Route::post('/usuarios/crearUsuario', [UserController::class,'InsertarUsuario']);
 
