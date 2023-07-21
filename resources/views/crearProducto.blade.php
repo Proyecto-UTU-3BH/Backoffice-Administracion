@@ -10,7 +10,7 @@
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
 
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
-        <link href="{{ asset('css/crearAlmacen.css') }}" rel="stylesheet">
+        <link href="{{ asset('css/crearProductos.css') }}" rel="stylesheet">
         <script src="{{ asset('js/app.js') }}" defer></script>
 </head>
 <body>
@@ -30,7 +30,6 @@
             </select>
             
             <br>
-            <br>
 
             <label for="tipo">Tipo:</label>
             <select id="tipo" name="tipo" required>
@@ -43,7 +42,6 @@
                 <option value="Otro">Otro</option>
             </select>
             
-            <br>
             <br>
 
             <label for="peso">Peso(kg)</label>

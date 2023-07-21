@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AlmacenController;
 use App\Http\Controllers\ProductoController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -61,4 +62,23 @@ Route::post('/productos/crearProducto', [ProductoController::class,'InsertarProd
 Route::get('/productos/listarProductos', [ProductoController::class,'ListarProductos'])->name('listarProductos');
 
 Route::delete('/productos/eliminarProducto/{idProducto}', [ProductoController::class,'EliminarProducto'])->name('eliminarProducto');
+
+
+Route::get('/usuarios', function () {
+    return view('usuarios');
+})->name('usuarios');
+
+Route::get('/usuarios/crearUsuario', function () {
+    return view('crearUsuario');
+})->name('crearUsuario');
+
+Route::get('/usuarios/modificarUsuario/{idUsuario}', [UserController::class,'ListarUnUsuario'])->name('modificarUsuario');
+
+Route::post('/usuarios/modificarUsuario/{idUsuario}', [UserController::class,'ModificarProducto']);
+
+Route::post('/usuarios/crearUsuario', [UserController::class,'InsertarUsuario']);
+
+Route::get('/usuarios/listarUsuarios', [UserController::class,'ListarUsuarios'])->name('listarUsuarios');
+
+Route::delete('/usuarios/eliminarUsuario/{idUsuario}', [UserController::class,'EliminarUsuario'])->name('eliminarUsuario');
 

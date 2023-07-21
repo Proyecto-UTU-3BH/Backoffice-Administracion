@@ -15,7 +15,7 @@
 </head>
 <body>
     @include('layouts.navigation')
-    <h2>Crear Producto</h2>
+    <h2>Modificar Producto</h2>
     <div id="container">
         <form action="/productos/modificarProducto/{{$producto->id}}" method="post">
             @csrf
@@ -38,7 +38,6 @@
                 @endif
             </select>
             
-            <br>
             <br>
 
             <label for="tipo">Tipo:</label>
@@ -81,7 +80,6 @@
                 @endif
             </select>
             
-            <br>
             <br>
 
             <label for="peso">Peso(kg)</label>
