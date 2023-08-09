@@ -56,9 +56,7 @@ Route::post('/productos/crearProducto', [ProductoController::class,'InsertarProd
 Route::delete('/productos/eliminarProducto/{idProducto}', [ProductoController::class,'EliminarProducto'])->name('eliminarProducto');
 
 
-Route::get('/usuarios', function () {
-    return view('usuarios');
-})->name('usuarios');
+Route::get('/usuarios/listarUsuarios', [UserController::class,'ListarUsuarios'])->name('listarUsuarios');
 
 Route::get('/usuarios/crearUsuario', function () {
     return view('crearUsuario');
@@ -69,8 +67,6 @@ Route::get('/usuarios/modificarUsuario/{idUsuario}', [UserController::class,'Lis
 Route::post('/usuarios/modificarUsuario/{idUsuario}', [UserController::class,'ModificarUsuario']);
 
 Route::post('/usuarios/crearUsuario', [UserController::class,'InsertarUsuario']);
-
-Route::get('/usuarios/listarUsuarios', [UserController::class,'ListarUsuarios'])->name('listarUsuarios');
 
 Route::delete('/usuarios/eliminarUsuario/{idUsuario}', [UserController::class,'EliminarUsuario'])->name('eliminarUsuario');
 
