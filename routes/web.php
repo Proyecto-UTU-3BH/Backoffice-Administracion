@@ -26,9 +26,7 @@ Route::get('/dashboard', function () {
 
 require __DIR__.'/auth.php';
 
-Route::get('/almacenes', function () {
-    return view('almacenes');
-})->name('almacenes');
+Route::get('/listarAlmacenes', [AlmacenController::class,'ListarAlmacenes'])->name('listarAlmacenes');
 
 Route::get('/almacenes/crearAlmacen', function () {
     return view('crearAlmacen');
@@ -39,8 +37,6 @@ Route::get('/almacenes/modificarAlmacen/{idAlmacen}', [AlmacenController::class,
 Route::post('/almacenes/crearAlmacen', [AlmacenController::class,'InsertarAlmacen']);
 
 Route::post('/almacenes/modificarAlmacen/{idAlmacen}', [AlmacenController::class,'ModificarAlmacen']);
-
-Route::get('/almacenes/listarAlmacenes', [AlmacenController::class,'ListarAlmacenes'])->name('listarAlmacenes');
 
 Route::delete('/almacenes/eliminarAlmacen/{idAlmacen}', [AlmacenController::class,'EliminarAlmacen'])->name('eliminarAlmacen');
 
