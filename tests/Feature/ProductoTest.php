@@ -58,4 +58,66 @@ class ProductoTest extends TestCase
     
         $user->delete();
     }
+
+    public function test_InsertarProducto()
+{
+    $user = User::factory()->create();
+    $this->actingAs($user);
+
+    $response = $this -> post('/productos/crearProducto', [
+        'peso' => 102.00,
+        'estado' => "En transito",
+        'destino' => "Flores",
+        'tipo' => "Paquete grande"
+    ]);
+
+    $response->assertStatus(200);
+
+    $this->assertDatabaseHas('productos', [
+        'peso' => 102.00,
+        'estado' => "En transito",
+        'destino' => "Flores",
+        'tipo' => "Paquete grande"
+    ]);
+
+    $response->assertViewIs('crearProducto');
+
+    $response->assertViewHas('mensaje', 'Producto creado correctamente');
+
+    $user->delete();
+}
+
+    public function test_EliminarProductoExistente()
+    {
+        $user = User::factory()->create();
+        $this->actingAs($user);
+
+        $response = $this -> delete('/productos/eliminarProducto/1000');
+
+        $response->assertStatus(302);
+
+        $this->assertDatabaseMissing('productos', [
+            'id' => '1000',
+            'deleted_at' => null
+        ]);
+
+        $response->assertRedirect(route('listarProductos'));
+
+        Producto::withTrashed()->where("id",1000)->restore();
+
+        $user->delete();
+    }
+
+    public function test_EliminarProductoInexistente()
+    {
+        $user = User::factory()->create();
+        $this->actingAs($user);
+
+        $response = $this -> delete('/productos/eliminarProducto/93223');
+
+        $response->assertStatus(404);
+
+        $user->delete();
+    }
+
 }
