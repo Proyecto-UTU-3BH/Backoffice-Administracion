@@ -27,6 +27,9 @@ class AlmacenController extends Controller
     public function InsertarAlmacen(Request $request){
         $almacen= new Almacen();
 
+        $almacen -> departamento = $request -> post ('departamento');
+        $almacen -> calle = $request -> post ('calle');
+        $almacen -> numero_puerta = $request -> post ('numero_puerta');
         $almacen -> latitud = $request -> post ('latitud');
         $almacen -> longitud = $request -> post ('longitud');
         $almacen -> telefono = $request -> post ('telefono');

@@ -13,6 +13,9 @@ class Almacen extends Model
     protected $table="almacenes";
 
     protected $fillable=[
+        "departamento",
+        "calle",
+        "numero_puerta",
         "latitud",
         "longitud",
         "telefono",
