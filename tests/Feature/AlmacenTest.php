@@ -6,6 +6,7 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 use App\Models\User;
+use App\Models\Almacen;
 
 class AlmacenTest extends TestCase
 {
@@ -92,28 +93,36 @@ class AlmacenTest extends TestCase
         $user->delete();
     }
 
-   /* public function test_EliminarAlmacenExistente()
+    public function test_EliminarAlmacenExistente()
     {
+        $user = User::factory()->create();
+        $this->actingAs($user);
+
         $response = $this -> delete('/almacenes/eliminarAlmacen/1000');
 
-        $response->assertStatus(200);
-
-        $response->assertJsonFragment([
-            "mensaje" => "El almacen con id 1000 ha sido eliminado correctamente"
-        ]);
+        $response->assertStatus(302);
 
        $this->assertDatabaseMissing('almacenes', [
         'id' => '1000',
         'deleted_at' => null
         ]);
 
+        $response->assertRedirect(route('listarAlmacenes'));
+
         Almacen::withTrashed()->where("id",1000)->restore();
+
+        $user->delete();
     }
 
     public function test_EliminarAlmacenInexistente()
     {
-        $response = $this -> delete('/api/almacenes/93223');
+        $user = User::factory()->create();
+        $this->actingAs($user);
+
+        $response = $this -> delete('/almacenes/eliminarAlmacen/93223');
 
         $response->assertStatus(404);
-    }*/
+
+        $user->delete();
+    }
 }
