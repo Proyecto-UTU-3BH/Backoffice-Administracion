@@ -125,4 +125,57 @@ class AlmacenTest extends TestCase
 
         $user->delete();
     }
+
+    public function test_ModificarAlmacenExistente()
+    {
+        $user = User::factory()->create();
+        $this->actingAs($user);
+
+        $response = $this -> post('/almacenes/modificarAlmacen/1000',[
+            "departamento" => "Durazno",
+            "calle" => "Acevedo Diaz",
+            "numero_puerta" => 3331,
+            "latitud" => -34.898403,
+            "longitud" => -56.12882,
+            "telefono" => 94418258,
+            "capacidad" => 3152
+        ]);
+
+        $response->assertStatus(302);
+
+        $this->assertDatabaseHas('almacenes',[
+            "departamento" => "Durazno",
+            "calle" => "Acevedo Diaz",
+            "numero_puerta" => 3331,
+            "latitud" => -34.898403,
+            "longitud" => -56.12882,
+            "telefono" => 94418258,
+            "capacidad" => 3152
+        ]);
+
+        $response->assertRedirect(route('listarAlmacenes'));
+
+        $user->delete();
+    }
+
+    public function test_ModificarAlmacenInexistente()
+    {
+        $user = User::factory()->create();
+        $this->actingAs($user);
+
+        $response = $this -> post('/almacenes/modificarAlmacen/2130921',[
+            "departamento" => "Artigas",
+            "calle" => "Gouveia",
+            "numero_puerta" => 2112,
+            "latitud" => -34.898403,
+            "longitud" => -56.12882,
+            "telefono" => 94418692,
+            "capacidad" => 19282
+        ]);
+
+        $response->assertStatus(404);
+
+        $user->delete();
+
+    }
 }
