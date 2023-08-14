@@ -116,5 +116,43 @@ class UserTest extends TestCase
         $user->delete();
     }
 
+    public function test_ModificarUsuarioExistente()
+    {
+        $user = User::factory()->create();
+        $this->actingAs($user);
+
+        $response = $this->post("/usuarios/modificarUsuario/{$user->id}", [
+            "name" => "Philipe",
+            "email" => "philipe@hotmail.com",
+            "password" => "philipe"
+        ]);
+
+        $response->assertStatus(302);
+
+        $this->assertDatabaseHas('users', [
+            "name" => "Philipe",
+            "email" => "philipe@hotmail.com"
+        ]);
+
+        $response->assertRedirect(route('listarUsuarios'));
+
+        $user->delete();
+    }
+
+    public function test_ModificarUsuarioInexistente()
+    {
+        $user = User::factory()->create();
+        $this->actingAs($user);
+
+        $response = $this->post('/usuarios/modificarUsuario/999999', [
+            "nombre" => "nombre",
+            "email" => "correo@hotmail.com",
+            "password" => "contrasena"
+        ]);
+
+        $response->assertStatus(404);
+
+        $user->delete();
+    }
 
 }

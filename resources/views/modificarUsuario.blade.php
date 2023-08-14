@@ -19,8 +19,8 @@
     <div id="container">
         <form action="/usuarios/modificarUsuario/{{$usuario->id}}" method="post">
             @csrf
-            <label for="nombre">Nombre:</label>
-            <input type="text" id="nombre" name="nombre" value="{{$usuario->name}}" required><br>
+            <label for="name">Nombre:</label>
+            <input type="text" id="name" name="name" value="{{$usuario->name}}" required><br>
 
             <label for="email">Email:</label>
             <input type="email" id="email" name="email" value="{{$usuario->email}}" required><br>
