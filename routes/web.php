@@ -56,7 +56,7 @@ Route::post('/productos/crearProducto', [ProductoController::class,'InsertarProd
 Route::delete('/productos/eliminarProducto/{idProducto}', [ProductoController::class,'EliminarProducto'])->name('eliminarProducto');
 
 
-Route::get('/usuarios/listarUsuarios', [UserController::class,'ListarUsuarios'])->name('listarUsuarios');
+Route::get('/listarUsuarios', [UserController::class,'ListarUsuarios'])->name('listarUsuarios');
 
 Route::get('/usuarios/crearUsuario', function () {
     return view('crearUsuario');
