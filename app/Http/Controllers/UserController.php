@@ -27,7 +27,7 @@ class UserController extends Controller
     public function InsertarUsuario(Request $request){
         $usuario = new User();
     
-        $usuario->name = $request->post('nombre');
+        $usuario->name = $request->post('name');
         $usuario->email = $request->post('email');
         $usuario->password = Hash::make($request->post('password'));
     

@@ -19,8 +19,8 @@
     <div id="container">
         <form action="/usuarios/crearUsuario" method="post">
             @csrf
-            <label for="nombre">Nombre:</label>
-            <input type="text" id="nombre" name="nombre" required><br>
+            <label for="name">Nombre:</label>
+            <input type="text" id="name" name="name" required><br>
 
             <label for="email">Email:</label>
             <input type="email" id="email" name="email" required><br>
