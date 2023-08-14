@@ -60,32 +60,32 @@ class ProductoTest extends TestCase
     }
 
     public function test_InsertarProducto()
-{
-    $user = User::factory()->create();
-    $this->actingAs($user);
+    {
+        $user = User::factory()->create();
+        $this->actingAs($user);
 
-    $response = $this -> post('/productos/crearProducto', [
-        'peso' => 102.00,
-        'estado' => "En transito",
-        'destino' => "Flores",
-        'tipo' => "Paquete grande"
-    ]);
+        $response = $this -> post('/productos/crearProducto', [
+            'peso' => 102.00,
+            'estado' => "En transito",
+            'destino' => "Flores",
+            'tipo' => "Paquete grande"
+        ]);
 
-    $response->assertStatus(200);
+        $response->assertStatus(200);
 
-    $this->assertDatabaseHas('productos', [
-        'peso' => 102.00,
-        'estado' => "En transito",
-        'destino' => "Flores",
-        'tipo' => "Paquete grande"
-    ]);
+        $this->assertDatabaseHas('productos', [
+            'peso' => 102.00,
+            'estado' => "En transito",
+            'destino' => "Flores",
+            'tipo' => "Paquete grande"
+        ]);
 
-    $response->assertViewIs('crearProducto');
+        $response->assertViewIs('crearProducto');
 
-    $response->assertViewHas('mensaje', 'Producto creado correctamente');
+        $response->assertViewHas('mensaje', 'Producto creado correctamente');
 
-    $user->delete();
-}
+        $user->delete();
+    }
 
     public function test_EliminarProductoExistente()
     {
