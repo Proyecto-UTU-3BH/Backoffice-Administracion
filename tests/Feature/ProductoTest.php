@@ -120,4 +120,47 @@ class ProductoTest extends TestCase
         $user->delete();
     }
 
+    public function test_ModificarProductoExistente()
+    {
+        $user = User::factory()->create();
+        $this->actingAs($user);
+
+        $response = $this -> post('/productos/modificarProducto/1000', [
+            "peso" => 73.00,
+            "estado" => "En transito",
+            "destino" => "Rio Negro",
+            "tipo" => "Paquete mediano"
+        ]);
+
+        $response->assertStatus(302);
+
+        $this->assertDatabaseHas('productos', [
+            "peso" => 73.00,
+            "estado" => "En transito",
+            "destino" => "Rio Negro",
+            "tipo" => "Paquete mediano"
+        ]);
+
+        $response->assertRedirect(route('listarProductos'));
+
+        $user->delete();
+    }
+
+    public function test_ModificarProductoInexistente()
+    {
+        $user = User::factory()->create();
+        $this->actingAs($user);
+
+        $response = $this -> post('/productos/modificarProducto/2130921', [
+            "peso" => 73.00,
+            "estado" => "En transito",
+            "destino" => "Rio Negro",
+            "tipo" => "Paquete mediano"
+        ]);
+
+        $response->assertStatus(404);
+
+        $user->delete();
+    }
+
 }
