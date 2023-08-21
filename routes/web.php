@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AlmacenController;
 use App\Http\Controllers\ProductoController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\VehiculoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -72,6 +73,11 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/usuarios/crearUsuario', [UserController::class,'InsertarUsuario']);
     
     Route::delete('/usuarios/eliminarUsuario/{idUsuario}', [UserController::class,'EliminarUsuario'])->name('eliminarUsuario');
+
+
+    Route::get('/listarVehiculos', [VehiculoController::class,'ListarVehiculos'])->name('listarVehiculos');
+
+    Route::get('/vehiculos/modificarVehiculo/{idVehiculo}', [VehiculoController::class,'ListarUnVehiculo'])->name('modificarVehiculo');
     
 });
 
