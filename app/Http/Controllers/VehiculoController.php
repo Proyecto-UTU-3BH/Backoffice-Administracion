@@ -23,4 +23,16 @@ class VehiculoController extends Controller
             "vehiculo" => $vehiculo
         ]);
     }
+
+    
+    public function ModificarVehiculo(Request $request, $idVehiculo){
+        $vehiculo= Vehiculo::findOrFail($idVehiculo);
+
+        $vehiculo -> update($request->all());
+
+        $vehiculo -> save();
+
+        return redirect()->route('listarVehiculos');
+
+    }
 }

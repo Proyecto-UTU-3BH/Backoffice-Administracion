@@ -78,6 +78,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/listarVehiculos', [VehiculoController::class,'ListarVehiculos'])->name('listarVehiculos');
 
     Route::get('/vehiculos/modificarVehiculo/{idVehiculo}', [VehiculoController::class,'ListarUnVehiculo'])->name('modificarVehiculo');
+
+    Route::post('/vehiculos/modificarVehiculo/{idVehiculo}', [VehiculoController::class,'ModificarVehiculo']);
     
 });
 
