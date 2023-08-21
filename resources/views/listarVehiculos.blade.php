@@ -19,7 +19,7 @@
     <h2>Listado de Vehiculos</h2>
     <div class="container">
         <div class="insertar">
-            <a href="#"><button>Crear Vehiculo</button></a>
+            <a href="{{ route('crearVehiculo') }}"><button>Crear Vehiculo</button></a>
         </div>
         <table>
             <thead>
@@ -45,7 +45,7 @@
                         <a href="{{ route('modificarVehiculo', ['idVehiculo' => $vehiculo->id]) }}"> <button> Modificar </button> </a>
                     </td>
                     <td class="eliminar">
-                        <form action="#" method="POST">
+                        <form action="{{ route('eliminarVehiculo', ['idVehiculo' => $vehiculo->id]) }}" method="POST">
                             @csrf
                             @method('DELETE')
                             <button type="submit"> Eliminar </button> 

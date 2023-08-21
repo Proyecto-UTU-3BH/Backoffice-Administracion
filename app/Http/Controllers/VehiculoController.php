@@ -24,7 +24,29 @@ class VehiculoController extends Controller
         ]);
     }
 
+    public function InsertarVehiculo(Request $request){
+        $vehiculo = new Vehiculo();
     
+        $vehiculo->matricula = $request->post('matricula');
+        $vehiculo->tipo = $request->post('tipo');
+        $vehiculo->capacidad = $request->post('capacidad');
+        $vehiculo->estado = $request->post('estado');
+    
+        $vehiculo->save();
+    
+        return view('crearVehiculo', [
+            "mensaje" => "Vehículo creado correctamente"
+        ]);
+    }    
+
+    public function EliminarVehiculo(Request $request, $idVehiculo){
+        $vehiculo= Vehiculo::findOrFail($idVehiculo);
+
+        $vehiculo -> delete();
+
+        return redirect()->route('listarVehiculos');
+    }
+
     public function ModificarVehiculo(Request $request, $idVehiculo){
         $vehiculo= Vehiculo::findOrFail($idVehiculo);
 

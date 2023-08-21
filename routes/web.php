@@ -77,9 +77,17 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('/listarVehiculos', [VehiculoController::class,'ListarVehiculos'])->name('listarVehiculos');
 
+    Route::get('/vehiculos/crearVehiculo', function () {
+        return view('crearVehiculo');
+    })->name('crearVehiculo');
+
     Route::get('/vehiculos/modificarVehiculo/{idVehiculo}', [VehiculoController::class,'ListarUnVehiculo'])->name('modificarVehiculo');
 
     Route::post('/vehiculos/modificarVehiculo/{idVehiculo}', [VehiculoController::class,'ModificarVehiculo']);
+
+    Route::post('/vehiculos/crearVehiculo', [VehiculoController::class,'InsertarVehiculo']);
+
+    Route::delete('/vehiculos/eliminarVehiculo/{idVehiculo}', [VehiculoController::class,'EliminarVehiculo'])->name('eliminarVehiculo');
     
 });
 
