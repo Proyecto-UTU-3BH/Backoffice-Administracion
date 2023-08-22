@@ -64,20 +64,30 @@ class ProductoTest extends TestCase
         $user = User::factory()->create();
         $this->actingAs($user);
 
-        $response = $this -> post('/productos/crearProducto', [
-            'peso' => 102.00,
-            'estado' => "En transito",
-            'destino' => "Flores",
-            'tipo' => "Paquete grande"
+        $response = $this -> post('/productos/crearProducto',[
+            "peso" => 10.5,
+            "estado" => "en central",
+            "destino" => "Paysandu",
+            "tipo" => "Paquete chico",
+            "forma_entrega" => "reparto",
+            "remitente" => "Nicolas",
+            "nombre_destinatario" => "Juliana",
+            "calle" => "Michelena",
+            "numero_puerta" => "1732"
         ]);
 
         $response->assertStatus(200);
 
         $this->assertDatabaseHas('productos', [
-            'peso' => 102.00,
-            'estado' => "En transito",
-            'destino' => "Flores",
-            'tipo' => "Paquete grande"
+            "peso" => 10.5,
+            "estado" => "en central",
+            "destino" => "Paysandu",
+            "tipo" => "Paquete chico",
+            "forma_entrega" => "reparto",
+            "remitente" => "Nicolas",
+            "nombre_destinatario" => "Juliana",
+            "calle" => "Michelena",
+            "numero_puerta" => "1732"
         ]);
 
         $response->assertViewIs('crearProducto');
@@ -126,19 +136,29 @@ class ProductoTest extends TestCase
         $this->actingAs($user);
 
         $response = $this -> post('/productos/modificarProducto/1000', [
-            "peso" => 73.00,
-            "estado" => "En transito",
-            "destino" => "Rio Negro",
-            "tipo" => "Paquete mediano"
+            "peso" => 10.5,
+            "estado" => "en domicilio",
+            "destino" => "Salto",
+            "tipo" => "Paquete chico",
+            "forma_entrega" => "reparto",
+            "remitente" => "Manuel",
+            "nombre_destinatario" => "Susana",
+            "calle" => "Michelena",
+            "numero_puerta" => "1412",
         ]);
 
         $response->assertStatus(302);
 
         $this->assertDatabaseHas('productos', [
-            "peso" => 73.00,
-            "estado" => "En transito",
-            "destino" => "Rio Negro",
-            "tipo" => "Paquete mediano"
+            "peso" => 10.5,
+            "estado" => "en domicilio",
+            "destino" => "Salto",
+            "tipo" => "Paquete chico",
+            "forma_entrega" => "reparto",
+            "remitente" => "Manuel",
+            "nombre_destinatario" => "Susana",
+            "calle" => "Michelena",
+            "numero_puerta" => "1412",
         ]);
 
         $response->assertRedirect(route('listarProductos'));

@@ -16,6 +16,11 @@ class Producto extends Model
         "peso",
         "estado",
         "destino",
-        "tipo"
+        "tipo",
+        "forma_entrega",
+        "remitente",
+        "nombre_destinatario",
+        "calle",
+        "numero_puerta"
     ];
 }

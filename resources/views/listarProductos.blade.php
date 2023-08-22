@@ -28,6 +28,11 @@
                     <th>Destino</th>
                     <th>Estado</th>
                     <th>Tipo</th>
+                    <th>Remitente</th>
+                    <th>Destinatario</th>
+                    <th>Calle</th>
+                    <th>Nº Puerta</th>
+                    <th>Forma de Entrega</th>
                     <th>Peso</th>
                     <th class="modificar"></th>
                     <th class="eliminar"></th>
@@ -40,6 +45,11 @@
                     <td>{{ $producto->destino }}</td>
                     <td>{{ $producto->estado }}</td>
                     <td>{{ $producto->tipo }}</td>
+                    <td>{{ $producto->remitente }}</td>
+                    <td>{{ $producto->nombre_destinatario }}</td>
+                    <td>{{ $producto->calle }}</td>
+                    <td>{{ $producto->numero_puerta }}</td>
+                    <td>{{ $producto->forma_entrega }}</td>
                     <td>{{ $producto->peso }}</td>
                     <td class="modificar">
                         <a href="{{ route('modificarProducto', ['idProducto' => $producto->id]) }}"> <button> Modificar </button> </a>
