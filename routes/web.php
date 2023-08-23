@@ -5,6 +5,7 @@ use App\Http\Controllers\AlmacenController;
 use App\Http\Controllers\ProductoController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\VehiculoController;
+use App\Http\Controllers\UsuarioController;
 
 /*
 |--------------------------------------------------------------------------
@@ -73,6 +74,9 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/admins/crearAdmin', [UserController::class,'InsertarUsuario']);
     
     Route::delete('/admins/eliminarAdmin/{idAdmin}', [UserController::class,'EliminarUsuario'])->name('eliminarAdmin');
+
+
+    Route::get('/listarUsuarios', [UsuarioController::class,'ListarUsuarios'])->name('listarUsuarios');
 
 
     Route::get('/listarVehiculos', [VehiculoController::class,'ListarVehiculos'])->name('listarVehiculos');
