@@ -60,19 +60,19 @@ Route::middleware(['auth'])->group(function () {
     Route::delete('/productos/eliminarProducto/{idProducto}', [ProductoController::class,'EliminarProducto'])->name('eliminarProducto');
     
     
-    Route::get('/listarUsuarios', [UserController::class,'ListarUsuarios'])->name('listarUsuarios');
+    Route::get('/listarAdmins', [UserController::class,'ListarUsuarios'])->name('listarAdmins');
     
-    Route::get('/usuarios/crearUsuario', function () {
-        return view('crearUsuario');
-    })->name('crearUsuario');
+    Route::get('/admins/crearAdmin', function () {
+        return view('crearAdmin');
+    })->name('crearAdmin');
     
-    Route::get('/usuarios/modificarUsuario/{idUsuario}', [UserController::class,'ListarUnUsuario'])->name('modificarUsuario');
+    Route::get('/admins/modificarAdmin/{idAdmin}', [UserController::class,'ListarUnUsuario'])->name('modificarAdmin');
     
-    Route::post('/usuarios/modificarUsuario/{idUsuario}', [UserController::class,'ModificarUsuario']);
+    Route::post('/admins/modificarAdmin/{idAdmin}', [UserController::class,'ModificarUsuario']);
     
-    Route::post('/usuarios/crearUsuario', [UserController::class,'InsertarUsuario']);
+    Route::post('/admins/crearAdmin', [UserController::class,'InsertarUsuario']);
     
-    Route::delete('/usuarios/eliminarUsuario/{idUsuario}', [UserController::class,'EliminarUsuario'])->name('eliminarUsuario');
+    Route::delete('/admins/eliminarAdmin/{idAdmin}', [UserController::class,'EliminarUsuario'])->name('eliminarAdmin');
 
 
     Route::get('/listarVehiculos', [VehiculoController::class,'ListarVehiculos'])->name('listarVehiculos');

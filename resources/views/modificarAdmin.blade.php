@@ -4,7 +4,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <title>Modificar Usuario</title>
+        <title>Modificar Admin</title>
 
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
 
@@ -14,10 +14,10 @@
 </head>
 <body>
     @include('layouts.navigation')
-    <h2>Modificar Usuario</h2>
+    <h2>Modificar Admin</h2>
 
     <div id="container">
-        <form action="/usuarios/modificarUsuario/{{$usuario->id}}" method="post">
+        <form action="/admins/modificarAdmin/{{$usuario->id}}" method="post">
             @csrf
             <label for="name">Nombre:</label>
             <input type="text" id="name" name="name" value="{{$usuario->name}}" required><br>

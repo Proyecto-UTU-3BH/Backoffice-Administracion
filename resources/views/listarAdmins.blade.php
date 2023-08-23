@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <title>Usuarios</title>
+        <title>Administradores</title>
 
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
 
@@ -16,10 +16,10 @@
 <body>
     @include('layouts.navigation')
     
-    <h2>Listado de Usuarios</h2>
+    <h2>Listado de Administradores</h2>
     <div class="container">
         <div class="insertar">
-            <a href="{{ route('crearUsuario') }}"><button>Crear Usuario</button></a>
+            <a href="{{ route('crearAdmin') }}"><button>Crear Admin</button></a>
         </div>
         <table>
             <thead>
@@ -38,10 +38,10 @@
                     <td>{{ $usuario->name }}</td>
                     <td>{{ $usuario->email }}</td>
                     <td class="modificar">
-                        <a href="{{ route('modificarUsuario', ['idUsuario' => $usuario->id]) }}"> <button> Modificar </button> </a>
+                        <a href="{{ route('modificarAdmin', ['idAdmin' => $usuario->id]) }}"> <button> Modificar </button> </a>
                     </td>
                     <td class="eliminar">
-                        <form action="{{ route('eliminarUsuario', ['idUsuario' => $usuario->id]) }}" method="POST">
+                        <form action="{{ route('eliminarAdmin', ['idAdmin' => $usuario->id]) }}" method="POST">
                             @csrf
                             @method('DELETE')
                             <button type="submit"> Eliminar </button> 

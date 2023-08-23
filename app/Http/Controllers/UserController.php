@@ -11,7 +11,7 @@ class UserController extends Controller
     public function ListarUsuarios(Request $request){
         $usuarios = User::all();
     
-        return view('listarUsuarios', [
+        return view('listarAdmins', [
             "usuarios" => $usuarios
         ]);
     }
@@ -19,7 +19,7 @@ class UserController extends Controller
     public function ListarUnUsuario(Request $request, $idUsuario){
         $usuario = User::findOrFail($idUsuario);
     
-        return view('modificarUsuario', [
+        return view('modificarAdmin', [
             "usuario" => $usuario
         ]);
     }
@@ -33,7 +33,7 @@ class UserController extends Controller
     
         $usuario->save();
     
-        return view('crearUsuario', [
+        return view('crearAdmin', [
             "mensaje" => "Usuario creado correctamente"
         ]);
     }
@@ -43,17 +43,19 @@ class UserController extends Controller
     
         $usuario->delete();
     
-        return redirect()->route('listarUsuarios');
+        return redirect()->route('listarAdmins');
     }
     
     public function ModificarUsuario(Request $request, $idUsuario){
         $usuario = User::findOrFail($idUsuario);
     
-        $usuario -> update($request->all());
+        $usuario->name = $request->post('name');
+        $usuario->password = Hash::make($request->post('password'));
+        $usuario->email = $request->post('email');
 
         $usuario->save();
     
-        return redirect()->route('listarUsuarios');
+        return redirect()->route('listarAdmins');
     }
     
 }
