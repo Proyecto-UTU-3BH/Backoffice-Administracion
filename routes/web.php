@@ -78,6 +78,12 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('/listarUsuarios', [UsuarioController::class,'ListarUsuarios'])->name('listarUsuarios');
 
+    Route::get('/usuarios/crearUsuario', function () {
+        return view('crearUsuario');
+    })->name('crearUsuario');
+
+    Route::post('/usuarios/crearUsuario', [UsuarioController::class,'InsertarUsuario']);
+
 
     Route::get('/listarVehiculos', [VehiculoController::class,'ListarVehiculos'])->name('listarVehiculos');
 

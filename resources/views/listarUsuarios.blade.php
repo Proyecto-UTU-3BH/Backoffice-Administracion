@@ -19,7 +19,7 @@
     <h2>Listado de Usuarios</h2>
     <div class="container">
         <div class="insertar">
-            <a href="#"><button>Crear Usuario</button></a>
+            <a href="{{ route('crearUsuario') }}"><button>Crear Usuario</button></a>
         </div>
         <table>
             <thead>
