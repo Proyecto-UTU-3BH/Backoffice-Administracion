@@ -30,6 +30,7 @@ Route::middleware(['auth'])->group(function () {
         return view('dashboard');
     })->name('dashboard');
     
+
     
     Route::get('/listarAlmacenes', [AlmacenController::class,'ListarAlmacenes'])->name('listarAlmacenes');
     
@@ -45,6 +46,7 @@ Route::middleware(['auth'])->group(function () {
     
     Route::delete('/almacenes/eliminarAlmacen/{idAlmacen}', [AlmacenController::class,'EliminarAlmacen'])->name('eliminarAlmacen');
     
+
     
     Route::get('/listarProductos', [ProductoController::class,'ListarProductos'])->name('listarProductos');
     
@@ -61,6 +63,7 @@ Route::middleware(['auth'])->group(function () {
     Route::delete('/productos/eliminarProducto/{idProducto}', [ProductoController::class,'EliminarProducto'])->name('eliminarProducto');
     
     
+
     Route::get('/listarAdmins', [UserController::class,'ListarUsuarios'])->name('listarAdmins');
     
     Route::get('/admins/crearAdmin', function () {
@@ -76,11 +79,16 @@ Route::middleware(['auth'])->group(function () {
     Route::delete('/admins/eliminarAdmin/{idAdmin}', [UserController::class,'EliminarUsuario'])->name('eliminarAdmin');
 
 
+
     Route::get('/listarUsuarios', [UsuarioController::class,'ListarUsuarios'])->name('listarUsuarios');
 
     Route::get('/usuarios/crearUsuario', function () {
         return view('crearUsuario');
     })->name('crearUsuario');
+
+    Route::get('/usuarios/modificarUsuario/{idUsuario}', [UsuarioController::class,'ListarUnUsuario'])->name('modificarUsuario');
+
+    Route::post('/usuarios/modificarUsuario/{idUsuario}', [UsuarioController::class,'ModificarUsuario']);
 
     Route::post('/usuarios/crearUsuario', [UsuarioController::class,'InsertarUsuario']);
 

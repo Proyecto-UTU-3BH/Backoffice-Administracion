@@ -49,7 +49,7 @@
                     <td>{{ $usuario->numero_de_puerta }}</td>
                     <td>{{ $usuario->ci }}</td>
                     <td class="modificar">
-                        <a href="#"> <button> Modificar </button> </a>
+                        <a href="{{ route('modificarUsuario', ['idUsuario' => $usuario->id]) }}"> <button> Modificar </button> </a>
                     </td>
                     <td class="eliminar">
                         <form action="{{ route('eliminarUsuario', ['idUsuario' => $usuario->id]) }}" method="POST">
