@@ -84,6 +84,9 @@ Route::middleware(['auth'])->group(function () {
 
     Route::post('/usuarios/crearUsuario', [UsuarioController::class,'InsertarUsuario']);
 
+    Route::delete('/usuarios/eliminarUsuario/{idUsuario}', [UsuarioController::class,'EliminarUsuario'])->name('eliminarUsuario');
+
+
 
     Route::get('/listarVehiculos', [VehiculoController::class,'ListarVehiculos'])->name('listarVehiculos');
 

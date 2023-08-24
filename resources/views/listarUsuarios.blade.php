@@ -52,7 +52,7 @@
                         <a href="#"> <button> Modificar </button> </a>
                     </td>
                     <td class="eliminar">
-                        <form action="#" method="POST">
+                        <form action="{{ route('eliminarUsuario', ['idUsuario' => $usuario->id]) }}" method="POST">
                             @csrf
                             @method('DELETE')
                             <button type="submit"> Eliminar </button> 

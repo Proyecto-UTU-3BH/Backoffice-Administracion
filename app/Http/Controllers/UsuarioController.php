@@ -59,4 +59,12 @@ class UsuarioController extends Controller
             "mensaje" => "Usuario creado correctamente"
         ]);
     }
+
+    public function EliminarUsuario(Request $request, $idUsuario){
+        $usuario = Usuario::findOrFail($idUsuario);
+    
+        $usuario->delete();
+    
+        return redirect()->route('listarUsuarios');
+    }
 }
