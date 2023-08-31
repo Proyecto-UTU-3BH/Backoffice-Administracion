@@ -26,5 +26,9 @@ class Usuario extends Model
 
     public function Productos(){
         return $this -> belongsToMany(Producto::class,"gestiona");
-    }   
+    }
+    
+    public function Vehiculo(){
+        return $this -> belongsToMany(Vehiculo::class,"maneja");
+    }
 }

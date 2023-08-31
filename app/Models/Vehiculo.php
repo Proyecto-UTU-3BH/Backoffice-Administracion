@@ -18,4 +18,8 @@ class Vehiculo extends Model
         "capacidad",
         "estado"
     ];
+
+    public function Usuario(){
+        return $this->belongsToMany(Usuario::class,"maneja");
+    }
 }
