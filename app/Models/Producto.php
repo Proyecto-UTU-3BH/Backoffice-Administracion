@@ -23,4 +23,8 @@ class Producto extends Model
         "calle",
         "numero_puerta"
     ];
+
+    public function Usuario(){
+        return $this->belongsToMany(Usuario::class,"gestiona");
+    }
 }
