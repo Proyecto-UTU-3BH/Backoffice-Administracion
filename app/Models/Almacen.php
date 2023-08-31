@@ -22,4 +22,8 @@ class Almacen extends Model
         "capacidad"
     ];
 
+    public function Productos(){
+        return $this->belongsToMany(Producto::class,"almacena");
+    }
+
 }

@@ -27,4 +27,8 @@ class Producto extends Model
     public function Usuario(){
         return $this->belongsToMany(Usuario::class,"gestiona");
     }
+
+    public function Almacen(){
+        return $this->belongsToMany(Almacen::class,"almacena");
+    }
 }
