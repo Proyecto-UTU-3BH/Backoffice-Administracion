@@ -19,6 +19,15 @@
     <div id="container">
         <form action="/almacenes/modificarAlmacen/{{$almacen->id}}" method="post">
             @csrf
+            <label for="departamento">Departamento</label>
+            <input type="text" id="departamento" name="departamento" value="{{$almacen->departamento}}" required><br>
+
+            <label for="calle">Calle</label>
+            <input type="text" id="calle" name="calle" value="{{$almacen->calle}}" required><br>
+
+            <label for="numero_puerta">Nº Puerta</label>
+            <input type="number" id="numero_puerta" name="numero_puerta" value="{{$almacen->numero_puerta}}" required><br>
+
             <label for="latitud">Latitud:</label>
             <input type="number" id="latitud" name="latitud" step="0.000001" value="{{$almacen->latitud}}" required><br>
 
