@@ -54,16 +54,16 @@ span {
 }
 
 .form-group {
-    margin-bottom: 20px; /* Espacio entre los campos */
-    position: relative; /* Para posicionar correctamente el mensaje de error */
+    margin-bottom: 20px; 
+    position: relative; 
 }
 
-/* Estilo para el mensaje de error */
+
 .error {
-    color: red; /* Color rojo para el mensaje de error */
-    position: absolute; /* Posición absoluta para superponer el mensaje en el campo */
-    top: 100%; /* Coloca el mensaje justo debajo del campo de entrada */
-    left: 0; /* Alinea el mensaje a la izquierda del campo */
-    font-size: 14px; /* Tamaño de fuente del mensaje de error */
+    color: red; 
+    position: absolute; 
+    top: 100%; 
+    left: 0; 
+    font-size: 14px; 
 }
 
