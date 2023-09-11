@@ -41,6 +41,11 @@
                         Vehiculos
                     </x-nav-link>
                 </div>
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-nav-link :href="route('listarRutas')">
+                        Rutas
+                    </x-nav-link>
+                </div>
             </div>
 
             <!-- Settings Dropdown -->
@@ -107,19 +112,25 @@
 
         <div class="pt-2 pb-3 space-y-1">
             <x-responsive-nav-link :href="route('listarAlmacenes')">
-                Almacen
+                Almacenes
             </x-responsive-nav-link>
         </div>
 
         <div class="pt-2 pb-3 space-y-1">
             <x-responsive-nav-link :href="route('listarProductos')">
-                Producto
+                Productos
             </x-responsive-nav-link>
         </div>
 
         <div class="pt-2 pb-3 space-y-1">
             <x-responsive-nav-link :href="route('listarVehiculos')">
-                Vehiculo
+                Vehiculos
+            </x-responsive-nav-link>
+        </div>
+
+        <div class="pt-2 pb-3 space-y-1">
+            <x-responsive-nav-link :href="route('listarRutas')">
+                Rutas
             </x-responsive-nav-link>
         </div>
 
