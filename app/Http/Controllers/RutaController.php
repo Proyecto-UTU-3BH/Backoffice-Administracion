@@ -35,5 +35,13 @@ class RutaController extends Controller
             "mensaje" => "Ruta creada correctamente"
         ]);
     }
+
+    public function ModificarRuta(Request $request, $idRuta){
+        $ruta = Ruta::findOrFail($idRuta);
+    
+        $ruta->update($request->all());
+    
+        return redirect()->route('listarRutas');
+    }
     
 }

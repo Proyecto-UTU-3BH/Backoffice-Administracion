@@ -118,6 +118,10 @@ Route::middleware(['auth'])->group(function () {
         return view('crearRuta');
     })->name('crearRuta');
 
+    Route::get('/rutas/modificarRuta/{idRuta}', [RutaController::class,'ListarUnaRuta'])->name('modificarRuta');
+
+    Route::post('/rutas/modificarRuta/{idRuta}', [RutaController::class,'ModificarRuta']);
+
     Route::post('/rutas/crearRuta', [RutaController::class,'InsertarRuta']);
     
 });
