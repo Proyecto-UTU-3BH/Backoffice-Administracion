@@ -113,6 +113,12 @@ Route::middleware(['auth'])->group(function () {
 
 
     Route::get('/listarRutas', [RutaController::class,'ListarRutas'])->name('listarRutas');
+
+    Route::get('/rutas/crearRuta', function () {
+        return view('crearRuta');
+    })->name('crearRuta');
+
+    Route::post('/rutas/crearRuta', [RutaController::class,'InsertarRuta']);
     
 });
 

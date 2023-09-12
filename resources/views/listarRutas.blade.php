@@ -16,7 +16,7 @@
     <h2>Listado de Rutas</h2>
     <div class="container">
         <div class="insertar">
-            <a href="#"><button>Crear Ruta</button></a>
+            <a href="{{ route('crearRuta') }}"><button>Crear Ruta</button></a>
         </div>
         <table>
             <thead>
