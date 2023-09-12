@@ -36,6 +36,14 @@ class RutaController extends Controller
         ]);
     }
 
+    public function EliminarRuta(Request $request, $idRuta){
+        $ruta= Ruta::findOrFail($idRuta);
+
+        $ruta -> delete();
+
+        return redirect()->route('listarRutas');
+    }
+
     public function ModificarRuta(Request $request, $idRuta){
         $ruta = Ruta::findOrFail($idRuta);
     

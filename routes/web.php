@@ -123,6 +123,8 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/rutas/modificarRuta/{idRuta}', [RutaController::class,'ModificarRuta']);
 
     Route::post('/rutas/crearRuta', [RutaController::class,'InsertarRuta']);
+
+    Route::delete('/rutas/eliminarRuta/{idRuta}', [RutaController::class,'EliminarRuta'])->name('eliminarRuta');
     
 });
 
