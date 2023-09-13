@@ -34,7 +34,7 @@ class UserController extends Controller
         $usuario->save();
     
         return view('crearAdmin', [
-            "mensaje" => "Usuario creado correctamente"
+            "mensaje" => "Admin creado correctamente"
         ]);
     }
     

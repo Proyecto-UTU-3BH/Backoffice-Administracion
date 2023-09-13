@@ -19,11 +19,11 @@ class UserTest extends TestCase
         $user = User::factory()->create();
         $this->actingAs($user);
 
-        $response = $this->get('/listarUsuarios');
+        $response = $this->get('/listarAdmins');
 
         $response->assertStatus(200);
 
-        $response->assertViewIs('listarUsuarios');
+        $response->assertViewIs('listarAdmins');
 
         $response->assertViewHas('usuarios');
         
@@ -35,11 +35,11 @@ class UserTest extends TestCase
         $user = User::factory()->create();
         $this->actingAs($user);
 
-        $response = $this ->get("/usuarios/modificarUsuario/{$user->id}");
+        $response = $this ->get("/admins/modificarAdmin/{$user->id}");
 
         $response->assertStatus(200);
 
-        $response->assertViewIs('modificarUsuario');
+        $response->assertViewIs('modificarAdmin');
 
         $response->assertViewHas('usuario');
 
@@ -51,7 +51,7 @@ class UserTest extends TestCase
         $user = User::factory()->create();
         $this->actingAs($user);
 
-        $response = $this ->get('/usuarios/modificarUsuario/77541253');
+        $response = $this ->get('/admins/modificarAdmin/77541253');
 
         $response->assertStatus(404);
 
@@ -63,9 +63,9 @@ class UserTest extends TestCase
         $user = User::factory()->create();
         $this->actingAs($user);
 
-        $response = $this->post('/usuarios/crearUsuario', [
+        $response = $this->post('/admins/crearAdmin', [
             'name' => 'Alvaro',
-            'email' => 'Alvaro@hotmail.com',
+            'email' => 'Alvar12o@hotmail.com',
             'password' => 'juansito'
         ]);
 
@@ -73,12 +73,12 @@ class UserTest extends TestCase
 
         $this->assertDatabaseHas('users', [
             'name' => 'Alvaro',
-            'email' => 'Alvaro@hotmail.com'
+            'email' => 'Alvar12o@hotmail.com'
         ]);
 
-        $response->assertViewIs('crearUsuario');
+        $response->assertViewIs('crearAdmin');
 
-        $response->assertViewHas('mensaje', 'Usuario creado correctamente');
+        $response->assertViewHas('mensaje', 'Admin creado correctamente');
 
         $user->delete();
     }
@@ -88,7 +88,7 @@ class UserTest extends TestCase
         $user = User::factory()->create();
         $this->actingAs($user);
 
-        $response = $this->delete("/usuarios/eliminarUsuario/{$user->id}");
+        $response = $this->delete("/admins/eliminarAdmin/{$user->id}");
 
         $response->assertStatus(302);
 
@@ -97,7 +97,7 @@ class UserTest extends TestCase
             'deleted_at' => null
         ]);
 
-        $response->assertRedirect(route('listarUsuarios'));
+        $response->assertRedirect(route('listarAdmins'));
 
         User::withTrashed()->where('id', $user->id)->restore();
 
@@ -109,7 +109,7 @@ class UserTest extends TestCase
         $user = User::factory()->create();
         $this->actingAs($user);
 
-        $response = $this->delete('/usuarios/eliminarUsuario/93223');
+        $response = $this->delete('/admins/eliminarAdmin/93223');
 
         $response->assertStatus(404);
 
@@ -121,7 +121,7 @@ class UserTest extends TestCase
         $user = User::factory()->create();
         $this->actingAs($user);
 
-        $response = $this->post("/usuarios/modificarUsuario/{$user->id}", [
+        $response = $this->post("/admins/modificarAdmin/{$user->id}", [
             "name" => "Philipe",
             "email" => "philipe@hotmail.com",
             "password" => "philipe"
@@ -134,7 +134,7 @@ class UserTest extends TestCase
             "email" => "philipe@hotmail.com"
         ]);
 
-        $response->assertRedirect(route('listarUsuarios'));
+        $response->assertRedirect(route('listarAdmins'));
 
         $user->delete();
     }
@@ -144,7 +144,7 @@ class UserTest extends TestCase
         $user = User::factory()->create();
         $this->actingAs($user);
 
-        $response = $this->post('/usuarios/modificarUsuario/999999', [
+        $response = $this->post('/admins/modificarAdmin/999999', [
             "nombre" => "nombre",
             "email" => "correo@hotmail.com",
             "password" => "contrasena"
