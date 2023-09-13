@@ -54,6 +54,59 @@ class RutaTest extends TestCase
 
         $user->delete();
     }
+
+    public function test_InsertarRuta()
+    {
+        $user = User::factory()->create();
+        $this->actingAs($user);
+
+        $estructura = [
+            'destino' => 'Montevideo',
+            'recorrido' => 100,
+        ];
+
+        $response = $this->post('/rutas/crearRuta', $estructura);
+
+        $response->assertStatus(200);
+        $this->assertDatabaseHas('ruta', $estructura);
+        $response->assertViewIs('crearRuta');
+        $response->assertViewHas('mensaje', 'Ruta creada correctamente');
+
+        $user->delete();
+    }
+
+    public function test_EliminarRutaExistente()
+    {
+        $user = User::factory()->create();
+        $this->actingAs($user);
+
+        $response = $this->delete('/rutas/eliminarRuta/1000'); 
+
+        $response->assertStatus(302);
+
+        $this->assertDatabaseMissing('ruta', [
+            'id' => '1000',
+            'deleted_at' => null
+        ]);
+
+        $response->assertRedirect(route('listarRutas'));
+
+        Ruta::withTrashed()->where("id", 1000)->restore();
+
+        $user->delete();
+    }
+
+    public function test_EliminarRutaInexistente()
+    {
+        $user = User::factory()->create();
+        $this->actingAs($user);
+
+        $response = $this->delete('/rutas/eliminarRuta/342432'); 
+
+        $response->assertStatus(404);
+
+        $user->delete();
+    }
 }
 
 
