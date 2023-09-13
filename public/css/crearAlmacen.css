@@ -24,7 +24,11 @@ label,
 input {
     display: block;
     width: 100%;
-    margin-bottom: 10px;
+    margin-bottom: 5px;
+}
+
+label {
+    margin-top: 33px;
 }
 
 input[type="submit"] {
@@ -34,6 +38,7 @@ input[type="submit"] {
     padding: 10px 20px;
     cursor: pointer;
     border-radius: 4px;
+    margin-top: 20px
 }
 
 input[type="submit"]:hover {
@@ -46,4 +51,19 @@ span {
     align-items: center;
     color: blue;
     font-weight: bold;
-  }
+}
+
+.form-group {
+    margin-bottom: 20px; 
+    position: relative; 
+}
+
+
+.error {
+    color: red; 
+    position: absolute; 
+    top: 100%; 
+    left: 0; 
+    font-size: 14px; 
+}
+

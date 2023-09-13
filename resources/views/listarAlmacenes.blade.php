@@ -40,9 +40,9 @@
                  @foreach($almacenes as $almacen)
                 <tr>
                     <td>{{ $almacen->id }}</td>
-                    <td>Cerro Largo</td>
-                    <td>Av Gral Rivera</td>
-                    <td>1431</td>
+                    <td>{{ $almacen->departamento }}</td>
+                    <td>{{ $almacen->calle }}</td>
+                    <td>{{ $almacen->numero_puerta }}</td>
                     <td>{{ $almacen->latitud }}</td>
                     <td>{{ $almacen->longitud }}</td>
                     <td>{{ $almacen->capacidad }}</td>

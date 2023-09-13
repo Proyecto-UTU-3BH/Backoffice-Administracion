@@ -17,23 +17,64 @@
     <h2>Modificar Almacen</h2>
 
     <div id="container">
-        <form action="/almacenes/modificarAlmacen/{{$almacen->id}}" method="post">
+    <form action="/almacenes/modificarAlmacen/{{$almacen->id}}" method="post">
             @csrf
-            <label for="latitud">Latitud:</label>
-            <input type="number" id="latitud" name="latitud" step="0.000001" value="{{$almacen->latitud}}" required><br>
+            <div class="form-group">
+                <label for="departamento">Departamento</label>
+                <input type="text" id="departamento" name="departamento" class="remove-br" value="{{$almacen->departamento}}" required>
+                @if($errors->has('departamento'))
+                    <span class="error">{{ $errors->first('departamento') }}</span>
+                @endif
+            </div>
 
-            <label for="longitud">Longitud:</label>
-            <input type="number" id="longitud" name="longitud" step="0.000001" value="{{$almacen->longitud}}" required><br>
+            <div class="form-group">
+                <label for="calle">Calle</label>
+                <input type="text" id="calle" name="calle" class="remove-br" value="{{$almacen->calle}}" required>
+                @if($errors->has('calle'))
+                    <span class="error">{{ $errors->first('calle') }}</span>
+                @endif
+            </div>
 
-            <label for="capacidad">Capacidad de Almacenamiento:</label>
-            <input type="number" id="capacidad" name="capacidad" value="{{$almacen->capacidad}}" required><br>
+            <div class="form-group">
+                <label for="numero_puerta">Nº Puerta</label>
+                <input type="number" id="numero_puerta" name="numero_puerta" class="remove-br" value="{{$almacen->numero_puerta}}" required>
+                @if($errors->has('numero_puerta'))
+                    <span class="error">{{ $errors->first('numero_puerta') }}</span>
+                @endif
+            </div>
 
-            <label for="telefono">Teléfono:</label>
-            <input type="number" id="telefono" name="telefono" pattern="[0-9]{9,15}" value="{{$almacen->telefono}}" required><br>
+            <div class="form-group">
+                <label for="latitud">Latitud:</label>
+                <input type="number" id="latitud" name="latitud" step="0.000001" class="remove-br" value="{{$almacen->latitud}}" required>
+                @if($errors->has('latitud'))
+                    <span class="error">{{ $errors->first('latitud') }}</span>
+                @endif
+            </div>
+
+            <div class="form-group">
+                <label for="longitud">Longitud:</label>
+                <input type="number" id="longitud" name="longitud" step="0.000001"  class="remove-br" value="{{$almacen->longitud}}" required>
+                @if($errors->has('longitud'))
+                    <span class="error">{{ $errors->first('longitud') }}</span>
+                @endif
+            </div>
+
+            <div class="form-group">
+                <label for="capacidad">Capacidad de Almacenamiento:</label>
+                <input type="number" id="capacidad" name="capacidad" class="remove-br" value="{{$almacen->capacidad}}" required>
+            </div>
+
+            <div class="form-group">
+                <label for="telefono">Teléfono:</label>
+                <input type="number" id="telefono" name="telefono" pattern="[0-9]{9,15}" class="remove-br" value="{{$almacen->telefono}}" required>
+                @if($errors->has('telefono'))
+                    <span class="error">{{ $errors->first('telefono') }}</span>
+                @endif
+            </div>
 
             <input type="submit" value="Enviar">
         </form>
-
+        
     </div>
 </body>
 </html>

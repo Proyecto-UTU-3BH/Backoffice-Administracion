@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Almacen;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Validation\Rule;
 
 class AlmacenController extends Controller
 {
@@ -25,6 +27,27 @@ class AlmacenController extends Controller
     }
 
     public function InsertarAlmacen(Request $request){
+        $validation = Validator::make($request->all(),[
+            'latitud' => 'required|numeric|between:-35,-30',
+            'longitud' => 'required|numeric|between:-59,-53',
+            'telefono' => 'required|numeric|unique:almacenes',
+            'capacidad' => 'required|numeric',
+            'calle' => 'required|max:50|alpha_spaces',
+            'numero_puerta' => 'required|alpha_num|max:8',
+            'departamento' => 'required|alpha_spaces',
+        ],
+        [
+            'latitud.between' => 'Valor entre -35 y -30',
+            'longitud.between' => 'Valor entre -59 y -53',
+            'calle.max' => 'Maximo 50 caracteres',
+            'numero_puerta.max' => 'Maximo 8 caracteres',
+            'departamento.alpha_spaces' => 'Solo letras',
+            'telefono.unique' => 'Telefono en uso'
+        ]);
+
+        if($validation->fails())
+             return view("crearAlmacen",["errors" => $validation->errors()]);
+
         $almacen= new Almacen();
 
         $almacen -> departamento = $request -> post ('departamento');
@@ -52,6 +75,34 @@ class AlmacenController extends Controller
 
     public function ModificarAlmacen(Request $request, $idAlmacen){
         $almacen= Almacen::findOrFail($idAlmacen);
+
+        $validation = Validator::make($request->all(),[
+            'latitud' => 'required|numeric|between:-35,-30',
+            'longitud' => 'required|numeric|between:-59,-53',
+            'telefono' => [
+                'required',
+                'numeric',
+                Rule::unique('almacenes', 'telefono')->ignore($almacen->id),
+            ],
+            'capacidad' => 'required|numeric',
+            'calle' => 'required|max:50|alpha_spaces',
+            'numero_puerta' => 'required|alpha_num|max:8',
+            'departamento' => 'required|alpha_spaces',
+        ],
+        [
+            'latitud.between' => 'Valor entre -35 y -30',
+            'longitud.between' => 'Valor entre -59 y -53',
+            'calle.max' => 'Maximo 50 caracteres',
+            'numero_puerta.max' => 'Maximo 8 caracteres',
+            'departamento.alpha_spaces' => 'Solo letras',
+            'telefono.unique' => 'Telefono en uso'
+        ]);
+
+        if($validation->fails())
+             return view("modificarAlmacen",[
+            "errors" => $validation->errors(),
+            "almacen" => $almacen,
+        ]);
 
         $almacen -> update($request->all());
 
