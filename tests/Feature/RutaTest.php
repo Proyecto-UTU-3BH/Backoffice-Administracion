@@ -107,6 +107,44 @@ class RutaTest extends TestCase
 
         $user->delete();
     }
+
+    public function test_ModificarRutaExistente()
+    {
+        $user = User::factory()->create();
+        $this->actingAs($user);
+
+        $estructura = [
+            'destino' => 'Maldonado',
+            'recorrido' => 123,
+        ];
+
+        $response = $this->post('/rutas/modificarRuta/1000', $estructura);
+
+        $response->assertStatus(302);
+        $this->assertDatabaseHas('ruta', $estructura);
+
+        $response->assertRedirect(route('listarRutas'));
+
+        $user->delete();
+    }
+
+    public function test_ModificarRutaInexistente()
+    {
+        $user = User::factory()->create();
+        $this->actingAs($user);
+
+        $estructura = [
+            'destino' => 'Maldonado',
+            'recorrido' => 123,
+        ];
+
+        $response = $this->post('/rutas/modificarRuta/991399', $estructura);
+
+        $response->assertStatus(404);
+
+        $user->delete();
+    }
+    
 }
 
 
