@@ -6,14 +6,14 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Gestiona extends Model
+class Ruta extends Model
 {
     use HasFactory;
     use SoftDeletes;
-    protected $table="gestiona";
+    protected $table="ruta";
 
     protected $fillable=[
-        "IDLote",
-        "fecha"
+        "destino",
+        "recorrido"
     ];
 }

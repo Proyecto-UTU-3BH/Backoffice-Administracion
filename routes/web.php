@@ -6,6 +6,7 @@ use App\Http\Controllers\ProductoController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\VehiculoController;
 use App\Http\Controllers\UsuarioController;
+use App\Http\Controllers\RutaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -109,6 +110,21 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/vehiculos/crearVehiculo', [VehiculoController::class,'InsertarVehiculo']);
 
     Route::delete('/vehiculos/eliminarVehiculo/{idVehiculo}', [VehiculoController::class,'EliminarVehiculo'])->name('eliminarVehiculo');
+
+
+    Route::get('/listarRutas', [RutaController::class,'ListarRutas'])->name('listarRutas');
+
+    Route::get('/rutas/crearRuta', function () {
+        return view('crearRuta');
+    })->name('crearRuta');
+
+    Route::get('/rutas/modificarRuta/{idRuta}', [RutaController::class,'ListarUnaRuta'])->name('modificarRuta');
+
+    Route::post('/rutas/modificarRuta/{idRuta}', [RutaController::class,'ModificarRuta']);
+
+    Route::post('/rutas/crearRuta', [RutaController::class,'InsertarRuta']);
+
+    Route::delete('/rutas/eliminarRuta/{idRuta}', [RutaController::class,'EliminarRuta'])->name('eliminarRuta');
     
 });
 
