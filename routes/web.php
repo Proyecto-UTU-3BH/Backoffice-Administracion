@@ -7,6 +7,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\VehiculoController;
 use App\Http\Controllers\UsuarioController;
 use App\Http\Controllers\RutaController;
+use App\Http\Controllers\GestionaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -125,6 +126,15 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/rutas/crearRuta', [RutaController::class,'InsertarRuta']);
 
     Route::delete('/rutas/eliminarRuta/{idRuta}', [RutaController::class,'EliminarRuta'])->name('eliminarRuta');
+
+
+    Route::get('/listarLotes', [GestionaController::class,'ListarLotes'])->name('listarLotes');
+
+    Route::get('/gestiona/asignarLote', function () {
+        return view('asignarLote');
+    })->name('asignarLote');
+
+    Route::post('/gestiona/asignarLote', [GestionaController::class,'InsertarGestiona']);
     
 });
 

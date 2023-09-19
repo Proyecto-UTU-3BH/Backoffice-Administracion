@@ -22,4 +22,9 @@ class Vehiculo extends Model
     public function Usuario(){
         return $this->belongsToMany(Usuario::class,"maneja");
     }
+
+    public function gestiona()
+    {
+        return $this->hasMany(Gestiona::class);
+    }
 }

@@ -16,4 +16,5 @@ class Gestiona extends Model
         "IDLote",
         "fecha"
     ];
+
 }
