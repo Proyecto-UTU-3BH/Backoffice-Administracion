@@ -70,7 +70,7 @@ class AlmacenTest extends TestCase
             'numero_puerta' => 2221,
             "latitud" => -34.854026,
             "longitud" => -56.19419,
-            "telefono" => 94523139,
+            "telefono" => 94523188,
             "capacidad" => 850 
         ]);
 
@@ -82,7 +82,7 @@ class AlmacenTest extends TestCase
             'numero_puerta' => 2221,
             "latitud" => -34.854026,
             "longitud" => -56.19419,
-            "telefono" => 94523139,
+            "telefono" => 94523188,
             "capacidad" => 850 
         ]);
 

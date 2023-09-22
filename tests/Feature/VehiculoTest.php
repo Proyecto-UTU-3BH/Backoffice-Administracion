@@ -61,7 +61,7 @@ class VehiculoTest extends TestCase
         $this->actingAs($user);
 
         $estructura = [
-            'matricula' => 'ABC1234',
+            'matricula' => 'DPJ1234',
             'tipo' => 'flete',
             'estado' => 'en transito',
             'capacidad' => 12.34,
