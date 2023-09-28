@@ -34,6 +34,7 @@ class VehiculoController extends Controller
             'estado' => 'in:en almacen,en transito',
         ], [
             'matricula.max' => 'Máximo 7 caracteres',
+            'matricula.unique' => 'Matricula en uso',
             'tipo.in' => 'El tipo debe ser "flete" o "reparto"',
             'capacidad.between' => 'La capacidad debe estar entre 0 y 99999.99',
             'estado.in' => 'El estado debe ser "en almacen" o "en transito"',
