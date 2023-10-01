@@ -20,50 +20,123 @@
         <form action="/usuarios/modificarUsuario/{{$usuario->id}}" method="post">
             @csrf
             <div class="columna">
-                <label for="primer_nombre">Primer Nombre:</label>
-                <input type="text" id="primer_nombre" name="primer_nombre" value="{{$usuario->primer_nombre}}" required><br>
+                <div class="form-group">
+                    <label for="primer_nombre">Primer Nombre:</label>
+                    <input type="text" id="primer_nombre" name="primer_nombre" value="{{$usuario->primer_nombre}}" required><br>
+                    @if($errors->has('primer_nombre'))
+                        <span class="error">
+                            @foreach($errors->get('primer_nombre') as $error)
+                                {{ $error }}
+                                @if (!$loop->last)
+                                    , 
+                                @endif
+                            @endforeach
+                        </span>
+                    @endif
+                </div>
 
-                <label for="segundo_apellido">Segundo Apellido:</label>
-                <input type="text" id="segundo_apellido" name="segundo_apellido" value="{{$usuario->segundo_apellido}}"><br>
+                <div class="form-group">
+                    <label for="segundo_apellido">Segundo Apellido:</label>
+                    <input type="text" id="segundo_apellido" name="segundo_apellido" value="{{$usuario->segundo_apellido}}"><br>
+                    @if($errors->has('segundo_apellido'))
+                        <span class="error">
+                            @foreach($errors->get('segundo_apellido') as $error)
+                                {{ $error }}
+                                @if (!$loop->last)
+                                    , 
+                                @endif
+                            @endforeach
+                        </span>
+                    @endif
+                </div>
 
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="usuario" value="{{$usuario->usuario}}" required><br>
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="usuario" value="{{$usuario->usuario}}" required><br>
+                    @if($errors->has('usuario'))
+                        <span class="error">{{ $errors->first('usuario') }}</span>
+                    @endif
+                </div>
 
-                <label for="calle">Calle:</label>
-                <input type="text" id="calle" name="calle" value="{{$usuario->calle}}" required><br>
+                <div class="form-group">
+                    <label for="calle">Calle:</label>
+                    <input type="text" id="calle" name="calle" value="{{$usuario->calle}}" required><br>
+                    @if($errors->has('calle'))
+                        <span class="error">
+                            @foreach($errors->get('calle') as $error)
+                                {{ $error }}
+                                @if (!$loop->last)
+                                    , 
+                                @endif
+                            @endforeach
+                        </span>
+                    @endif
+                </div>
 
-                <label for="contrasena">Contraseña:</label>
-                <input type="password" id="contrasena" name="password" placeholder="8 digitos" value="{{$usuario->password}}"required><br>
-
+                <div class="form-group">
+                    <label for="contrasena">Contraseña:</label>
+                    <input type="password" id="contrasena" name="password" placeholder="8 digitos" value="{{$usuario->password}}" required><br>
+                    @if($errors->has('password'))
+                        <span class="error">{{ $errors->first('password') }}</span>
+                    @endif
+                </div>
             </div>
 
             <div class="columna">
+                <div class="form-group">
+                    <label for="primer_apellido">Primer Apellido:</label>
+                    <input type="text" id="primer_apellido" name="primer_apellido" value="{{$usuario->primer_apellido}}" required><br>
+                    @if($errors->has('primer_apellido'))
+                        <span class="error">
+                            @foreach($errors->get('primer_apellido') as $error)
+                                {{ $error }}
+                                @if (!$loop->last)
+                                    , 
+                                @endif
+                            @endforeach
+                        </span>
+                    @endif
+                </div>
 
-                <label for="primer_apellido">Primer Apellido:</label>
-                <input type="text" id="primer_apellido" name="primer_apellido" value="{{$usuario->primer_apellido}}" required><br>
+                <div class="form-group">
+                    <label for="tipo">Tipo:</label>
+                    <select id="tipo" name="tipo" required>
+                        <option value="funcionario" @if($usuario->tipo == 'funcionario') selected @endif>Funcionario</option>
+                        <option value="chofer" @if($usuario->tipo == 'chofer') selected @endif>Chofer</option>
+                    </select><br>
+                    @if($errors->has('tipo'))
+                        <span class="error">{{ $errors->first('tipo') }}</span>
+                    @endif
+                </div>
 
-                <label for="tipo">Tipo:</label>
-                <select id="tipo" name="tipo" required>
-                    <option value="funcionario" @if($usuario->tipo == 'funcionario') selected @endif>Funcionario</option>
-                    <option value="chofer" @if($usuario->tipo == 'chofer') selected @endif>Chofer</option>
-                </select>
+                <div class="form-group">
+                    <label for="ci">CI:</label>
+                    <input type="text" id="ci" name="ci" value="{{$usuario->ci}}" required><br>
+                    @if($errors->has('ci'))
+                        <span class="error">
+                            @foreach($errors->get('ci') as $error)
+                                {{ $error }}
+                                @if (!$loop->last)
+                                    , 
+                                @endif
+                            @endforeach
+                        </span>
+                    @endif
+                </div>
 
-                <br>
-
-                <label for="ci">CI:</label>
-                <input type="text" id="ci" name="ci" value="{{$usuario->ci}}" required><br>
-
-                <label for="numero_de_puerta">Nº Puerta:</label>
-                <input type="text" id="numero_de_puerta" name="numero_de_puerta" value="{{$usuario->numero_de_puerta}}" required><br>
-
+                <div class="form-group">
+                    <label for="numero_de_puerta">Nº Puerta:</label>
+                    <input type="text" id="numero_de_puerta" name="numero_de_puerta" value="{{$usuario->numero_de_puerta}}" required><br>
+                    @if($errors->has('numero_de_puerta'))
+                        <span class="error">{{ $errors->first('numero_de_puerta') }}</span>
+                    @endif
+                </div>
             </div>
 
             <input type="submit" value="Enviar">
-    </form>
+        </form>
 
     </div>
-
-    <br>
 
 </body>
 </html>
