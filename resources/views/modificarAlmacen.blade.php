@@ -17,7 +17,7 @@
     <h2>Modificar Almacen</h2>
 
     <div id="container">
-    <form action="/almacenes/modificarAlmacen/{{$almacen->id}}" method="post">
+        <form action="/almacenes/modificarAlmacen/{{$almacen->id}}" method="post">
             @csrf
             <div class="form-group">
                 <label for="departamento">Departamento</label>

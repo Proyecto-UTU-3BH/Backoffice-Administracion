@@ -125,7 +125,7 @@ class ProductoController extends Controller
         if($validation->fails())
              return view("modificarProducto",[
             "errors" => $validation->errors(),
-            "almacen" => $almacen,
+            "producto" => $producto,
         ]);
 
         $producto -> update($request->all());

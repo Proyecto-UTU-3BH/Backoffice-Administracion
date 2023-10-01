@@ -98,64 +98,63 @@
 
             <div class="columna">
 
-            <div class="form-group">
-                    <label for="calle">Calle:</label>
-                    <input type="text" id="calle" name="calle" required>
-                    @if($errors->has('calle'))
-                        <span class="error">
-                            @foreach($errors->get('calle') as $error)
-                                {{ $error }}
-                                @if (!$loop->last)
-                                    , 
-                                @endif
-                            @endforeach
-                        </span>
-                    @endif
-            </div>
+                <div class="form-group">
+                        <label for="calle">Calle:</label>
+                        <input type="text" id="calle" name="calle" required>
+                        @if($errors->has('calle'))
+                            <span class="error">
+                                @foreach($errors->get('calle') as $error)
+                                    {{ $error }}
+                                    @if (!$loop->last)
+                                        , 
+                                    @endif
+                                @endforeach
+                            </span>
+                        @endif
+                </div>
 
-            <div class="form-group">
-                    <label for="numero_puerta">Nº Puerta:</label>
-                    <input type="text" id="numero_puerta" name="numero_puerta" required>
-                    @if($errors->has('numero_puerta'))
-                        <span class="error">
-                            @foreach($errors->get('numero_puerta') as $error)
-                                {{ $error }}
-                                @if (!$loop->last)
-                                    , 
-                                @endif
-                            @endforeach
-                        </span>
-                    @endif
-            </div>
+                <div class="form-group">
+                        <label for="numero_puerta">Nº Puerta:</label>
+                        <input type="text" id="numero_puerta" name="numero_puerta" required>
+                        @if($errors->has('numero_puerta'))
+                            <span class="error">
+                                @foreach($errors->get('numero_puerta') as $error)
+                                    {{ $error }}
+                                    @if (!$loop->last)
+                                        , 
+                                    @endif
+                                @endforeach
+                            </span>
+                        @endif
+                </div>
 
-            <div class="form-group">
-                    <label for="forma_entrega">Forma de Entrega:</label>
-                    <select id="forma_entrega" name="forma_entrega" required>
-                        <option value="reparto">Reparto</option>
-                        <option value="pick up">Pick Up</option>
-                    </select>
-                    @if($errors->has('forma_entrega'))
-                        <span class="error">{{ $errors->first('forma_entrega') }}</span>
-                    @endif
-            </div>
+                <div class="form-group">
+                        <label for="forma_entrega">Forma de Entrega:</label>
+                        <select id="forma_entrega" name="forma_entrega" required>
+                            <option value="reparto">Reparto</option>
+                            <option value="pick up">Pick Up</option>
+                        </select>
+                        @if($errors->has('forma_entrega'))
+                            <span class="error">{{ $errors->first('forma_entrega') }}</span>
+                        @endif
+                </div>
 
-            <div class="form-group">
-                    <label for="peso">Peso(kg)</label>
-                    <input type="number" id="peso" name="peso" step="0.01" required>
-                    @if($errors->has('peso'))
-                        <span class="error">
-                            @foreach($errors->get('peso') as $error)
-                                {{ $error }}
-                                @if (!$loop->last)
-                                    , 
-                                @endif
-                            @endforeach
-                        </span>
-                    @endif
-            </div>
+                <div class="form-group">
+                        <label for="peso">Peso(kg)</label>
+                        <input type="number" id="peso" name="peso" step="0.01" required>
+                        @if($errors->has('peso'))
+                            <span class="error">
+                                @foreach($errors->get('peso') as $error)
+                                    {{ $error }}
+                                    @if (!$loop->last)
+                                        , 
+                                    @endif
+                                @endforeach
+                            </span>
+                        @endif
+                </div>
 
     </div>
-
             <input type="submit" value="Enviar">
         </form>
 
