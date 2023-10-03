@@ -5,35 +5,44 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Gestiona;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Log;
 
 class GestionaController extends Controller
 {
     public function InsertarGestiona(Request $request){
         $validation = Validator::make($request->all(),[
-            'producto_id' => 'required|exists:productos,id',
+            'producto_ids' => ['required', 'numeric_ids','exists:productos,id'],
             'vehiculo_id' => 'required|exists:vehiculos,id',
             'usuario_id' => 'required|exists:usuarios,id',
             'IDLote' => 'required|integer|min:1',
             'fecha' => 'required|date'
         ],
         [
-            'producto_id.exists' => 'El Producto ID proporcionado no existe en la base de datos.',
+            'producto_ids.required' => 'Debes proporcionar al menos 1 ID de Producto',
+            'producto_ids.numeric_ids' => 'Los IDs de producto deben ser números',
+            'producto_ids.exists' => 'Uno o más IDs de producto no existen en la base de datos.',
             'vehiculo_id.exists' => 'El Vehiculo ID proporcionado no existe en la base de datos.',
             'usuario_id.exists' => 'El Usuario ID proporcionado no existe en la base de datos.',
         ]);
-
-        if($validation->fails())
-             return view("asignarLote",["errors" => $validation->errors()]);
-
-        $gestiona = new Gestiona();
     
-        $gestiona->producto_id = $request->post('producto_id');
-        $gestiona->vehiculo_id = $request->post('vehiculo_id');
-        $gestiona->usuario_id = $request->post('usuario_id');
-        $gestiona->IDLote = $request->post('IDLote');
-        $gestiona->fecha = $request->post('fecha');
+        if($validation->fails()) {
+            return view("asignarLote",["errors" => $validation->errors()]);
+        }
     
-        $gestiona->save();
+        $productoIdsRaw = $request->input('producto_ids');
+        $productoIds = preg_split('/\n/', str_replace("\r\n", "\n", $productoIdsRaw));
+    
+        foreach($productoIds as $productoId) {
+            $gestiona = new Gestiona();
+    
+            $gestiona->producto_id = trim($productoId); 
+            $gestiona->vehiculo_id = $request->input('vehiculo_id');
+            $gestiona->usuario_id = $request->input('usuario_id');
+            $gestiona->IDLote = $request->input('IDLote');
+            $gestiona->fecha = $request->input('fecha');
+    
+            $gestiona->save();
+        }
     
         return view('asignarLote', [
             "mensaje" => "Asignación creada correctamente"

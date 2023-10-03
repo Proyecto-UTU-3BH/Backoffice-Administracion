@@ -27,5 +27,17 @@ class AppServiceProvider extends ServiceProvider
         Validator::extend('alpha_spaces', function ($attribute, $value) {
             return preg_match('/^[\pL\s]+$/u', $value);
         });
+
+        Validator::extend('numeric_ids', function ($attribute, $value, $parameters, $validator) {
+            $ids = preg_split('/\r\n|\r|\n/', $value);
+    
+            foreach ($ids as $id) {
+                if (!is_numeric(trim($id))) {
+                    return false;
+                }
+            }
+    
+            return true;
+        });
     }
 }
