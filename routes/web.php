@@ -8,6 +8,7 @@ use App\Http\Controllers\VehiculoController;
 use App\Http\Controllers\UsuarioController;
 use App\Http\Controllers\RutaController;
 use App\Http\Controllers\GestionaController;
+use App\Http\Controllers\AlmacenaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -135,6 +136,9 @@ Route::middleware(['auth'])->group(function () {
     })->name('asignarLote');
 
     Route::post('/gestiona/asignarLote', [GestionaController::class,'InsertarGestiona']);
+
+
+    Route::get('/listarAlmacena', [AlmacenaController::class,'ListarAlmacena'])->name('listarAlmacena');
     
 });
 

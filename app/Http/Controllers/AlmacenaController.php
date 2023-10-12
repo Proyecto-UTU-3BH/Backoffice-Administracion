@@ -1,0 +1,48 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+use App\Models\Almacena;
+use Illuminate\Support\Facades\Validator;
+
+class AlmacenaController extends Controller
+{
+
+    public function ListarAlmacena(Request $request){
+        $almacena = Almacena::all();
+        
+        return view('listarAlmacena', [
+            "almacena" => $almacena
+        ]);
+    }
+
+    public function InsertarAlmacena(Request $request){
+        $validation = Validator::make($request->all(),[
+            'producto_id' => 'required|exists:productos,id',
+            'almacen_id' => 'required|exists:vehiculos,id',
+        ],
+        [
+            'producto_id.required' => 'Debes proporcionar al menos 1 ID de Producto',
+            'producto_id.exists' => 'El Producto ID proporcionado no existe en la base de datos.',
+            'almacen_id.required' => 'Debes proporcionar al menos 1 ID de Almacen',
+            'almacen_id.exists' => 'El Almacen ID proporcionado no existe en la base de datos.',
+        ]);
+    
+        if($validation->fails()) {
+            return view("asignarLote",["errors" => $validation->errors()]);
+        }
+    
+        $almacena = new Almacena();
+    
+        $almacena->producto_id = $request->input('producto_id'); 
+        $almacena->almacen_id = $request->input('almacen_id');
+    
+        $almacena->save();
+        
+    
+        return view('asignarLote', [
+            "mensaje" => "Asignación creada correctamente"
+        ]);
+    }
+}
