@@ -45,4 +45,12 @@ class AlmacenaController extends Controller
             "mensaje" => "Almacenamiento creado correctamente"
         ]);
     }
+
+    public function EliminarAlmacena(Request $request, $idAlmacena){
+        $almacena= Almacena::findOrFail($idAlmacena);
+
+        $almacena -> delete();
+
+        return redirect()->route('listarAlmacena');
+    }
 }

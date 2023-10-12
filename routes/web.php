@@ -145,6 +145,8 @@ Route::middleware(['auth'])->group(function () {
     })->name('almacenarProducto');
 
     Route::post('/almacena/almacenar', [AlmacenaController::class,'InsertarAlmacena']);
+
+    Route::delete('/almacena/eliminarAlmacena/{idAlmacena}', [AlmacenaController::class,'EliminarAlmacena'])->name('eliminarAlmacena');
     
 });
 
