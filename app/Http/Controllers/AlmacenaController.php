@@ -30,7 +30,7 @@ class AlmacenaController extends Controller
         ]);
     
         if($validation->fails()) {
-            return view("asignarLote",["errors" => $validation->errors()]);
+            return view("almacenarProducto",["errors" => $validation->errors()]);
         }
     
         $almacena = new Almacena();
@@ -41,8 +41,8 @@ class AlmacenaController extends Controller
         $almacena->save();
         
     
-        return view('asignarLote', [
-            "mensaje" => "Asignación creada correctamente"
+        return view('almacenarProducto', [
+            "mensaje" => "Almacenamiento creado correctamente"
         ]);
     }
 }

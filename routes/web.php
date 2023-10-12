@@ -139,6 +139,12 @@ Route::middleware(['auth'])->group(function () {
 
 
     Route::get('/listarAlmacena', [AlmacenaController::class,'ListarAlmacena'])->name('listarAlmacena');
+
+    Route::get('/almacena/almacenar', function () {
+        return view('almacenarProducto');
+    })->name('almacenarProducto');
+
+    Route::post('/almacena/almacenar', [AlmacenaController::class,'InsertarAlmacena']);
     
 });
 

@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <title>Lotes</title>
+        <title>Almacenamiento</title>
 
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
 
@@ -19,7 +19,7 @@
     <h2>Listado de Almacenamiento de Productos</h2>
     <div class="container">
         <div class="insertar">
-            <a href="#"><button>Almacenar</button></a>
+            <a href="{{ route('almacenarProducto') }}"><button>Almacenar</button></a>
         </div>
         <table>
             <thead>
