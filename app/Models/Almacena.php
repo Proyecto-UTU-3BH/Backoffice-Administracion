@@ -11,4 +11,9 @@ class Almacena extends Model
     use HasFactory;
     use SoftDeletes;
     protected $table="almacena";
+
+    protected $fillable=[
+        "producto_id",
+        "almacen_id"
+    ];
 }

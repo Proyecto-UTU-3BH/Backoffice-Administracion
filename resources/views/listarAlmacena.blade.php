@@ -38,7 +38,7 @@
                     <td>{{ $a->producto_id }}</td>
                     <td>{{ $a->almacen_id }}</td>
                     <td class="modificar">
-                        <a href=""> <button> Modificar </button> </a>
+                        <a href="{{ route('modificarAlmacena', ['idAlmacena' => $a->id]) }}"> <button> Modificar </button> </a>
                     </td>
                     <td class="eliminar">
                         <form action="{{ route('eliminarAlmacena', ['idAlmacena' => $a->id]) }}" method="POST">
