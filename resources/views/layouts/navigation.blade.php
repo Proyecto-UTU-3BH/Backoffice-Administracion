@@ -72,7 +72,7 @@
                                 <x-dropdown-link :href="route('listarAlmacena')">
                                     Almacena
                                 </x-dropdown-link>
-                                <x-dropdown-link :href="route('listarLotes')">
+                                <x-dropdown-link :href="route('listarManeja')">
                                     Maneja
                                 </x-dropdown-link>
                         </x-slot>
