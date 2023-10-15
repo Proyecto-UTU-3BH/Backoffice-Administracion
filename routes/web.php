@@ -162,6 +162,8 @@ Route::middleware(['auth'])->group(function () {
 
     Route::post('/maneja/manejar', [ManejaController::class,'InsertarManeja']);
 
+    Route::delete('/maneja/eliminarManeja/{idManeja}', [ManejaController::class,'EliminarManeja'])->name('eliminarManeja');
+
 
     
 });

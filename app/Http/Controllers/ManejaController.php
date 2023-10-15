@@ -44,4 +44,12 @@ class ManejaController extends Controller
             "mensaje" => "Conducción creada correctamente"
         ]);
     }
+
+    public function EliminarManeja(Request $request, $idManeja){
+        $maneja= Maneja::findOrFail($idManeja);
+
+        $maneja -> delete();
+
+        return redirect()->route('listarManeja');
+    }
 }
