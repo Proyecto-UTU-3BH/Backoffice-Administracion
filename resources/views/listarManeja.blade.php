@@ -19,7 +19,7 @@
     <h2>Historial de Conducción</h2>
     <div class="container">
         <div class="insertar">
-            <a href="#"><button>Registrar Conducción</button></a>
+            <a href="{{ route('insertarManeja') }}"><button>Registrar Conducción</button></a>
         </div>
         <table>
             <thead>

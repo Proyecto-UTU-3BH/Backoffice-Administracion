@@ -156,6 +156,13 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('/listarManeja', [ManejaController::class,'ListarManeja'])->name('listarManeja');
 
+    Route::get('/maneja/manejar', function () {
+        return view('insertarManeja');
+    })->name('insertarManeja');
+
+    Route::post('/maneja/manejar', [ManejaController::class,'InsertarManeja']);
+
+
     
 });
 
