@@ -160,6 +160,10 @@ Route::middleware(['auth'])->group(function () {
         return view('insertarManeja');
     })->name('insertarManeja');
 
+    Route::get('/maneja/modificarManeja/{idManeja}', [ManejaController::class,'ListarUnManeja'])->name('modificarManeja');
+
+    Route::post('/maneja/modificarManeja/{idManeja}', [ManejaController::class,'ModificarManeja']);
+
     Route::post('/maneja/manejar', [ManejaController::class,'InsertarManeja']);
 
     Route::delete('/maneja/eliminarManeja/{idManeja}', [ManejaController::class,'EliminarManeja'])->name('eliminarManeja');

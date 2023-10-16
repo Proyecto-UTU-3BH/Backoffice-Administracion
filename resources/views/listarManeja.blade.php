@@ -38,7 +38,7 @@
                     <td>{{ $a->usuario_id }}</td>
                     <td>{{ $a->vehiculo_id }}</td>
                     <td class="modificar">
-                        <a href="#"> <button> Modificar </button> </a>
+                        <a href="{{ route('modificarManeja', ['idManeja' => $a->id]) }}"> <button> Modificar </button> </a>
                     </td>
                     <td class="eliminar">
                         <form action="{{ route('eliminarManeja', ['idManeja' => $a->id]) }}" method="POST">

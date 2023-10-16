@@ -16,6 +16,14 @@ class ManejaController extends Controller
         ]);
     }
 
+    public function ListarUnManeja(Request $request, $idManeja){
+        $maneja= Maneja::findOrFail($idManeja);
+
+        return view('modificarManeja', [
+            "maneja" => $maneja
+        ]);
+    }
+
     public function InsertarManeja(Request $request){
         $validation = Validator::make($request->all(),[
             'usuario_id' => 'required|exists:usuarios,id',
@@ -43,6 +51,32 @@ class ManejaController extends Controller
         return view('insertarManeja', [
             "mensaje" => "Conducción creada correctamente"
         ]);
+    }
+
+    public function ModificarManeja(Request $request, $idManeja){
+        $maneja= Maneja::findOrFail($idManeja);
+
+        $validation = Validator::make($request->all(),[
+            'usuario_id' => 'required|exists:usuarios,id',
+            'vehiculo_id' => 'required|exists:vehiculos,id',
+        ],
+        [
+            'usuario_id.required' => 'Debes proporcionar al menos 1 ID de Usuario',
+            'usuario_id.exists' => 'El Usuario ID proporcionado no existe en la base de datos.',
+            'vehiculo_id.required' => 'Debes proporcionar al menos 1 ID de Vehiculo',
+            'vehiculo_id.exists' => 'El Vehiculo ID proporcionado no existe en la base de datos.',
+        ]);
+
+        if($validation->fails())
+             return view("modificarManeja",[
+            "errors" => $validation->errors(),
+            "maneja" => $maneja,
+        ]);
+
+        $maneja -> update($request->all());
+
+        return redirect()->route('listarManeja');
+
     }
 
     public function EliminarManeja(Request $request, $idManeja){
