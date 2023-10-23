@@ -55,7 +55,8 @@ class UsuarioTest extends TestCase
             'calle' => 'Graciela de Gouveia',
             'numero_de_puerta' => '602',
             'tipo' => 'chofer',
-            'password' => 'juansito'
+            'password' => 'juansito',
+            'password_confirmation' => 'juansito'
         ]);
 
         $response->assertStatus(200);
