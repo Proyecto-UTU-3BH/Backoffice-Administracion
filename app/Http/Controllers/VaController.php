@@ -17,6 +17,14 @@ class VaController extends Controller
         ]);
     }
 
+    public function ListarUnVa(Request $request, $idVa){
+        $va= Va::findOrFail($idVa);
+
+        return view('modificarVa', [
+            "va" => $va
+        ]);
+    }
+
     public function InsertarVa(Request $request){
         $validation = Validator::make($request->all(),[
             'ruta_id' => 'required|exists:rutas,id',
@@ -54,6 +62,46 @@ class VaController extends Controller
         return view('insertarVa', [
             "mensaje" => "Registro creado correctamente"
         ]);
+    }
+
+    public function ModificarVa(Request $request, $idVa){
+        $va= Va::findOrFail($idVa);
+
+        $validation = Validator::make($request->all(),[
+            'ruta_id' => 'required|exists:rutas,id',
+            'almacen_id' => 'required|exists:almacenes,id',
+            'vehiculo_id' => 'required|exists:vehiculos,id',
+            'fecha' => 'required|date',
+            'horallegada' => 'required|',
+            'horasalida' => 'required|',
+        ],
+        [
+            'ruta_id.required' => 'Debes proporcionar al menos 1 ID de Ruta',
+            'ruta_id.exists' => 'La Ruta ID proporcionada no existe en la base de datos.',
+            'vehiculo_id.required' => 'Debes proporcionar al menos 1 ID de Vehiculo',
+            'vehiculo_id.exists' => 'El Vehiculo ID proporcionado no existe en la base de datos.',
+            'almacen_id.required' => 'Debes proporcionar al menos 1 ID de Almacen',
+            'almacen_id.exists' => 'El Almacen ID proporcionado no existe en la base de datos.',
+        ]);
+
+        if($validation->fails())
+             return view("modificarVa",[
+            "errors" => $validation->errors(),
+            "va" => $va,
+        ]);
+
+        $va -> update($request->all());
+
+        return redirect()->route('listarVa');
+
+    }
+
+    public function EliminarVa(Request $request, $idVa){
+        $va= Va::findOrFail($idVa);
+
+        $va -> delete();
+
+        return redirect()->route('listarVa');
     }
 
 }

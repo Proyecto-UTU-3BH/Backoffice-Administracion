@@ -176,7 +176,14 @@ Route::middleware(['auth'])->group(function () {
         return view('insertarVa');
     })->name('insertarVa');
 
+    Route::get('/va/modificarVa/{idVa}', [VaController::class,'ListarUnVa'])->name('modificarVa');
+
+    Route::post('/va/modificarVa/{idVa}', [VaController::class,'ModificarVa']);
+
     Route::post('/va/insertarRegistro', [VaController::class,'InsertarVa']);
+
+    Route::delete('/VA/eliminarVa/{idVa}', [VaController::class,'EliminarVa'])->name('eliminarVa');
+
 
 
     
