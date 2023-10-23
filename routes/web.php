@@ -10,6 +10,7 @@ use App\Http\Controllers\RutaController;
 use App\Http\Controllers\GestionaController;
 use App\Http\Controllers\AlmacenaController;
 use App\Http\Controllers\ManejaController;
+use App\Http\Controllers\VaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -167,6 +168,9 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/maneja/manejar', [ManejaController::class,'InsertarManeja']);
 
     Route::delete('/maneja/eliminarManeja/{idManeja}', [ManejaController::class,'EliminarManeja'])->name('eliminarManeja');
+
+
+    Route::get('/listarVa', [VaController::class,'ListarVa'])->name('listarVa');
 
 
     
