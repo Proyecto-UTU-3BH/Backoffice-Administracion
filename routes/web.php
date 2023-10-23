@@ -68,19 +68,19 @@ Route::middleware(['auth'])->group(function () {
     
     
 
-    Route::get('/listarAdmins', [UserController::class,'ListarUsuarios'])->name('listarAdmins');
+    Route::get('/listarAdmins', [UserController::class,'ListarAdmins'])->name('listarAdmins');
     
     Route::get('/admins/crearAdmin', function () {
         return view('crearAdmin');
     })->name('crearAdmin');
     
-    Route::get('/admins/modificarAdmin/{idAdmin}', [UserController::class,'ListarUnUsuario'])->name('modificarAdmin');
+    Route::get('/admins/modificarAdmin/{idAdmin}', [UserController::class,'ListarUnAdmin'])->name('modificarAdmin');
     
-    Route::post('/admins/modificarAdmin/{idAdmin}', [UserController::class,'ModificarUsuario']);
+    Route::post('/admins/modificarAdmin/{idAdmin}', [UserController::class,'ModificarAdmin']);
     
-    Route::post('/admins/crearAdmin', [UserController::class,'InsertarUsuario']);
+    Route::post('/admins/crearAdmin', [UserController::class,'InsertarAdmin']);
     
-    Route::delete('/admins/eliminarAdmin/{idAdmin}', [UserController::class,'EliminarUsuario'])->name('eliminarAdmin');
+    Route::delete('/admins/eliminarAdmin/{idAdmin}', [UserController::class,'EliminarAdmin'])->name('eliminarAdmin');
 
 
 

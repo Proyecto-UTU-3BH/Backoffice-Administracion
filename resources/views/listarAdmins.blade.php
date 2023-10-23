@@ -32,16 +32,16 @@
                 </tr>
             </thead>
             <tbody>
-                 @foreach($usuarios as $usuario)
+                 @foreach($admins as $admin)
                 <tr>
-                    <td>{{ $usuario->id }}</td>
-                    <td>{{ $usuario->name }}</td>
-                    <td>{{ $usuario->email }}</td>
+                    <td>{{ $admin->id }}</td>
+                    <td>{{ $admin->name }}</td>
+                    <td>{{ $admin->email }}</td>
                     <td class="modificar">
-                        <a href="{{ route('modificarAdmin', ['idAdmin' => $usuario->id]) }}"> <button> Modificar </button> </a>
+                        <a href="{{ route('modificarAdmin', ['idAdmin' => $admin->id]) }}"> <button> Modificar </button> </a>
                     </td>
                     <td class="eliminar">
-                        <form action="{{ route('eliminarAdmin', ['idAdmin' => $usuario->id]) }}" method="POST">
+                        <form action="{{ route('eliminarAdmin', ['idAdmin' => $admin->id]) }}" method="POST">
                             @csrf
                             @method('DELETE')
                             <button type="submit"> Eliminar </button> 

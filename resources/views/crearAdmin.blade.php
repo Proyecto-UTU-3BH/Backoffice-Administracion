@@ -19,18 +19,33 @@
     <div id="container">
         <form action="/admins/crearAdmin" method="post">
             @csrf
-            <label for="name">Nombre:</label>
-            <input type="text" id="name" name="name" required><br>
 
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required><br>
+            <div class="form-group">
+                <label for="name">Nombre:</label>
+                <input type="text" id="name" name="name" required>
+                @if($errors->has('name'))
+                    <span class="error">{{ $errors->first('name') }}</span>
+                @endif
+            </div>
 
-            <label for="contrasena">Contraseña:</label>
-            <input type="password" id="contrasena" name="password" placeholder="8 digitos" required><br>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+                @if($errors->has('email'))
+                    <span class="error">{{ $errors->first('email') }}</span>
+                @endif
+            </div>
+
+            <div class="form-group">
+                <label for="contrasena">Contraseña:</label>
+                <input type="password" id="contrasena" name="password" placeholder="8 dígitos" required>
+                @if($errors->has('password'))
+                    <span class="error">{{ $errors->first('password') }}</span>
+                @endif
+            </div>
 
             <input type="submit" value="Crear">
         </form>
-
     </div>
 
     <br>

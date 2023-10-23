@@ -14,7 +14,7 @@ class UserTest extends TestCase
      *
      * @return void
      */
-    public function test_ListarUsuarios()
+    public function test_ListarAdmins()
     {
         $user = User::factory()->create();
         $this->actingAs($user);
@@ -25,12 +25,12 @@ class UserTest extends TestCase
 
         $response->assertViewIs('listarAdmins');
 
-        $response->assertViewHas('usuarios');
+        $response->assertViewHas('admins');
         
         $user->delete();
     }
 
-    public function test_ListarUsuarioExistente()
+    public function test_ListarAdminExistente()
     {
         $user = User::factory()->create();
         $this->actingAs($user);
@@ -41,12 +41,12 @@ class UserTest extends TestCase
 
         $response->assertViewIs('modificarAdmin');
 
-        $response->assertViewHas('usuario');
+        $response->assertViewHas('admins');
 
         $user->delete();
     }
 
-    public function test_ListarUsuarioInexistente()
+    public function test_ListarAdminInexistente()
     {
         $user = User::factory()->create();
         $this->actingAs($user);
@@ -58,7 +58,7 @@ class UserTest extends TestCase
         $user->delete();
     }
 
-    public function test_InsertarUsuario()
+    public function test_InsertarAdmin()
     {
         $user = User::factory()->create();
         $this->actingAs($user);
@@ -83,7 +83,7 @@ class UserTest extends TestCase
         $user->delete();
     }
 
-    public function test_EliminarUsuarioExistente()
+    public function test_EliminarAdminExistente()
     {
         $user = User::factory()->create();
         $this->actingAs($user);
@@ -104,7 +104,7 @@ class UserTest extends TestCase
         $user->delete();
     }
 
-    public function test_EliminarUsuarioInexistente()
+    public function test_EliminarAdminInexistente()
     {
         $user = User::factory()->create();
         $this->actingAs($user);
@@ -116,7 +116,7 @@ class UserTest extends TestCase
         $user->delete();
     }
 
-    public function test_ModificarUsuarioExistente()
+    public function test_ModificarAdminExistente()
     {
         $user = User::factory()->create();
         $this->actingAs($user);
@@ -127,7 +127,7 @@ class UserTest extends TestCase
             "password" => "philipe"
         ]);
 
-        $response->assertStatus(302);
+        $response->assertStatus(200);
 
         $this->assertDatabaseHas('users', [
             "name" => "Philipe",
@@ -139,7 +139,7 @@ class UserTest extends TestCase
         $user->delete();
     }
 
-    public function test_ModificarUsuarioInexistente()
+    public function test_ModificarAdminInexistente()
     {
         $user = User::factory()->create();
         $this->actingAs($user);

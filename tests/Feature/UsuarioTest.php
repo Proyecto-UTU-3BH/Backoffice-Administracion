@@ -60,7 +60,7 @@ class UsuarioTest extends TestCase
 
         $response->assertStatus(200);
 
-        $this->assertDatabaseHas('users', [
+        $this->assertDatabaseHas('usuarios', [
             'usuario' => 'soychofer@yahoo.com',
             'ci' => '41559752',
             'primer_nombre' => 'Rafael',

@@ -5,57 +5,102 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Rule;
 
 class UserController extends Controller
 {
-    public function ListarUsuarios(Request $request){
-        $usuarios = User::all();
+    public function ListarAdmins(Request $request){
+        $admins = User::all();
     
         return view('listarAdmins', [
-            "usuarios" => $usuarios
+            "admins" => $admins
         ]);
     }
     
-    public function ListarUnUsuario(Request $request, $idUsuario){
-        $usuario = User::findOrFail($idUsuario);
+    public function ListarUnAdmin(Request $request, $idAdmin){
+        $admin = User::findOrFail($idAdmin);
     
         return view('modificarAdmin', [
-            "usuario" => $usuario
+            "admin" => $admin
         ]);
     }
     
-    public function InsertarUsuario(Request $request){
-        $usuario = new User();
+    public function InsertarAdmin(Request $request){
+        $validation = Validator::make($request->all(), [
+            'name' => 'required|string|min:3|max:20',
+            'email' => 'required|email|unique:users',
+            'password' => 'required|string|min:8',
+        ],
+        [
+            'name.min' => 'El nombre debe tener al menos 3 caracteres',
+            'name.max' => 'El nombre no puede tener más de 20 caracteres',
+            'email.email' => 'El correo electrónico debe ser una dirección de correo válida',
+            'email.unique' => 'Este correo electrónico ya está en uso',
+            'password.min' => 'La contraseña debe tener al menos 8 caracteres',
+        ]);
     
-        $usuario->name = $request->post('name');
-        $usuario->email = $request->post('email');
-        $usuario->password = Hash::make($request->post('password'));
+        if($validation->fails()) {
+            return view("crearAdmin", ["errors" => $validation->errors()]);
+        }
     
-        $usuario->save();
+        $admin = new User();
+    
+        $admin->name = $request->post('name');
+        $admin->email = $request->post('email');
+        $admin->password = Hash::make($request->post('password'));
+    
+        $admin->save();
     
         return view('crearAdmin', [
             "mensaje" => "Admin creado correctamente"
         ]);
     }
     
-    public function EliminarUsuario(Request $request, $idUsuario){
-        $usuario = User::findOrFail($idUsuario);
+    public function EliminarAdmin(Request $request, $idAdmin){
+        $admin = User::findOrFail($idAdmin);
     
-        $usuario->delete();
+        $admin->delete();
+    
+        return redirect()->route('listarAdmins');
+    }
+    
+    public function ModificarAdmin(Request $request, $idAdmin){
+        $admin = User::findOrFail($idAdmin);
+    
+        $validation = Validator::make($request->all(), [
+            'name' => 'required|string|min:3|max:20',
+            'email' => [
+                'required',
+                'email',
+                Rule::unique('users')->ignore($admin->id),
+            ],
+            'password' => 'required|string|min:8',
+        ],
+        [
+            'name.min' => 'El nombre debe tener al menos 3 caracteres',
+            'name.max' => 'El nombre no puede tener más de 20 caracteres',
+            'email.email' => 'El correo electrónico debe ser una dirección de correo válida',
+            'email.unique' => 'Este correo electrónico ya está en uso',
+            'password.min' => 'La contraseña debe tener al menos 8 caracteres',
+        ]);
+    
+        if($validation->fails()) {
+            return view("modificarAdmin", [
+                "errors" => $validation->errors(),
+                "admin" => $admin,
+            ]);
+        }
+    
+        $admin->name = $request->post('name');
+        $admin->password = Hash::make($request->post('password'));
+        $admin->email = $request->post('email');
+    
+        $admin->save();
     
         return redirect()->route('listarAdmins');
     }
     
-    public function ModificarUsuario(Request $request, $idUsuario){
-        $usuario = User::findOrFail($idUsuario);
     
-        $usuario->name = $request->post('name');
-        $usuario->password = Hash::make($request->post('password'));
-        $usuario->email = $request->post('email');
-
-        $usuario->save();
-    
-        return redirect()->route('listarAdmins');
-    }
     
 }

@@ -17,17 +17,31 @@
     <h2>Modificar Admin</h2>
 
     <div id="container">
-        <form action="/admins/modificarAdmin/{{$usuario->id}}" method="post">
+        <form action="/admins/modificarAdmin/{{$admin->id}}" method="post">
             @csrf
-            <label for="name">Nombre:</label>
-            <input type="text" id="name" name="name" value="{{$usuario->name}}" required><br>
+            <div class="form-group">
+                <label for="name">Nombre:</label>
+                <input type="text" id="name" name="name" value="{{$admin->name}}" required>
+                @if($errors->has('name'))
+                    <span class="error">{{ $errors->first('name') }}</span>
+                @endif
+            </div>
 
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" value="{{$usuario->email}}" required><br>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" value="{{$admin->email}}" required>
+                @if($errors->has('email'))
+                    <span class="error">{{ $errors->first('email') }}</span>
+                @endif
+            </div>
 
-            <label for="contrasena">Contraseña:</label>
-            <input type="password" id="contrasena" name="password" placeholder="8 digitos" value="{{$usuario->password}}" required><br>
-
+            <div class="form-group">
+                <label for="contrasena">Contraseña:</label>
+                <input type="password" id="contrasena" name="password" placeholder="8 dígitos" value="{{$admin->password}}" required>
+                @if($errors->has('password'))
+                    <span class="error">{{ $errors->first('password') }}</span>
+                @endif
+            </div>
             <input type="submit" value="Modificar">
         </form>
 
