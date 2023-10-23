@@ -43,8 +43,8 @@ class AlmacenaController extends Controller
     
         $almacena = new Almacena();
     
-        $almacena->producto_id = $request->input('producto_id'); 
-        $almacena->almacen_id = $request->input('almacen_id');
+        $almacena->producto_id = $request->post('producto_id'); 
+        $almacena->almacen_id = $request->post('almacen_id');
     
         $almacena->save();
         

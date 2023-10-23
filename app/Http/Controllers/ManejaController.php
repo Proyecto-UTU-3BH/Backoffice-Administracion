@@ -42,8 +42,8 @@ class ManejaController extends Controller
     
         $maneja = new Maneja();
     
-        $maneja->usuario_id = $request->input('usuario_id'); 
-        $maneja->vehiculo_id = $request->input('vehiculo_id');
+        $maneja->usuario_id = $request->post('usuario_id'); 
+        $maneja->vehiculo_id = $request->post('vehiculo_id');
     
         $maneja->save();
         

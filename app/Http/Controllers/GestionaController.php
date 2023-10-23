@@ -36,10 +36,10 @@ class GestionaController extends Controller
             $gestiona = new Gestiona();
     
             $gestiona->producto_id = trim($productoId); 
-            $gestiona->vehiculo_id = $request->input('vehiculo_id');
-            $gestiona->usuario_id = $request->input('usuario_id');
-            $gestiona->IDLote = $request->input('IDLote');
-            $gestiona->fecha = $request->input('fecha');
+            $gestiona->vehiculo_id = $request->post('vehiculo_id');
+            $gestiona->usuario_id = $request->post('usuario_id');
+            $gestiona->IDLote = $request->post('IDLote');
+            $gestiona->fecha = $request->post('fecha');
     
             $gestiona->save();
         }
