@@ -172,6 +172,12 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('/listarVa', [VaController::class,'ListarVa'])->name('listarVa');
 
+    Route::get('/va/insertarRegistro', function () {
+        return view('insertarVa');
+    })->name('insertarVa');
+
+    Route::post('/va/insertarRegistro', [VaController::class,'InsertarVa']);
+
 
     
 });

@@ -19,7 +19,7 @@
     <h2>Listado de Llegada y Salida de Camiones</h2>
     <div class="container">
         <div class="insertar">
-            <a href="#"><button>Ingresar Registro</button></a>
+            <a href="{{ route('insertarVa') }}"><button>Ingresar Registro</button></a>
         </div>
         <table>
             <thead>
