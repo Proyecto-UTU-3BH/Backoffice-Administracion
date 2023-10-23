@@ -10,4 +10,10 @@ class Maneja extends Model
 {
     use HasFactory;
     use SoftDeletes;
+    protected $table="maneja";
+
+    protected $fillable=[
+        "usuario_id",
+        "vehiculo_id"
+    ];
 }

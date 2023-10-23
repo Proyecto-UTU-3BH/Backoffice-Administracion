@@ -9,6 +9,7 @@ use App\Http\Controllers\UsuarioController;
 use App\Http\Controllers\RutaController;
 use App\Http\Controllers\GestionaController;
 use App\Http\Controllers\AlmacenaController;
+use App\Http\Controllers\ManejaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -151,6 +152,23 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/almacena/almacenar', [AlmacenaController::class,'InsertarAlmacena']);
 
     Route::delete('/almacena/eliminarAlmacena/{idAlmacena}', [AlmacenaController::class,'EliminarAlmacena'])->name('eliminarAlmacena');
+
+
+    Route::get('/listarManeja', [ManejaController::class,'ListarManeja'])->name('listarManeja');
+
+    Route::get('/maneja/manejar', function () {
+        return view('insertarManeja');
+    })->name('insertarManeja');
+
+    Route::get('/maneja/modificarManeja/{idManeja}', [ManejaController::class,'ListarUnManeja'])->name('modificarManeja');
+
+    Route::post('/maneja/modificarManeja/{idManeja}', [ManejaController::class,'ModificarManeja']);
+
+    Route::post('/maneja/manejar', [ManejaController::class,'InsertarManeja']);
+
+    Route::delete('/maneja/eliminarManeja/{idManeja}', [ManejaController::class,'EliminarManeja'])->name('eliminarManeja');
+
+
     
 });
 

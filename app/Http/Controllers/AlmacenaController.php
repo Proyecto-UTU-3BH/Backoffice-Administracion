@@ -28,7 +28,7 @@ class AlmacenaController extends Controller
     public function InsertarAlmacena(Request $request){
         $validation = Validator::make($request->all(),[
             'producto_id' => 'required|exists:productos,id',
-            'almacen_id' => 'required|exists:vehiculos,id',
+            'almacen_id' => 'required|exists:almacenes,id',
         ],
         [
             'producto_id.required' => 'Debes proporcionar al menos 1 ID de Producto',
