@@ -68,7 +68,7 @@ class RutaTest extends TestCase
         $response = $this->post('/rutas/crearRuta', $estructura);
 
         $response->assertStatus(200);
-        $this->assertDatabaseHas('ruta', $estructura);
+        $this->assertDatabaseHas('rutas', $estructura);
         $response->assertViewIs('crearRuta');
         $response->assertViewHas('mensaje', 'Ruta creada correctamente');
 
@@ -84,7 +84,7 @@ class RutaTest extends TestCase
 
         $response->assertStatus(302);
 
-        $this->assertDatabaseMissing('ruta', [
+        $this->assertDatabaseMissing('rutas', [
             'id' => '1000',
             'deleted_at' => null
         ]);
@@ -121,7 +121,7 @@ class RutaTest extends TestCase
         $response = $this->post('/rutas/modificarRuta/1000', $estructura);
 
         $response->assertStatus(302);
-        $this->assertDatabaseHas('ruta', $estructura);
+        $this->assertDatabaseHas('rutas', $estructura);
 
         $response->assertRedirect(route('listarRutas'));
 

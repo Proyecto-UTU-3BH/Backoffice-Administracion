@@ -8,6 +8,8 @@ use App\Http\Controllers\VehiculoController;
 use App\Http\Controllers\UsuarioController;
 use App\Http\Controllers\RutaController;
 use App\Http\Controllers\GestionaController;
+use App\Http\Controllers\AlmacenaController;
+use App\Http\Controllers\ManejaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -135,6 +137,38 @@ Route::middleware(['auth'])->group(function () {
     })->name('asignarLote');
 
     Route::post('/gestiona/asignarLote', [GestionaController::class,'InsertarGestiona']);
+
+
+    Route::get('/listarAlmacena', [AlmacenaController::class,'ListarAlmacena'])->name('listarAlmacena');
+
+    Route::get('/almacena/almacenar', function () {
+        return view('almacenarProducto');
+    })->name('almacenarProducto');
+
+    Route::get('/almacena/modificarAlmacena/{idAlmacena}', [AlmacenaController::class,'ListarUnAlmacena'])->name('modificarAlmacena');
+
+    Route::post('/almacena/modificarAlmacena/{idAlmacena}', [AlmacenaController::class,'ModificarAlmacena']);
+
+    Route::post('/almacena/almacenar', [AlmacenaController::class,'InsertarAlmacena']);
+
+    Route::delete('/almacena/eliminarAlmacena/{idAlmacena}', [AlmacenaController::class,'EliminarAlmacena'])->name('eliminarAlmacena');
+
+
+    Route::get('/listarManeja', [ManejaController::class,'ListarManeja'])->name('listarManeja');
+
+    Route::get('/maneja/manejar', function () {
+        return view('insertarManeja');
+    })->name('insertarManeja');
+
+    Route::get('/maneja/modificarManeja/{idManeja}', [ManejaController::class,'ListarUnManeja'])->name('modificarManeja');
+
+    Route::post('/maneja/modificarManeja/{idManeja}', [ManejaController::class,'ModificarManeja']);
+
+    Route::post('/maneja/manejar', [ManejaController::class,'InsertarManeja']);
+
+    Route::delete('/maneja/eliminarManeja/{idManeja}', [ManejaController::class,'EliminarManeja'])->name('eliminarManeja');
+
+
     
 });
 

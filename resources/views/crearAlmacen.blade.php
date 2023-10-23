@@ -62,6 +62,9 @@
             <div class="form-group">
                 <label for="capacidad">Capacidad de Almacenamiento:</label>
                 <input type="number" id="capacidad" name="capacidad" class="remove-br" required>
+                @if($errors->has('capacidad'))
+                    <span class="error">{{ $errors->first('capacidad') }}</span>
+                @endif
             </div>
 
             <div class="form-group">

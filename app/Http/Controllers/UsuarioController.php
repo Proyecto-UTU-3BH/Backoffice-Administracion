@@ -111,10 +111,33 @@ class UsuarioController extends Controller
             'calle' => 'required|max:50|alpha_spaces',
             'numero_de_puerta' => 'required|alpha_num|max:8',
             'tipo' => 'required|in:chofer,funcionario,admin',
+        ],
+        [
+            'usuario.email' => 'Formato email',
+            'usuario.unique' => 'Correo en uso',
+            'ci.unique' => 'CI en uso',
+            'ci.max' => 'Maximo 8 caracteres',
+            'password.min' => 'Minimo 8 caracteres',
+            'password.confirmed' => 'Las contraseñas deben ser iguales',
+            'primer_nombre.alpha' => 'Solo letras',
+            'primer_nombre.min' => 'Minimo 3 caracteres',
+            'primer_nombre.max' => 'Maximo 20 caracteres',
+            'primer_apellido.alpha' => 'Solo letras',
+            'primer_apellido.min' => 'Minimo 2 caracteres',
+            'primer_apellido.max' => 'Maximo 20 caracteres',
+            'segundo_apellido.alpha' => 'Solo letras',
+            'segundo_apellido.min' => 'Minimo 2 caracteres',
+            'segundo_apellido.max' => 'Maximo 20 caracteres',
+            'calle.max' => 'Maximo 50 caracteres',
+            'calle.alpha_spaces' => 'Solo letras',
+            'numero_de_puerta.max' => 'Maximo 8 caracteres',
         ]);
 
         if($validation->fails())
-            return response($validation->errors(),403);
+             return view("modificarUsuario",[
+            "errors" => $validation->errors(),
+            "usuario" => $usuario,
+        ]);
 
         $usuario->usuario = $request->post('usuario');
         $usuario->password = Hash::make($request->post('password'));

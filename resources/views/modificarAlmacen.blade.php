@@ -17,7 +17,7 @@
     <h2>Modificar Almacen</h2>
 
     <div id="container">
-    <form action="/almacenes/modificarAlmacen/{{$almacen->id}}" method="post">
+        <form action="/almacenes/modificarAlmacen/{{$almacen->id}}" method="post">
             @csrf
             <div class="form-group">
                 <label for="departamento">Departamento</label>
@@ -62,6 +62,9 @@
             <div class="form-group">
                 <label for="capacidad">Capacidad de Almacenamiento:</label>
                 <input type="number" id="capacidad" name="capacidad" class="remove-br" value="{{$almacen->capacidad}}" required>
+                @if($errors->has('capacidad'))
+                    <span class="error">{{ $errors->first('capacidad') }}</span>
+                @endif
             </div>
 
             <div class="form-group">

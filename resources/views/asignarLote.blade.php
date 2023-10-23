@@ -26,10 +26,10 @@
             </div>
 
             <div class="form-group">
-                <label for="producto_id">ID Producto:</label>
-                <input type="number" id="producto_id" name="producto_id" required>
-                @if($errors->has('producto_id'))
-                    <span class="error">{{ $errors->first('producto_id') }}</span>
+                <label for="producto_ids">ID Producto(s):</label>
+                <textarea id="producto_ids" name="producto_ids" required>Ingresa los ID de Producto separados por un Enter</textarea>
+                @if($errors->has('producto_ids'))
+                    <span class="error">{{ $errors->first('producto_ids') }}</span>
                 @endif
             </div>
 
@@ -64,5 +64,24 @@
     @isset($mensaje)
         <span>{{$mensaje}}</span>
     @endisset
+
+    <script>
+    
+    var textarea = document.getElementById('producto_ids');
+
+    
+    textarea.addEventListener('focus', function() {
+        if (textarea.value === 'Ingresa los ID de Producto separados por un Enter') {
+            textarea.value = '';
+        }
+    });
+
+    
+    textarea.addEventListener('blur', function() {
+        if (textarea.value === '') {
+            textarea.value = 'Ingresa los ID de Producto separados por un Enter';
+        }
+    });
+</script>
 </body>
 </html>

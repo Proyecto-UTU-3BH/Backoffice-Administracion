@@ -31,7 +31,7 @@ class AlmacenController extends Controller
             'latitud' => 'required|numeric|between:-35,-30',
             'longitud' => 'required|numeric|between:-59,-53',
             'telefono' => 'required|numeric|unique:almacenes',
-            'capacidad' => 'required|numeric',
+            'capacidad' => 'required|numeric|min:1',
             'calle' => 'required|max:50|alpha_spaces',
             'numero_puerta' => 'required|alpha_num|max:8',
             'departamento' => 'required|alpha_spaces',
@@ -42,7 +42,8 @@ class AlmacenController extends Controller
             'calle.max' => 'Maximo 50 caracteres',
             'numero_puerta.max' => 'Maximo 8 caracteres',
             'departamento.alpha_spaces' => 'Solo letras',
-            'telefono.unique' => 'Telefono en uso'
+            'telefono.unique' => 'Telefono en uso',
+            'capacidad.min' => 'Valores mayores a 0'
         ]);
 
         if($validation->fails())
@@ -84,7 +85,7 @@ class AlmacenController extends Controller
                 'numeric',
                 Rule::unique('almacenes', 'telefono')->ignore($almacen->id),
             ],
-            'capacidad' => 'required|numeric',
+            'capacidad' => 'required|numeric|min:1',
             'calle' => 'required|max:50|alpha_spaces',
             'numero_puerta' => 'required|alpha_num|max:8',
             'departamento' => 'required|alpha_spaces',
@@ -95,7 +96,8 @@ class AlmacenController extends Controller
             'calle.max' => 'Maximo 50 caracteres',
             'numero_puerta.max' => 'Maximo 8 caracteres',
             'departamento.alpha_spaces' => 'Solo letras',
-            'telefono.unique' => 'Telefono en uso'
+            'telefono.unique' => 'Telefono en uso',
+            'capacidad.min' => 'Valores mayores a 0'
         ]);
 
         if($validation->fails())

@@ -10,7 +10,7 @@ class Ruta extends Model
 {
     use HasFactory;
     use SoftDeletes;
-    protected $table="ruta";
+    protected $table="rutas";
 
     protected $fillable=[
         "destino",
