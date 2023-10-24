@@ -137,7 +137,13 @@ Route::middleware(['auth'])->group(function () {
         return view('asignarLote');
     })->name('asignarLote');
 
+    Route::get('/gestiona/modificarLote/{idGestiona}', [GestionaController::class,'ListarUnGestiona'])->name('modificarGestiona');
+
+    Route::post('/gestiona/modificarLote/{idGestiona}', [GestionaController::class,'ModificarGestiona']);
+
     Route::post('/gestiona/asignarLote', [GestionaController::class,'InsertarGestiona']);
+
+    Route::delete('/gestiona/eliminarGestiona/{idGestiona}', [GestionaController::class,'EliminarGestiona'])->name('eliminarGestiona');
 
 
     Route::get('/listarAlmacena', [AlmacenaController::class,'ListarAlmacena'])->name('listarAlmacena');

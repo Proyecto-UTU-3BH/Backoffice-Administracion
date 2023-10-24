@@ -40,10 +40,10 @@
                     <td>{{ $lote->vehiculo_id }}</td>
                     <td>{{ $lote->fecha }}</td>
                     <td class="modificar">
-                        <a href=""> <button> Modificar </button> </a>
+                        <a href="{{ route('modificarGestiona', ['idGestiona' => $lote->id]) }}"> <button> Modificar </button> </a>
                     </td>
                     <td class="eliminar">
-                        <form action="#" method="POST">
+                        <form action="{{ route('eliminarGestiona', ['idGestiona' => $lote->id]) }}" method="POST">
                             @csrf
                             @method('DELETE')
                             <button type="submit"> Eliminar </button> 
