@@ -45,7 +45,7 @@
                         <a href="{{ route('modificarReparto', ['idReparto' => $reparto->id]) }}"> <button> Modificar </button> </a>
                     </td>
                     <td class="eliminar">
-                        <form action="#" method="POST">
+                        <form action="{{ route('eliminarReparto', ['idReparto' => $reparto->id]) }}" method="POST">
                             @csrf
                             @method('DELETE')
                             <button type="submit"> Eliminar </button> 

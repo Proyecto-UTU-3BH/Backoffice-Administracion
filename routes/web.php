@@ -204,6 +204,8 @@ Route::middleware(['auth'])->group(function () {
 
     Route::post('/reparto/modificarReparto/{idReparto}', [ReparteController::class,'ModificarReparto']);
 
+    Route::delete('/reparto/eliminarReparto/{idReparto}', [ReparteController::class,'EliminarReparto'])->name('eliminarReparto');
+
 
 
     

@@ -90,4 +90,13 @@ class ReparteController extends Controller
         return redirect()->route('listarRepartos');
 
     }
+
+    public function EliminarReparto(Request $request, $idReparto){
+        $reparto= Reparte::findOrFail($idReparto);
+
+        $reparto -> delete();
+
+        return redirect()->route('listarRepartos');
+    }
+
 }
