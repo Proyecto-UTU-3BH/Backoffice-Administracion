@@ -19,7 +19,7 @@
     <h2>Listado de Repartos</h2>
     <div class="container">
         <div class="insertar">
-            <a href="#"><button>Ingresar Reparto</button></a>
+            <a href="{{ route('insertarReparto') }}"><button>Ingresar Reparto</button></a>
         </div>
         <table>
             <thead>

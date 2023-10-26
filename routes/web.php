@@ -194,6 +194,12 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('/listarRepartos', [ReparteController::class,'ListarRepartos'])->name('listarRepartos');
 
+    Route::get('/reparto/insertarReparto', function () {
+        return view('insertarReparto');
+    })->name('insertarReparto');
+
+    Route::post('/va/insertarReparto', [ReparteController::class,'InsertarReparto']);
+
 
 
     
