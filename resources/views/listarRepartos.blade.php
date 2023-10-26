@@ -42,7 +42,7 @@
                     <td>{{ $reparto->vehiculo_id }}</td>
                     <td>{{ $reparto->fechaRealizacion }}</td>
                     <td class="modificar">
-                        <a href="#"> <button> Modificar </button> </a>
+                        <a href="{{ route('modificarReparto', ['idReparto' => $reparto->id]) }}"> <button> Modificar </button> </a>
                     </td>
                     <td class="eliminar">
                         <form action="#" method="POST">

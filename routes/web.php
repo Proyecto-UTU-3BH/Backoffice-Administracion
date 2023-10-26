@@ -198,7 +198,11 @@ Route::middleware(['auth'])->group(function () {
         return view('insertarReparto');
     })->name('insertarReparto');
 
-    Route::post('/va/insertarReparto', [ReparteController::class,'InsertarReparto']);
+    Route::post('/reparto/insertarReparto', [ReparteController::class,'InsertarReparto']);
+
+    Route::get('/reparto/modificarReparto/{idReparto}', [ReparteController::class,'ListarUnReparto'])->name('modificarReparto');
+
+    Route::post('/reparto/modificarReparto/{idReparto}', [ReparteController::class,'ModificarReparto']);
 
 
 

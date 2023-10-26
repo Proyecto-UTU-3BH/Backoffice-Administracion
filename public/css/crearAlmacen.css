@@ -42,7 +42,7 @@ input[type="submit"] {
     padding: 10px 20px;
     cursor: pointer;
     border-radius: 4px;
-    margin-top: 20px
+    margin-top: 40px
 }
 
 input[type="submit"]:hover {
@@ -74,4 +74,5 @@ span {
 textarea{
     height: 150px;
 }
+
 
