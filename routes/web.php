@@ -11,6 +11,7 @@ use App\Http\Controllers\GestionaController;
 use App\Http\Controllers\AlmacenaController;
 use App\Http\Controllers\ManejaController;
 use App\Http\Controllers\VaController;
+use App\Http\Controllers\ReparteController;
 
 /*
 |--------------------------------------------------------------------------
@@ -188,7 +189,10 @@ Route::middleware(['auth'])->group(function () {
 
     Route::post('/va/insertarRegistro', [VaController::class,'InsertarVa']);
 
-    Route::delete('/VA/eliminarVa/{idVa}', [VaController::class,'EliminarVa'])->name('eliminarVa');
+    Route::delete('/va/eliminarVa/{idVa}', [VaController::class,'EliminarVa'])->name('eliminarVa');
+
+
+    Route::get('/listarRepartos', [ReparteController::class,'ListarRepartos'])->name('listarRepartos');
 
 
 
