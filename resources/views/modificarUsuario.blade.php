@@ -74,6 +74,14 @@
                 </div>
 
                 <div class="form-group">
+                    <label for="telefono">Teléfono:</label>
+                    <input type="number" id="telefono" name="telefono" pattern="[0-9]{9,10}" value="{{$usuario->telefono}}">
+                    @if($errors->has('telefono'))
+                        <span class="error">{{ $errors->first('telefono') }}</span>
+                    @endif
+                </div>
+
+                <div class="form-group">
                     <label for="contrasena">Contraseña:</label>
                     <input type="password" id="contrasena" name="password" placeholder="8 digitos" value="{{$usuario->password}}" required><br>
                     @if($errors->has('password'))
@@ -131,12 +139,38 @@
                         <span class="error">{{ $errors->first('numero_de_puerta') }}</span>
                     @endif
                 </div>
+
+                <div class="form-group">
+                    <label for="almacen_id">Almacén ID:</label>
+                    <input type="number" id="almacen_id" name="almacen_id" value="{{$usuario->almacen_id}}">
+                    @if($errors->has('almacen_id'))
+                        <span class="error">{{ $errors->first('almacen_id') }}</span>
+                    @endif
+                </div>
+                
             </div>
 
             <input type="submit" value="Enviar">
         </form>
 
     </div>
+
+    <script>
+        function toggleAlmacenInput() {
+            var almacenInput = document.getElementById("almacen_id");
+            var tipoSelect = document.getElementById("tipo");
+            
+            if (tipoSelect.value === "chofer") {
+                almacenInput.disabled = true;
+            } else {
+                almacenInput.disabled = false;
+            }
+        }
+
+        toggleAlmacenInput();
+
+        document.getElementById("tipo").addEventListener("change", toggleAlmacenInput);
+    </script>
 
 </body>
 </html>

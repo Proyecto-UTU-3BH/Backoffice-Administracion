@@ -63,6 +63,12 @@ input[type="submit"]:hover {
     background-color: #45a049;
 }
 
+#almacen_id[disabled] {
+    background-color: #c3bebe; 
+    color: #808080; 
+}
+
+
 span {
     display: flex;
     justify-content: center;

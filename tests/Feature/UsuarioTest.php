@@ -47,14 +47,16 @@ class UsuarioTest extends TestCase
         $this->actingAs($user);
 
         $response = $this->post('/usuarios/crearUsuario', [
-            'usuario' => 'soychofer@yahoo.com',
-            'ci' => '41559752',
+            'usuario' => 'mschofer@yahoo.com',
+            'ci' => '41551552',
             'primer_nombre' => 'Rafael',
             'primer_apellido' => 'Gonzalez',
             'segundo_apellido' => 'Knappe',
             'calle' => 'Graciela de Gouveia',
             'numero_de_puerta' => '602',
             'tipo' => 'chofer',
+            'telefono' => '931456789',
+            'almacen_id' => NULL,
             'password' => 'juansito',
             'password_confirmation' => 'juansito'
         ]);
@@ -62,14 +64,16 @@ class UsuarioTest extends TestCase
         $response->assertStatus(200);
 
         $this->assertDatabaseHas('usuarios', [
-            'usuario' => 'soychofer@yahoo.com',
-            'ci' => '41559752',
+            'usuario' => 'mschofer@yahoo.com',
+            'ci' => '41551552',
             'primer_nombre' => 'Rafael',
             'primer_apellido' => 'Gonzalez',
             'segundo_apellido' => 'Knappe',
             'calle' => 'Graciela de Gouveia',
             'numero_de_puerta' => '602',
             'tipo' => 'chofer',
+            'telefono' => '931456789',
+            'almacen_id' => NULL,
         ]);
 
         $response->assertViewIs('crearUsuario');
@@ -127,7 +131,9 @@ class UsuarioTest extends TestCase
             "segundo_apellido" => "Gimenez",
             "calle" => "Videla",
             "numero_de_puerta" => "321",
-            "tipo" => "chofer"
+            "tipo" => "chofer",
+            'telefono' => '931458729',
+            'almacen_id' => NULL,
         ]);
 
         $response->assertStatus(302);
@@ -140,7 +146,9 @@ class UsuarioTest extends TestCase
             "segundo_apellido" => "Gimenez",
             "calle" => "Videla",
             "numero_de_puerta" => "321",
-            "tipo" => "chofer"
+            "tipo" => "chofer",
+            'telefono' => '931458729',
+            'almacen_id' => NULL,
         ]);
 
         $response->assertRedirect(route('listarUsuarios'));

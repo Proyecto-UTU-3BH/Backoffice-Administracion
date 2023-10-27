@@ -21,7 +21,9 @@ class Usuario extends Model
         "segundo_apellido",
         "calle",
         "numero_de_puerta",
-        "tipo"
+        "tipo",
+        "telefono",
+        "almacen_id"
     ];
 
     public function Productos(){

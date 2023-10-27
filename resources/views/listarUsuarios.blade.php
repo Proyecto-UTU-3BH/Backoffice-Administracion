@@ -32,6 +32,8 @@
                     <th>Calle</th>
                     <th>Nº Puerta</th>
                     <th>Cedula de Identidad</th>
+                    <th>Telefono</th>
+                    <th>AlmacenID</th>
                     <th class="modificar"></th>
                     <th class="eliminar"></th>
                 </tr>
@@ -48,6 +50,8 @@
                     <td>{{ $usuario->calle }}</td>
                     <td>{{ $usuario->numero_de_puerta }}</td>
                     <td>{{ $usuario->ci }}</td>
+                    <td>{{ $usuario->telefono }}</td>
+                    <td>{{ $usuario->almacen_id }}</td>
                     <td class="modificar">
                         <a href="{{ route('modificarUsuario', ['idUsuario' => $usuario->id]) }}"> <button> Modificar </button> </a>
                     </td>

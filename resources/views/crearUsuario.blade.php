@@ -78,6 +78,14 @@
                 </div>
 
                 <div class="form-group">
+                    <label for="telefono">Teléfono:</label>
+                    <input type="number" id="telefono" name="telefono" pattern="[0-9]{9,10}">
+                    @if($errors->has('telefono'))
+                        <span class="error">{{ $errors->first('telefono') }}</span>
+                    @endif
+                </div>
+
+                <div class="form-group">
                     <label for="contrasena">Contraseña:</label>
                     <input type="password" id="contrasena" name="password" placeholder="8 digitos" required>
                     @if($errors->has('password'))
@@ -85,6 +93,8 @@
                     @endif
                     
                 </div>
+
+                
 
             </div>
 
@@ -143,6 +153,14 @@
                 </div>
 
                 <div class="form-group">
+                    <label for="almacen_id">Almacén ID:</label>
+                    <input type="number" id="almacen_id" name="almacen_id">
+                    @if($errors->has('almacen_id'))
+                        <span class="error">{{ $errors->first('almacen_id') }}</span>
+                    @endif
+                </div>
+
+                <div class="form-group">
                     <label for="confirmacion">Confirmación:</label>
                     <input type="password" id="confirmacion" name="password_confirmation" placeholder="8 digitos" required>
                     @if($errors->has('password'))
@@ -170,5 +188,16 @@
     @isset($mensaje)
     <span>{{$mensaje}}</span>
     @endisset
+
+    <script>
+        document.getElementById("tipo").addEventListener("change", function () {
+            var almacenInput = document.getElementById("almacen_id");
+            if (this.value === "chofer") {
+                almacenInput.disabled = true;
+            } else {
+                almacenInput.disabled = false;
+            }
+        });
+    </script>
 </body>
 </html>
