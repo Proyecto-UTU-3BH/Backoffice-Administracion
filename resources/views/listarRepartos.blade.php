@@ -28,6 +28,7 @@
                     <th>ID Producto</th>
                     <th>ID Almacen</th>
                     <th>ID Vehiculo</th>
+                    <th>Fecha Reparto</th>
                     <th>Fecha Realización</th>
                     <th class="modificar"></th>
                     <th class="eliminar"></th>
@@ -40,6 +41,7 @@
                     <td>{{ $reparto->producto_id }}</td>
                     <td>{{ $reparto->almacen_id }}</td>
                     <td>{{ $reparto->vehiculo_id }}</td>
+                    <td>{{ $reparto->fechaReparto }}</td>
                     <td>{{ $reparto->fechaRealizacion }}</td>
                     <td class="modificar">
                         <a href="{{ route('modificarReparto', ['idReparto' => $reparto->id]) }}"> <button> Modificar </button> </a>

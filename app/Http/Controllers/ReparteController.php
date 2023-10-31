@@ -29,7 +29,8 @@ class ReparteController extends Controller
             'producto_id' => 'required|exists:productos,id',
             'almacen_id' => 'required|exists:almacenes,id',
             'vehiculo_id' => 'required|exists:vehiculos,id',
-            'fechaRealizacion' => 'required|date|before_or_equal:now',
+            'fechaReparto' => 'required|date',
+            'fechaRealizacion' => 'sometimes|nullable|date|before_or_equal:now',
         ],
         [
             'producto_id.required' => 'Debes proporcionar al menos 1 ID de Producto',
@@ -50,6 +51,7 @@ class ReparteController extends Controller
         $reparto -> almacen_id = $request -> post ('almacen_id');
         $reparto -> producto_id = $request -> post ('producto_id');
         $reparto -> vehiculo_id = $request -> post ('vehiculo_id');
+        $reparto -> fechaReparto = $request -> post ('fechaReparto');
         $reparto -> fechaRealizacion = $request -> post ('fechaRealizacion');
 
         $reparto -> save();
@@ -67,7 +69,8 @@ class ReparteController extends Controller
             'producto_id' => 'required|exists:productos,id',
             'almacen_id' => 'required|exists:almacenes,id',
             'vehiculo_id' => 'required|exists:vehiculos,id',
-            'fechaRealizacion' => 'required|date|before_or_equal:now',
+            'fechaReparto' => 'required|date',
+            'fechaRealizacion' => 'sometimes|nullable|date|before_or_equal:now',
         ],
         [
             'producto_id.required' => 'Debes proporcionar al menos 1 ID de Producto',

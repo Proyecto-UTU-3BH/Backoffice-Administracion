@@ -43,10 +43,18 @@
                 @endif
             </div>
 
+            <div class="form-group">
+                <label for="fechaReparto">Fecha Reparto:</label>
+                <input type="date" id="fechaReparto" name="fechaReparto">
+                @if($errors->has('fechaReparto'))
+                    <span class="error">{{ $errors->first('fechaReparto') }}</span>
+                @endif
+            </div>
+
 
             <div class="form-group">
-                <label for="fechaRealizacion">fechaRealizacion Realización:</label>
-                <input type="date" id="fechaRealizacion" name="fechaRealizacion" required>
+                <label for="fechaRealizacion">Fecha Realización:</label>
+                <input type="date" id="fechaRealizacion" name="fechaRealizacion">
                 @if($errors->has('fechaRealizacion'))
                     <span class="error">{{ $errors->first('fechaRealizacion') }}</span>
                 @endif

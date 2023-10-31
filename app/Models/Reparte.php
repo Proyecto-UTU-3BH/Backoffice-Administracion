@@ -16,6 +16,7 @@ class Reparte extends Model
         "producto_id",
         "almacen_id",
         "vehiculo_id",
-        "fechaRealizacion"
+        "fechaRealizacion",
+        "fechaReparto"
     ];
 }
