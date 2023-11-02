@@ -27,7 +27,7 @@ class ProductoController extends Controller
 
     public function InsertarProducto(Request $request){
         $validation = Validator::make($request->all(),[
-            'peso' => 'required|between:0.01,9999999.99|numeric',
+            'peso' => 'required|between:0.01,9999.99|numeric',
             'estado' => 'required|in:en central,en transito,almacen final,en domicilio',
             'destino' => 'required|alpha_spaces|max:50',
             'tipo' => 'required|in:Carta,Sobre chico,Sobre grande,Paquete chico,Paquete mediano,Paquete grande,Otro',
@@ -38,7 +38,7 @@ class ProductoController extends Controller
             'numero_puerta' => 'required|string|max:8'
         ],
         [
-            'peso.between' => 'Valor entre 0,01 y 9999999.99',
+            'peso.between' => 'Valor entre 0,01 y 9999.99',
             'peso.numeric' => 'Solo valores numericos',
             'peso.required' => 'Valor requerido',
             'destino.max' => 'Maximo 50 caracteres',
@@ -91,7 +91,7 @@ class ProductoController extends Controller
         $producto=Producto::findOrFail($idProducto);
 
         $validation = Validator::make($request->all(),[
-            'peso' => 'required|between:0.01,9999999.99|numeric',
+            'peso' => 'required|between:0.01,9999.99|numeric',
             'estado' => 'required|in:en central,en transito,almacen final,en domicilio',
             'destino' => 'required|alpha_spaces',
             'tipo' => 'required|in:Carta,Sobre chico,Sobre grande,Paquete chico,Paquete mediano,Paquete grande,Otro',
@@ -102,7 +102,7 @@ class ProductoController extends Controller
             'numero_puerta' => 'required|string|max:8'
         ],
         [
-            'peso.between' => 'Valor entre 0,01 y 9999999.99',
+            'peso.between' => 'Valor entre 0,01 y 9999.99',
             'peso.numeric' => 'Solo valores numericos',
             'peso.required' => 'Valor requerido',
             'destino.max' => 'Maximo 50 caracteres',
