@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Redirect;
 
 class ParadaController extends Controller
 {
-    public function vistaParada(Request $request, $idRuta){
+    public function vistaCrearParada(Request $request, $idRuta){
 
         return view('crearParada', [
             "idRuta" => $idRuta
@@ -40,6 +40,16 @@ class ParadaController extends Controller
         return view('crearParada', [
             "mensaje" => "Parada creada correctamente",
             "idRuta" => $parada->ruta_id
+        ]);
+    }
+
+    public function vistaVerParadas(Request $request, $idRuta) {
+
+        $paradas = Parada::where('ruta_id', $idRuta)->get();
+
+        return view('verParadas', [
+            "paradas" => $paradas,
+            "idRuta" => $idRuta
         ]);
     }
 }

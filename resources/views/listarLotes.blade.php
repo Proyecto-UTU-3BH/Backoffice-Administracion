@@ -20,6 +20,7 @@
     <div class="container">
         <div class="insertar">
             <a href="{{ route('asignarLote') }}"><button>Asignar Lote</button></a>
+            <a href="{{ route('buscarLotesChofer') }}"><button>Buscar Lotes Chofer</button></a>
         </div>
         <table>
             <thead>

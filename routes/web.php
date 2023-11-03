@@ -133,7 +133,9 @@ Route::middleware(['auth'])->group(function () {
     Route::delete('/rutas/eliminarRuta/{idRuta}', [RutaController::class,'EliminarRuta'])->name('eliminarRuta');
 
 
-    Route::get('/rutas/crearParada/{idRuta}', [ParadaController::class,'vistaParada'])->name('vistaParada');
+    Route::get('/rutas/crearParada/{idRuta}', [ParadaController::class,'vistaCrearParada'])->name('vistaCrearParada');
+
+    Route::get('/rutas/verParadas/{idRuta}', [ParadaController::class,'vistaVerParadas'])->name('vistaVerParadas');
 
     Route::post('/rutas/crearParada', [ParadaController::class,'CrearParada']);
 

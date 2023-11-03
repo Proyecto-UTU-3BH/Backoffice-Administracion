@@ -47,10 +47,10 @@
                         </form>
                     </td>
                     <td>
-                        <a href="{{ route('vistaParada', ['idRuta' => $ruta->id]) }}"> <button> Asignar Paradas </button> </a>
+                        <a href="{{ route('vistaCrearParada', ['idRuta' => $ruta->id]) }}"> <button> Asignar Paradas </button> </a>
                     </td>
                     <td>
-                        <a href="#"> <button> Ver Paradas </button> </a>
+                        <a href="{{ route('vistaVerParadas', ['idRuta' => $ruta->id]) }}"> <button> Ver Paradas </button> </a>
                     </td>
                 </tr>
                 @endforeach

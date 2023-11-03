@@ -35,13 +35,12 @@ function calcularRuta(destinos) {
     L.Routing.control({
         waypoints: destinos,
         routeWhileDragging: true,
-        createMarker: false,
-        show: true,  
+        createMarker: false
     }).addTo(map);
 }
 
 function crearDestinosEnMapa(coordenadas) {
-    var destinos = [];  // Inicializa una variable para almacenar los destinos
+    var destinos = [];  
 
     coordenadas.forEach(function(coordenada) {
         var latitud = parseFloat(coordenada.latitud);
@@ -49,15 +48,14 @@ function crearDestinosEnMapa(coordenadas) {
 
         var destino = L.latLng(latitud, longitud);
 
-        destinos.push(destino);  // Agrega el destino a la lista de destinos
+        destinos.push(destino);  
         var nombreDestino = coordenada.destino;
 
-        // Crea un marcador en el mapa para este destino
+        
         L.marker(destino).addTo(map)
             .bindPopup("Destino: " + nombreDestino + "<br>Latitud: " + latitud + "<br>Longitud: " + longitud)
             .openPopup();
     });
 
-    // Llama a la función para calcular la ruta óptima con los destinos
     calcularRuta(destinos);
 }
