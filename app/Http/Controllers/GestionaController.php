@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Gestiona;
+use App\Models\Almacen;
 use App\Models\Usuario;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Log;
@@ -121,9 +122,44 @@ class GestionaController extends Controller
         ->groupBy('gestiona.IDLote', 'productos.destino')
         ->get();
 
+        session(['lotesDestinos' => $lotesDestinos]);
+
         return view('verLotesChofer', [
             "lotesDestinos" => $lotesDestinos
         ]);
     }
+
+    public function mostrarCoordenadasDestinos (Request $request) {
+
+        $lotesDestinos = session('lotesDestinos');
+        $coordenadasDestinos = [];
+
+        foreach ($lotesDestinos as $loteDestino) {
+
+            $loteDestino = is_array($loteDestino) ? $loteDestino : (array) $loteDestino;
+            
+            $departamento = $loteDestino['destino'];
+
+            // Buscar el almacén que tenga el mismo departamento
+            $almacen = Almacen::where('departamento', $departamento)->first();
+
+            if ($almacen) {
+                // Si se encuentra un almacén, obtener sus coordenadas
+                $latitud = $almacen->latitud;
+                $longitud = $almacen->longitud;
+
+                // Agregar las coordenadas al arreglo de resultados
+                $coordenadasDestinos[] = [
+                    'IDLote' => $loteDestino['IDLote'],
+                    'destino' => $loteDestino['destino'],
+                    'latitud' => $latitud,
+                    'longitud' => $longitud,
+                ];
+            }
+        }
+
+        return response()->json(['coordenadas' => $coordenadasDestinos]);
+
+        }
 
 }

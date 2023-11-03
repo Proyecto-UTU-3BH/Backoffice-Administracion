@@ -20,7 +20,7 @@
             <input type="text" id="destino" name="destino" required><br>
 
             <label for="recorrido">Recorrido (km):</label>
-            <input type="number" id="recorrido" name="recorrido" required><br>
+            <input type="number" id="recorrido" name="recorrido"><br>
 
             <input type="submit" value="Enviar">
         </form>

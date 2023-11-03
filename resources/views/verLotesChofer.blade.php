@@ -19,7 +19,7 @@
     <h2>Listado de Lotes de un Chofer</h2>
     <div class="container">
         <div class="insertar">
-            <a href="#"><button>Ver Ruta</button></a>
+            <button id="verRutaBtn">Ver Ruta</button>
         </div>
         <table>
             <thead>
@@ -38,6 +38,23 @@
             </tbody>
         </table>
     </div>
+
+    <script>
+        const verRutaButton = document.getElementById('verRutaBtn');
+
+        verRutaButton.addEventListener('click', function() {
+            fetch('/gestiona/verLotes/verMapa')
+                .then(response => response.json())
+                .then(data => {
+                    const coordenadas = data.coordenadas;
+                    const url = `/gestiona/verLotes/verRutaEnMapa?coordenadas=${JSON.stringify(coordenadas)}`;
+                    window.open(url, '_blank');
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+        });
+    </script>
 
 </body>
 </html>

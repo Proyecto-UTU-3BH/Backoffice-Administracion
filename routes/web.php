@@ -150,7 +150,13 @@ Route::middleware(['auth'])->group(function () {
         return view('buscarLotesChofer');
     })->name('buscarLotesChofer');
 
-    Route::get('/gestiona/verLotes/', [GestionaController::class,'lotesAsignadosAlChofer'])->name('verLotesChofer');
+    Route::get('/gestiona/verLotes', [GestionaController::class,'lotesAsignadosAlChofer'])->name('verLotesChofer');
+
+    Route::get('/gestiona/verLotes/verMapa', [GestionaController::class,'mostrarCoordenadasDestinos'])->name('mostrarCoordenadasDestinos');
+
+    Route::get('/gestiona/verLotes/verRutaEnMapa', function () {
+        return view('verRutaEnMapa');
+    })->name('verRutaEnMapa');
 
 
     Route::get('/listarAlmacena', [AlmacenaController::class,'ListarAlmacena'])->name('listarAlmacena');
