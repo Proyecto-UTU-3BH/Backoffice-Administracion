@@ -146,6 +146,12 @@ Route::middleware(['auth'])->group(function () {
 
     Route::delete('/gestiona/eliminarGestiona/{idGestiona}', [GestionaController::class,'EliminarGestiona'])->name('eliminarGestiona');
 
+    Route::get('/gestiona/buscarLotesChofer', function () {
+        return view('buscarLotesChofer');
+    })->name('buscarLotesChofer');
+
+    Route::get('/gestiona/verLotes/', [GestionaController::class,'lotesAsignadosAlChofer'])->name('verLotesChofer');
+
 
     Route::get('/listarAlmacena', [AlmacenaController::class,'ListarAlmacena'])->name('listarAlmacena');
 

@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Gestiona;
+use App\Models\Usuario;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\DB;
 
 class GestionaController extends Controller
 {
@@ -101,6 +103,27 @@ class GestionaController extends Controller
         $gestiona -> delete();
 
         return redirect()->route('listarLotes');
+    }
+
+    public function lotesAsignadosAlChofer(Request $request)
+    {
+        $chofer = Usuario::findOrFail($request->input('chofer_id'));
+        $choferId= $request->input('chofer_id');
+
+        $fechaConsulta = $request->input('fecha');
+
+        $lotesDestinos = DB::table('gestiona')
+        ->join('productos', 'gestiona.producto_id', '=', 'productos.id')
+        ->join('maneja', 'gestiona.vehiculo_id', '=', 'maneja.vehiculo_id')
+        ->select('gestiona.IDLote', 'productos.destino')
+        ->where('maneja.usuario_id', $choferId)
+        ->where('gestiona.fecha', $fechaConsulta)
+        ->groupBy('gestiona.IDLote', 'productos.destino')
+        ->get();
+
+        return view('verLotesChofer', [
+            "lotesDestinos" => $lotesDestinos
+        ]);
     }
 
 }
