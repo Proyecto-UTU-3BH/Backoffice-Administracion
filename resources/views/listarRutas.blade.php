@@ -26,6 +26,8 @@
                     <th>Recorrido</th>
                     <th class="modificar"></th>
                     <th class="eliminar"></th>
+                    <th class="asignarParadas"></th>
+                    <th class="verParadas"></th>
                 </tr>
             </thead>
             <tbody>
@@ -43,6 +45,12 @@
                             @method('DELETE')
                             <button type="submit"> Eliminar </button> 
                         </form>
+                    </td>
+                    <td>
+                        <a href="{{ route('vistaParada', ['idRuta' => $ruta->id]) }}"> <button> Asignar Paradas </button> </a>
+                    </td>
+                    <td>
+                        <a href="#"> <button> Ver Paradas </button> </a>
                     </td>
                 </tr>
                 @endforeach

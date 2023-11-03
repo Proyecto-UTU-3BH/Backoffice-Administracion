@@ -12,6 +12,7 @@ use App\Http\Controllers\AlmacenaController;
 use App\Http\Controllers\ManejaController;
 use App\Http\Controllers\VaController;
 use App\Http\Controllers\ReparteController;
+use App\Http\Controllers\ParadaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -130,6 +131,11 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/rutas/crearRuta', [RutaController::class,'InsertarRuta']);
 
     Route::delete('/rutas/eliminarRuta/{idRuta}', [RutaController::class,'EliminarRuta'])->name('eliminarRuta');
+
+
+    Route::get('/rutas/crearParada/{idRuta}', [ParadaController::class,'vistaParada'])->name('vistaParada');
+
+    Route::post('/rutas/crearParada', [ParadaController::class,'CrearParada']);
 
 
     Route::get('/listarLotes', [GestionaController::class,'ListarLotes'])->name('listarLotes');
