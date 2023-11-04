@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <title>Modificar Conducción</title>
+        <title>Modificar Realiza</title>
 
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
 
@@ -15,21 +15,21 @@
 </head>
 <body>
     @include('layouts.navigation')
-    <h2>Modificar Conducción</h2>
+    <h2>Modificar Realiza</h2>
     <div id="container">
-        <form action="/maneja/modificarManeja/{{$maneja->id}}" method="post">
+        <form action="/realiza/modificarRealiza/{{$realiza->id}}" method="post">
             @csrf
             <div class="form-group">
-                <label for="usuario_id">ID Chofer:</label>
-                <input type="number" id="usuario_id" name="usuario_id" value="{{$maneja->usuario_id}}" required>
-                @if($errors->has('usuario_id'))
-                    <span class="error">{{ $errors->first('usuario_id') }}</span>
+                <label for="ruta_id">ID Ruta:</label>
+                <input type="number" id="ruta_id" name="ruta_id" value="{{$realiza->ruta_id}}" required>
+                @if($errors->has('ruta_id'))
+                    <span class="error">{{ $errors->first('ruta_id') }}</span>
                 @endif
             </div>
 
             <div class="form-group">
                 <label for="vehiculo_id">ID Vehiculo:</label>
-                <input type="number" id="vehiculo_id" name="vehiculo_id" value="{{$maneja->vehiculo_id}}" required>
+                <input type="number" id="vehiculo_id" name="vehiculo_id" value="{{$realiza->vehiculo_id}}" required>
                 @if($errors->has('vehiculo_id'))
                     <span class="error">{{ $errors->first('vehiculo_id') }}</span>
                 @endif

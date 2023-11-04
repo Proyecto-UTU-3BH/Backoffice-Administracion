@@ -235,6 +235,12 @@ Route::middleware(['auth'])->group(function () {
     })->name('insertarRealiza');
 
     Route::post('/realiza/insertarRealiza', [RealizaController::class,'InsertarRealiza']);
+
+    Route::get('/realiza/modificarRealiza/{idRealiza}', [RealizaController::class,'ListarUnRealiza'])->name('modificarRealiza');
+
+    Route::post('/realiza/modificarRealiza/{idRealiza}', [RealizaController::class,'ModificarRealiza']);
+
+    Route::delete('/realiza/eliminarRealiza/{idRealiza}', [RealizaController::class,'EliminarRealiza'])->name('eliminarRealiza');
     
 });
 

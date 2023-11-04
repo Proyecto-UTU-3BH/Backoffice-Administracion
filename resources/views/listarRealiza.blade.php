@@ -38,10 +38,10 @@
                     <td>{{ $r->ruta_id }}</td>
                     <td>{{ $r->vehiculo_id }}</td>
                     <td class="modificar">
-                        <a href="#"> <button> Modificar </button> </a>
+                        <a href="{{ route('modificarRealiza', ['idRealiza' => $r->id]) }}"> <button> Modificar </button> </a>
                     </td>
                     <td class="eliminar">
-                        <form action="#" method="POST">
+                        <form action="{{ route('eliminarRealiza', ['idRealiza' => $r->id]) }}" method="POST">
                             @csrf
                             @method('DELETE')
                             <button type="submit"> Eliminar </button> 

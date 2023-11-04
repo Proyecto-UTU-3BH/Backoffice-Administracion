@@ -16,6 +16,14 @@ class RealizaController extends Controller
         ]);
     }
 
+    public function ListarUnRealiza(Request $request, $idRealiza){
+        $realiza= Realiza::findOrFail($idRealiza);
+
+        return view('modificarRealiza', [
+            "realiza" => $realiza
+        ]);
+    }
+
     public function InsertarRealiza(Request $request){
         $validation = Validator::make($request->all(),[
             'ruta_id' => 'required|exists:rutas,id',
@@ -43,5 +51,39 @@ class RealizaController extends Controller
         return view('insertarRealiza', [
             "mensaje" => "Registro creado correctamente"
         ]);
+    }
+
+    public function ModificarRealiza(Request $request, $idRealiza){
+        $realiza= Realiza::findOrFail($idRealiza);
+
+        $validation = Validator::make($request->all(),[
+            'ruta_id' => 'required|exists:rutas,id',
+            'vehiculo_id' => 'required|exists:vehiculos,id',
+        ],
+        [
+            'ruta_id.required' => 'Debes proporcionar al menos 1 ID de Ruta',
+            'ruta_id.exists' => 'La Ruta ID proporcionada no existe en la base de datos.',
+            'vehiculo_id.required' => 'Debes proporcionar al menos 1 ID de Vehiculo',
+            'vehiculo_id.exists' => 'El Vehiculo ID proporcionado no existe en la base de datos.',
+        ]);
+
+        if($validation->fails())
+             return view("modificarRealiza",[
+            "errors" => $validation->errors(),
+            "realiza" => $realiza,
+        ]);
+
+        $realiza -> update($request->all());
+
+        return redirect()->route('listarRealiza');
+
+    }
+
+    public function EliminarRealiza(Request $request, $idRealiza){
+        $realiza= Realiza::findOrFail($idRealiza);
+
+        $realiza -> delete();
+
+        return redirect()->route('listarRealiza');
     }
 }
