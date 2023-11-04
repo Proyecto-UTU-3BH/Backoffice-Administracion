@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <title>Registrar Conducción</title>
+        <title>Registrar Realiza</title>
 
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
 
@@ -15,15 +15,15 @@
 </head>
 <body>
     @include('layouts.navigation')
-    <h2>Registrar Conducción</h2>
+    <h2>Registrar Realiza</h2>
     <div id="container">
-        <form action="/maneja/manejar" method="post">
+        <form action="/realiza/insertarRealiza" method="post">
             @csrf
             <div class="form-group">
-                <label for="usuario_id">ID Chofer:</label>
-                <input type="number" id="usuario_id" name="usuario_id" required>
-                @if($errors->has('usuario_id'))
-                    <span class="error">{{ $errors->first('usuario_id') }}</span>
+                <label for="ruta_id">ID Ruta:</label>
+                <input type="number" id="ruta_id" name="ruta_id" required>
+                @if($errors->has('ruta_id'))
+                    <span class="error">{{ $errors->first('ruta_id') }}</span>
                 @endif
             </div>
 

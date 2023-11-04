@@ -229,6 +229,12 @@ Route::middleware(['auth'])->group(function () {
 
 
     Route::get('/listarRealiza', [RealizaController::class,'ListarRealiza'])->name('listarRealiza');
+
+    Route::get('/realiza/insertarRealiza', function () {
+        return view('insertarRealiza');
+    })->name('insertarRealiza');
+
+    Route::post('/realiza/insertarRealiza', [RealizaController::class,'InsertarRealiza']);
     
 });
 

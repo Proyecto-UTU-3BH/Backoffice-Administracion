@@ -19,7 +19,7 @@
     <h2>Listado Realiza</h2>
     <div class="container">
         <div class="insertar">
-            <a href="#"><button>Registrar Conducción</button></a>
+            <a href="{{ route('insertarRealiza') }}"><button>Registrar Recorrido</button></a>
         </div>
         <table>
             <thead>
