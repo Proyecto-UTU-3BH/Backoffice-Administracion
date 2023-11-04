@@ -13,6 +13,8 @@ class Realiza extends Model
     protected $table="realiza";
 
     protected $fillable=[
-        "tiempo_estimado"
+        "tiempo_estimado",
+        "vehiculo_id",
+        "ruta_id"
     ];
 }

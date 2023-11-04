@@ -13,6 +13,7 @@ use App\Http\Controllers\ManejaController;
 use App\Http\Controllers\VaController;
 use App\Http\Controllers\ReparteController;
 use App\Http\Controllers\ParadaController;
+use App\Http\Controllers\RealizaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -227,7 +228,7 @@ Route::middleware(['auth'])->group(function () {
     Route::delete('/reparto/eliminarReparto/{idReparto}', [ReparteController::class,'EliminarReparto'])->name('eliminarReparto');
 
 
-
+    Route::get('/listarRealiza', [RealizaController::class,'ListarRealiza'])->name('listarRealiza');
     
 });
 

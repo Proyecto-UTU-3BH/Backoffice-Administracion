@@ -83,6 +83,9 @@
                                 <x-dropdown-link :href="route('listarVa')">
                                     Va
                                 </x-dropdown-link>
+                                <x-dropdown-link :href="route('listarRealiza')">
+                                    Realiza
+                                </x-dropdown-link>
                         </x-slot>
                     </x-dropdown>
                 </div>
@@ -196,6 +199,11 @@
         <div class="pt-2 pb-3 space-y-1">
             <x-responsive-nav-link :href="route('listarVa')">
                 Va
+            </x-responsive-nav-link>
+        </div>
+        <div class="pt-2 pb-3 space-y-1">
+            <x-responsive-nav-link :href="route('listarRealiza')">
+                Realiza
             </x-responsive-nav-link>
         </div>
 
