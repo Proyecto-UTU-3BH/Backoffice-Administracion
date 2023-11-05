@@ -1,42 +1,17 @@
-var urlParams = new URLSearchParams(window.location.search);
-var coordenadasJSON = urlParams.get('coordenadas');
-var coordenadas = JSON.parse(coordenadasJSON);
-
-var map = L.map('map').setView([-33.431118, -56.013162], 8);
-
-L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    maxZoom: 19,
-    attribution: '© OpenStreetMap'
-}).addTo(map);
-
-map.locate({ setView: true, maxZoom: 12 });
+var map;
+var userLocation = null;
+var coordenadas;
 
 function onLocationFound(e) {
-    
+        
     var ubicacionUsuario = e.latlng;
     coordenadas.unshift({ latitud: ubicacionUsuario.lat, longitud: ubicacionUsuario.lng, destino: "Ubicación Actual" });
 
     crearDestinosEnMapa(coordenadas);
 }
 
-map.on('locationfound', onLocationFound);
-
 function onLocationError(e) {
     alert(e.message);
-}
-
-map.on('locationerror', onLocationError);
-
-function calcularRuta(destinos) {
-    if (destinos.length < 2) {
-        return;
-    }
-
-    L.Routing.control({
-        waypoints: destinos,
-        routeWhileDragging: true,
-        createMarker: false
-    }).addTo(map);
 }
 
 function crearDestinosEnMapa(coordenadas) {
@@ -59,3 +34,38 @@ function crearDestinosEnMapa(coordenadas) {
 
     calcularRuta(destinos);
 }
+
+function calcularRuta(destinos) {
+    if (destinos.length < 2) {
+        return;
+    }
+
+    L.Routing.control({
+        waypoints: destinos,
+        routeWhileDragging: true,
+        createMarker: false
+    }).addTo(map);
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    var urlParams = new URLSearchParams(window.location.search);
+    var coordenadasJSON = urlParams.get('coordenadas');
+    coordenadas = JSON.parse(coordenadasJSON);
+    
+    map = L.map('map').setView([-33.431118, -56.013162], 8);
+    
+    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 19,
+        attribution: '© OpenStreetMap'
+    }).addTo(map);
+    
+    map.locate({ setView: true, maxZoom: 12 });
+    
+    map.on('locationfound', onLocationFound);
+    
+    map.on('locationerror', onLocationError);
+    
+});
+
+
