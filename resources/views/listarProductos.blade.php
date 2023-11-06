@@ -25,6 +25,7 @@
             <thead>
                 <tr>
                     <th>ID</th>
+                    <th>Codigo Rastreo</th>
                     <th>Destino</th>
                     <th>Estado</th>
                     <th>Tipo</th>
@@ -42,6 +43,7 @@
                  @foreach($productos as $producto)
                 <tr>
                     <td>{{ $producto->id }}</td>
+                    <td>{{ $producto->codRastreo }}</td>
                     <td>{{ $producto->destino }}</td>
                     <td>{{ $producto->estado }}</td>
                     <td>{{ $producto->tipo }}</td>

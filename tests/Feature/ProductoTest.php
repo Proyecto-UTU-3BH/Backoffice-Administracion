@@ -73,7 +73,8 @@ class ProductoTest extends TestCase
             "remitente" => "Nicolas",
             "nombre_destinatario" => "Juliana",
             "calle" => "Michelena",
-            "numero_puerta" => "1732"
+            "numero_puerta" => "1732",
+            "codRastreo" => "123ABC"
         ]);
 
         $response->assertStatus(200);
@@ -87,7 +88,8 @@ class ProductoTest extends TestCase
             "remitente" => "Nicolas",
             "nombre_destinatario" => "Juliana",
             "calle" => "Michelena",
-            "numero_puerta" => "1732"
+            "numero_puerta" => "1732",
+            "codRastreo" => "123ABC"
         ]);
 
         $response->assertViewIs('crearProducto');

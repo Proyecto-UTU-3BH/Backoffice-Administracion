@@ -27,6 +27,7 @@ class ProductoController extends Controller
 
     public function InsertarProducto(Request $request){
         $validation = Validator::make($request->all(),[
+            'codRastreo' => 'required|alpha_num|size:6|unique:productos,codRastreo',
             'peso' => 'required|between:0.01,9999.99|numeric',
             'estado' => 'required|in:en central,en transito,almacen final,en domicilio',
             'destino' => 'required|alpha_spaces|max:50',
@@ -54,7 +55,9 @@ class ProductoController extends Controller
             'calle.required' => 'Valor requerido',
             'calle.max' => 'Maximo 50 caracteres',
             'calle.alpha_spaces' => 'Solo letras',
-            'numero_puerta.max' => 'Maximo 8 caracteres'
+            'numero_puerta.max' => 'Maximo 8 caracteres',
+            'codRastreo.required' => 'Valor requerido',
+            'codRastreo.unique' => 'Código de Rastreo duplicado'
         ]);
 
         if($validation->fails())
@@ -62,6 +65,7 @@ class ProductoController extends Controller
 
         $producto=new Producto();
 
+        $producto -> codRastreo = $request -> post ('codRastreo');
         $producto -> peso = $request -> post ('peso');
         $producto -> estado = $request -> post ('estado');
         $producto -> destino = $request -> post ('destino');

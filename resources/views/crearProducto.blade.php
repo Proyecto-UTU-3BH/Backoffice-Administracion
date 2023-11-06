@@ -154,8 +154,25 @@
                         @endif
                 </div>
 
-    </div>
-            <input type="submit" value="Enviar">
+                <div class="form-group">
+                        <label for="codRastreo">Codigo Rastreo</label>
+                        <input type="text" id="codRastreo" name="codRastreo" readonly required>
+                        @if($errors->has('codRastreo'))
+                            <span class="error">
+                                @foreach($errors->get('codRastreo') as $error)
+                                    {{ $error }}
+                                    @if (!$loop->last)
+                                        , 
+                                    @endif
+                                @endforeach
+                            </span>
+                        @endif
+                </div>
+
+                <button type="button" id="generar_codigo">Generar Código</button>
+
+            </div>
+             <input type="submit" value="Enviar">
         </form>
 
     </div>
@@ -165,5 +182,28 @@
     @isset($mensaje)
     <span>{{$mensaje}}</span>
     @endisset
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const codigoRastreoInput = document.getElementById('codRastreo');
+            const generarCodigoButton = document.getElementById('generar_codigo');
+            
+            function generarCodigoAleatorio(largo) {
+                const caracteres = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+                let codigo = '';
+                for (let i = 0; i < largo; i++) {
+                    const randomIndex = Math.floor(Math.random() * caracteres.length);
+                    codigo += caracteres[randomIndex];
+                }
+                return codigo;
+            }
+
+            generarCodigoButton.addEventListener('click', function () {
+                const codRastreo = generarCodigoAleatorio(6); 
+                codigoRastreoInput.value = codRastreo;
+            });
+        });
+    </script>
+
 </body>
 </html>

@@ -13,6 +13,7 @@ class Producto extends Model
     protected $table="productos"; 
 
     protected $fillable=[
+        "codRastreo",
         "peso",
         "estado",
         "destino",
