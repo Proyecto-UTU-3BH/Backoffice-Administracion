@@ -139,16 +139,14 @@ class GestionaController extends Controller
             $loteDestino = is_array($loteDestino) ? $loteDestino : (array) $loteDestino;
             
             $departamento = $loteDestino['destino'];
-
-            // Buscar el almacén que tenga el mismo departamento
+ 
             $almacen = Almacen::where('departamento', $departamento)->first();
 
             if ($almacen) {
-                // Si se encuentra un almacén, obtener sus coordenadas
+                
                 $latitud = $almacen->latitud;
                 $longitud = $almacen->longitud;
 
-                // Agregar las coordenadas al arreglo de resultados
                 $coordenadasDestinos[] = [
                     'IDLote' => $loteDestino['IDLote'],
                     'destino' => $loteDestino['destino'],
