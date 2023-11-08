@@ -72,6 +72,10 @@ class DatabaseSeeder extends Seeder
         \App\Models\Gestiona::factory(1)->create(
             [ "id" => 750]
         );
+
+        \App\Models\Maneja::factory(1)->create(
+            [ "id" => 750]
+        );
         
     }
 }
