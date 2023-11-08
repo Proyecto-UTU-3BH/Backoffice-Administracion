@@ -84,6 +84,10 @@ class DatabaseSeeder extends Seeder
         \App\Models\Parada::factory(1)->create(
             [ "id" => 750]
         );
+
+        \App\Models\Reparte::factory(1)->create(
+            [ "id" => 750]
+        );
         
     }
 }
