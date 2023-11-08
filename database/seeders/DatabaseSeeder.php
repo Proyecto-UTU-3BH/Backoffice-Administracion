@@ -22,12 +22,21 @@ class DatabaseSeeder extends Seeder
             [ "id" => 1000]
         );
 
-        /*\App\Models\User::factory(1)->create(
-            [ "name" => "Logiker",
+        \App\Models\User::factory(1)->create(
+            [ "id" => 750,
+            "name" => "Logiker",
             "email" => "logiker@gmail.com",
             "password" =>Hash::make("12345678")
             ]
-        );*/
+        );
+
+        \App\Models\User::factory(1)->create(
+            [ "id" => 1000,
+            "name" => "Gonzalo",
+            "email" => "gonza@gmail.com",
+            "password" =>Hash::make("12345678")
+            ]
+        );
 
         \App\Models\Almacen::factory(5)->create();
         \App\Models\Almacen::factory(1)->create(
@@ -86,6 +95,10 @@ class DatabaseSeeder extends Seeder
         );
 
         \App\Models\Reparte::factory(1)->create(
+            [ "id" => 750]
+        );
+
+        \App\Models\Va::factory(1)->create(
             [ "id" => 750]
         );
         

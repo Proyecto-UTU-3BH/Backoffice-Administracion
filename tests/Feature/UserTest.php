@@ -14,7 +14,7 @@ class UserTest extends TestCase
      *
      * @return void
      */
-   /* public function test_ListarAdmins()
+    public function test_ListarAdmins()
     {
         $user = User::factory()->create();
         $this->actingAs($user);
@@ -64,16 +64,16 @@ class UserTest extends TestCase
         $this->actingAs($user);
 
         $response = $this->post('/admins/crearAdmin', [
-            'name' => 'Alvaro',
-            'email' => 'Alva76@hotmail.com',
-            'password' => 'juansito'
+            'name' => 'Gonza',
+            'email' => 'Gonza@hotmail.com',
+            'password' => 'gonzalito'
         ]);
 
         $response->assertStatus(200);
 
         $this->assertDatabaseHas('users', [
-            'name' => 'Alvaro',
-            'email' => 'Alva76@hotmail.com'
+            'name' => 'Gonza',
+            'email' => 'Gonza@hotmail.com'
         ]);
 
         $response->assertViewIs('crearAdmin');
@@ -123,7 +123,7 @@ class UserTest extends TestCase
 
         $response = $this->post("/admins/modificarAdmin/{$user->id}", [
             "name" => "Philipe",
-            "email" => "charlyr@gmail.com",
+            "email" => "eladminr@gmail.com",
             "password" => "philipe12"
         ]);
 
@@ -131,7 +131,7 @@ class UserTest extends TestCase
 
         $this->assertDatabaseHas('users', [
             "name" => "Philipe",
-            "email" => "charlyr@gmail.com"
+            "email" => "eladminr@gmail.com"
         ]);
 
         $response->assertRedirect(route('listarAdmins'));
@@ -153,6 +153,6 @@ class UserTest extends TestCase
         $response->assertStatus(404);
 
         $user->delete();
-    }*/
+    }
 
 }
