@@ -31,7 +31,7 @@ class GestionaController extends Controller
 
     public function InsertarGestiona(Request $request){
         $validation = Validator::make($request->all(),[
-            'producto_ids' => ['required', 'numeric_ids','exists:productos,id'],
+            'producto_ids' => ['required', 'numeric_ids','exists:productos,id','unique:gestiona,producto_id'],
             'vehiculo_id' => 'required|exists:vehiculos,id',
             'usuario_id' => 'required|exists:usuarios,id',
             'IDLote' => 'required|integer|min:1',
@@ -40,6 +40,7 @@ class GestionaController extends Controller
         [
             'producto_ids.required' => 'Debes proporcionar al menos 1 ID de Producto',
             'producto_ids.numeric_ids' => 'Los IDs de producto deben ser números',
+            'producto_ids.unique' => 'Los ID de Producto deben ser unicos',
             'producto_ids.exists' => 'Uno o más IDs de producto no existen en la base de datos.',
             'vehiculo_id.exists' => 'El Vehiculo ID proporcionado no existe en la base de datos.',
             'usuario_id.exists' => 'El Usuario ID proporcionado no existe en la base de datos.',
@@ -73,7 +74,7 @@ class GestionaController extends Controller
         $gestiona= Gestiona::findOrFail($idGestiona);
 
         $validation = Validator::make($request->all(),[
-            'producto_id' => 'required|exists:productos,id',
+            'producto_id' => 'required|exists:productos,id|unique:gestiona,producto_id',
             'vehiculo_id' => 'required|exists:vehiculos,id',
             'usuario_id' => 'required|exists:usuarios,id',
             'IDLote' => 'required|integer|min:1',
@@ -82,6 +83,7 @@ class GestionaController extends Controller
         [
             'producto_id.required' => 'Debes proporcionar al menos 1 ID de Producto',
             'producto_id.exists' => 'El Producto ID proporcionado no existe en la base de datos.',
+            'producto_id.unique' => 'Los ID de Producto deben ser unicos',
             'vehiculo_id.exists' => 'El Vehiculo ID proporcionado no existe en la base de datos.',
             'usuario_id.exists' => 'El Usuario ID proporcionado no existe en la base de datos.',
         ]);
