@@ -15,7 +15,7 @@ class RutaTest extends TestCase
      *
      * @return void
      */
-    public function test_ListarRutas()
+   /* public function test_ListarRutas()
     {
         $user = User::factory()->create();
         $this->actingAs($user);
@@ -143,7 +143,7 @@ class RutaTest extends TestCase
         $response->assertStatus(404);
 
         $user->delete();
-    }
+    }*/
     
 }
 

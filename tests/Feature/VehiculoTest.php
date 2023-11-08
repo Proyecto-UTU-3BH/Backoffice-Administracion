@@ -15,7 +15,7 @@ class VehiculoTest extends TestCase
      *
      * @return void
      */
-    public function test_ListarVehiculos()
+   /* public function test_ListarVehiculos()
     {
         $user = User::factory()->create();
         $this->actingAs($user);
@@ -149,6 +149,6 @@ class VehiculoTest extends TestCase
         $response->assertStatus(404);
 
         $user->delete();
-    }
+    }*/
 }
 

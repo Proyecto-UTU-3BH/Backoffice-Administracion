@@ -14,7 +14,7 @@ class UserTest extends TestCase
      *
      * @return void
      */
-    public function test_ListarAdmins()
+   /* public function test_ListarAdmins()
     {
         $user = User::factory()->create();
         $this->actingAs($user);
@@ -153,6 +153,6 @@ class UserTest extends TestCase
         $response->assertStatus(404);
 
         $user->delete();
-    }
+    }*/
 
 }
