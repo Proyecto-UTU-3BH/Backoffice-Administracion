@@ -4,7 +4,7 @@ namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class RutaFactory extends Factory
+class RealizaFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -14,7 +14,8 @@ class RutaFactory extends Factory
     public function definition()
     {
         return [
-            'destino' => $this->faker->city,
+            'ruta_id' => 750,
+            'vehiculo_id' => 750,
         ];
     }
 }

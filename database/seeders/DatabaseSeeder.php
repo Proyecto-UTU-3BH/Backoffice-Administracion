@@ -14,7 +14,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        /* \App\Models\Ruta::factory(5)->create();
+         \App\Models\Ruta::factory(5)->create();
          \App\Models\Ruta::factory(1)->create(
             [ "id" => 750]
         );
@@ -22,7 +22,7 @@ class DatabaseSeeder extends Seeder
             [ "id" => 1000]
         );
 
-        \App\Models\User::factory(1)->create(
+        /*\App\Models\User::factory(1)->create(
             [ "name" => "Logiker",
             "email" => "logiker@gmail.com",
             "password" =>Hash::make("12345678")
@@ -74,6 +74,10 @@ class DatabaseSeeder extends Seeder
         );
 
         \App\Models\Maneja::factory(1)->create(
+            [ "id" => 750]
+        );
+
+        \App\Models\Realiza::factory(1)->create(
             [ "id" => 750]
         );
         

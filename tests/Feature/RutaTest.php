@@ -15,7 +15,7 @@ class RutaTest extends TestCase
      *
      * @return void
      */
-   /* public function test_ListarRutas()
+    public function test_ListarRutas()
     {
         $user = User::factory()->create();
         $this->actingAs($user);
@@ -62,7 +62,6 @@ class RutaTest extends TestCase
 
         $estructura = [
             'destino' => 'Montevideo',
-            'recorrido' => 100,
         ];
 
         $response = $this->post('/rutas/crearRuta', $estructura);
@@ -115,7 +114,6 @@ class RutaTest extends TestCase
 
         $estructura = [
             'destino' => 'Maldonado',
-            'recorrido' => 123,
         ];
 
         $response = $this->post('/rutas/modificarRuta/1000', $estructura);
@@ -135,7 +133,6 @@ class RutaTest extends TestCase
 
         $estructura = [
             'destino' => 'Maldonado',
-            'recorrido' => 123,
         ];
 
         $response = $this->post('/rutas/modificarRuta/991399', $estructura);
@@ -143,7 +140,7 @@ class RutaTest extends TestCase
         $response->assertStatus(404);
 
         $user->delete();
-    }*/
+    }
     
 }
 
