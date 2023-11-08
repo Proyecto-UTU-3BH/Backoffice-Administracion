@@ -1,0 +1,22 @@
+<?php
+
+namespace Database\Factories;
+
+use Illuminate\Database\Eloquent\Factories\Factory;
+
+class ParadaFactory extends Factory
+{
+    /**
+     * Define the model's default state.
+     *
+     * @return array
+     */
+    public function definition()
+    {
+        return [
+            'ruta_id' => 750,
+            'latitud' => $this-> faker->latitude($min = -30, $max = -35),
+            'longitud' => $this-> faker->longitude($min = -53, $max = -59),
+        ];
+    }
+}
