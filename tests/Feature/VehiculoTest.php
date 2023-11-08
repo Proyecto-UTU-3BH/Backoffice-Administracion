@@ -15,7 +15,7 @@ class VehiculoTest extends TestCase
      *
      * @return void
      */
-   /* public function test_ListarVehiculos()
+    public function test_ListarVehiculos()
     {
         $user = User::factory()->create();
         $this->actingAs($user);
@@ -122,7 +122,7 @@ class VehiculoTest extends TestCase
             'capacidad' => 45.67,
         ];
 
-        $response = $this->post('/vehiculos/modificarVehiculo/1', $estructura);
+        $response = $this->post('/vehiculos/modificarVehiculo/750', $estructura);
 
         $response->assertStatus(302);
         $this->assertDatabaseHas('vehiculos', $estructura);
@@ -149,6 +149,6 @@ class VehiculoTest extends TestCase
         $response->assertStatus(404);
 
         $user->delete();
-    }*/
+    }
 }
 

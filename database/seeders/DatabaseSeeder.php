@@ -48,6 +48,30 @@ class DatabaseSeeder extends Seeder
         \App\Models\Almacena::factory(1)->create(
             [ "id" => 750]
         );
+
+        \App\Models\Vehiculo::factory(5)->create();
+        \App\Models\Vehiculo::factory(1)->create(
+            [ "id" => 750]
+        );
+        \App\Models\Vehiculo::factory(1)->create(
+            [ "id" => 1000]
+        );
+
+        \App\Models\Usuario::factory(5)->create();
+        \App\Models\Usuario::factory(1)->create(
+            [ "id" => 750,
+            "tipo" =>"funcionario",
+            "almacen_id" =>750]
+        );
+        \App\Models\Usuario::factory(1)->create(
+            [ "id" => 1000,
+            "tipo"=>"chofer",
+            "almacen_id"=>null]
+        );
+
+        \App\Models\Gestiona::factory(1)->create(
+            [ "id" => 750]
+        );
         
     }
 }

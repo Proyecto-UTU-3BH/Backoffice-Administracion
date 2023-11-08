@@ -16,140 +16,141 @@ class AlmacenaTest extends TestCase
      * @return void
      */
     public function test_ListarAlmacena()
-{
-    $user = User::factory()->create();
-    $this->actingAs($user);
+    {
+        $user = User::factory()->create();
+        $this->actingAs($user);
 
-    $response = $this->get('/listarAlmacena');
+        $response = $this->get('/listarAlmacena');
 
-    $response->assertStatus(200);
+        $response->assertStatus(200);
 
-    $response->assertViewIs('listarAlmacena');
+        $response->assertViewIs('listarAlmacena');
 
-    $response->assertViewHas('almacena');
-    
-    $user->delete();
-}
+        $response->assertViewHas('almacena');
+        
+        $user->delete();
+    }
 
-public function test_ListarAlmacenaExistente()
-{
-    $user = User::factory()->create();
-    $this->actingAs($user);
+    public function test_ListarAlmacenaExistente()
+    {
+        $user = User::factory()->create();
+        $this->actingAs($user);
 
-    $response = $this->get('/almacena/modificarAlmacena/750');
+        $response = $this->get('/almacena/modificarAlmacena/750');
 
-    $response->assertStatus(200);
+        $response->assertStatus(200);
 
-    $response->assertViewIs('modificarAlmacena');
+        $response->assertViewIs('modificarAlmacena');
 
-    $response->assertViewHas('almacena');
+        $response->assertViewHas('almacena');
 
-    $user->delete();
-}
+        $user->delete();
+    }
 
-public function test_ListarAlmacenaInexistente()
-{
-    $user = User::factory()->create();
-    $this->actingAs($user);
+    public function test_ListarAlmacenaInexistente()
+    {
+        $user = User::factory()->create();
+        $this->actingAs($user);
 
-    $response = $this->get('/almacena/modificarAlmacena/77541253');
+        $response = $this->get('/almacena/modificarAlmacena/77541253');
 
-    $response->assertStatus(404);
+        $response->assertStatus(404);
 
-    $user->delete();
-}
+        $user->delete();
+    }
 
-public function test_InsertarAlmacena()
-{
-    $user = User::factory()->create();
-    $this->actingAs($user);
+    public function test_InsertarAlmacena()
+    {
+        $user = User::factory()->create();
+        $this->actingAs($user);
 
-    $response = $this->post('/almacena/almacenar', [
-        'almacen_id' => 1000,
-        'producto_id' => 1000,
-    ]);
+        $response = $this->post('/almacena/almacenar', [
+            'almacen_id' => 1000,
+            'producto_id' => 1000,
+        ]);
 
-    $response->assertStatus(200);
+        $response->assertStatus(200);
 
-    $this->assertDatabaseHas('almacena', [
-        'almacen_id' => 1000,
-        'producto_id' => 1000,
-    ]);
+        $this->assertDatabaseHas('almacena', [
+            'almacen_id' => 1000,
+            'producto_id' => 1000,
+        ]);
 
-    $response->assertViewIs('almacenarProducto');
+        $response->assertViewIs('almacenarProducto');
 
-    $response->assertViewHas('mensaje', 'Almacenamiento creado correctamente');
+        $response->assertViewHas('mensaje', 'Almacenamiento creado correctamente');
 
-    $user->delete();
-}
+        $user->delete();
+    }
 
-public function test_EliminarAlmacenaExistente()
-{
-    $user = User::factory()->create();
-    $this->actingAs($user);
+    public function test_EliminarAlmacenaExistente()
+    {
+        $user = User::factory()->create();
+        $this->actingAs($user);
 
-    $response = $this->delete('/almacena/eliminarAlmacena/750');
+        $response = $this->delete('/almacena/eliminarAlmacena/750');
 
-    $response->assertStatus(302);
+        $response->assertStatus(302);
 
-    $this->assertDatabaseMissing('almacena', [
-        'id' => '1000',
-    ]);
+        $this->assertDatabaseMissing('almacena', [
+            'id' => '750',
+            'deleted_at' => null
+        ]);
 
-    $response->assertRedirect(route('listarAlmacena'));
+        $response->assertRedirect(route('listarAlmacena'));
 
-    Almacena::withTrashed()->where("id",750)->restore();
+        Almacena::withTrashed()->where("id",750)->restore();
 
-    $user->delete();
-}
+        $user->delete();
+    }
 
-public function test_EliminarAlmacenaInexistente()
-{
-    $user = User::factory()->create();
-    $this->actingAs($user);
+    public function test_EliminarAlmacenaInexistente()
+    {
+        $user = User::factory()->create();
+        $this->actingAs($user);
 
-    $response = $this->delete('/almacena/eliminarAlmacena/93223');
+        $response = $this->delete('/almacena/eliminarAlmacena/93223');
 
-    $response->assertStatus(404);
+        $response->assertStatus(404);
 
-    $user->delete();
-}
+        $user->delete();
+    }
 
-public function test_ModificarAlmacenaExistente()
-{
-    $user = User::factory()->create();
-    $this->actingAs($user);
+    public function test_ModificarAlmacenaExistente()
+    {
+        $user = User::factory()->create();
+        $this->actingAs($user);
 
-    $response = $this->post('/almacena/modificarAlmacena/750', [
-        'almacen_id' => 1000,
-        'producto_id' => 750,
-    ]);
+        $response = $this->post('/almacena/modificarAlmacena/750', [
+            'almacen_id' => 1000,
+            'producto_id' => 750,
+        ]);
 
-    $response->assertStatus(302);
+        $response->assertStatus(302);
 
-    $this->assertDatabaseHas('almacena', [
-        'almacen_id' => 1000,
-        'producto_id' => 750,
-    ]);
+        $this->assertDatabaseHas('almacena', [
+            'almacen_id' => 1000,
+            'producto_id' => 750,
+        ]);
 
-    $response->assertRedirect(route('listarAlmacena'));
+        $response->assertRedirect(route('listarAlmacena'));
 
-    $user->delete();
-}
+        $user->delete();
+    }
 
-public function test_ModificarAlmacenaInexistente()
-{
-    $user = User::factory()->create();
-    $this->actingAs($user);
+    public function test_ModificarAlmacenaInexistente()
+    {
+        $user = User::factory()->create();
+        $this->actingAs($user);
 
-    $response = $this->post('/almacena/modificarAlmacena/2130921', [
-        'almacen_id' => 3,
-        'producto_id' => 1003,
-    ]);
+        $response = $this->post('/almacena/modificarAlmacena/2130921', [
+            'almacen_id' => 3,
+            'producto_id' => 1003,
+        ]);
 
-    $response->assertStatus(404);
+        $response->assertStatus(404);
 
-    $user->delete();
-}
+        $user->delete();
+    }
 
 }

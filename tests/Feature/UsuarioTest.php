@@ -15,7 +15,7 @@ class UsuarioTest extends TestCase
      *
      * @return void
      */
-   /* public function test_ListarUsuarioExistente()
+    public function test_ListarUsuarioExistente()
     {
         $user = User::factory()->create();
         $this->actingAs($user);
@@ -177,6 +177,6 @@ class UsuarioTest extends TestCase
         $response->assertStatus(404);
 
         $user->delete();
-    }*/
+    }
 
 }
