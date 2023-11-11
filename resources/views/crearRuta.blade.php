@@ -16,11 +16,13 @@
     <div id="container">
         <form action="/rutas/crearRuta" method="post">
             @csrf
-            <label for="destino">Destino:</label>
-            <input type="text" id="destino" name="destino" required><br>
-
-            <label for="recorrido">Recorrido (km):</label>
-            <input type="number" id="recorrido" name="recorrido"><br>
+            <div class="form-group">
+                <label for="destino">Destino:</label>
+                <input type="text" id="destino" name="destino" required>
+                @if($errors->has('destino'))
+                    <span class="error">{{ $errors->first('destino') }}</span>
+                @endif
+            </div>
 
             <input type="submit" value="Enviar">
         </form>

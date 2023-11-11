@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Ruta;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Redirect;
 
 class RutaController extends Controller
 {
@@ -24,10 +26,19 @@ class RutaController extends Controller
     }
     
     public function InsertarRuta(Request $request){
+        $validation = Validator::make($request->all(),[
+            'destino' => 'required|alpha_spaces',
+        ],
+        [
+            'destino.alpha_spaces' => 'Solo letras',
+        ]);
+
+        if($validation->fails())
+             return view("crearRuta",["errors" => $validation->errors()]);
+
         $ruta = new Ruta();
     
         $ruta->destino = $request->post('destino');
-        $ruta->recorrido = $request->post('recorrido');
     
         $ruta->save();
     
@@ -47,6 +58,19 @@ class RutaController extends Controller
     public function ModificarRuta(Request $request, $idRuta){
         $ruta = Ruta::findOrFail($idRuta);
     
+        $validation = Validator::make($request->all(),[
+            'destino' => 'required|alpha_spaces',
+        ],
+        [
+            'destino.alpha_spaces' => 'Solo letras',
+        ]);
+
+        if($validation->fails())
+             return view("modificarRuta",[
+            "errors" => $validation->errors(),
+            "ruta" => $ruta
+        ]);
+        
         $ruta->update($request->all());
     
         return redirect()->route('listarRutas');
