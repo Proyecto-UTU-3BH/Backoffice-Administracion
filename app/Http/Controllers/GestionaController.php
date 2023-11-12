@@ -7,8 +7,10 @@ use App\Models\Gestiona;
 use App\Models\Almacen;
 use App\Models\Usuario;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Validation\Rule;
 
 class GestionaController extends Controller
 {
@@ -74,7 +76,11 @@ class GestionaController extends Controller
         $gestiona= Gestiona::findOrFail($idGestiona);
 
         $validation = Validator::make($request->all(),[
-            'producto_id' => 'required|exists:productos,id|unique:gestiona,producto_id',
+            'producto_id' => [
+                'required',
+                'exists:productos,id',
+                Rule::unique('gestiona', 'producto_id')->ignore($gestiona->id),
+            ],
             'vehiculo_id' => 'required|exists:vehiculos,id',
             'usuario_id' => 'required|exists:usuarios,id',
             'IDLote' => 'required|integer|min:1',

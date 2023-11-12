@@ -14,7 +14,7 @@ class RutaFactory extends Factory
     public function definition()
     {
         return [
-            'destino' => $this->faker->city,
+            'destino' => substr($this->faker->city, 0, 20),
         ];
     }
 }
