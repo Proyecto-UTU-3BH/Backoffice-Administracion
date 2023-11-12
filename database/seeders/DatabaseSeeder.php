@@ -15,7 +15,7 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
          \App\Models\Ruta::factory(5)->create();
-        /* \App\Models\Ruta::factory(1)->create(
+         \App\Models\Ruta::factory(1)->create(
             [ "id" => 750]
         );
         \App\Models\Ruta::factory(1)->create(
@@ -100,7 +100,7 @@ class DatabaseSeeder extends Seeder
 
         \App\Models\Va::factory(1)->create(
             [ "id" => 750]
-        );*/
+        );
         
     }
 }
