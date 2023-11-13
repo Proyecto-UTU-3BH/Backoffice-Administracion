@@ -30,7 +30,7 @@ class VaController extends Controller
             'ruta_id' => 'required|exists:rutas,id',
             'almacen_id' => 'required|exists:almacenes,id',
             'vehiculo_id' => 'required|exists:vehiculos,id',
-            'fecha' => 'required|date',
+            'fecha' => 'required|date|before_or_equal:' . now()->format('Y-m-d'),
             'horallegada' => 'required|date_format:H:i',
             'horasalida' => 'required|date_format:H:i',
         ],
