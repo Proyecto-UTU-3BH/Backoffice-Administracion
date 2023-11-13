@@ -12,7 +12,6 @@ use Tests\TestCase;
 
 class EmailVerificationTest extends TestCase
 {
-    /*use RefreshDatabase;
 
     public function test_email_verification_screen_can_be_rendered()
     {
@@ -61,5 +60,5 @@ class EmailVerificationTest extends TestCase
         $this->actingAs($user)->get($verificationUrl);
 
         $this->assertFalse($user->fresh()->hasVerifiedEmail());
-    }*/
+    }
 }

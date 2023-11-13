@@ -9,7 +9,6 @@ use Tests\TestCase;
 
 class AuthenticationTest extends TestCase
 {
-    /*use RefreshDatabase;
 
     public function test_login_screen_can_be_rendered()
     {
@@ -28,7 +27,7 @@ class AuthenticationTest extends TestCase
         ]);
 
         $this->assertAuthenticated();
-        $response->assertRedirect(RouteServiceProvider::HOME);
+        $response->assertRedirect('listarAdmins');
     }
 
     public function test_users_can_not_authenticate_with_invalid_password()
@@ -41,5 +40,5 @@ class AuthenticationTest extends TestCase
         ]);
 
         $this->assertGuest();
-    }*/
+    }
 }

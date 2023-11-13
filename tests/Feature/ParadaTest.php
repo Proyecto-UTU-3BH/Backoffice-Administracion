@@ -74,4 +74,37 @@ class ParadaTest extends TestCase
         $user->delete();
     }
 
+    public function test_EliminarParadaExistente()
+    {
+        $user = User::factory()->create();
+        $this->actingAs($user);
+
+        $response = $this->delete('/rutas/eliminarParada/750');
+
+        $response->assertStatus(302);
+
+        $this->assertDatabaseMissing('paradas', [
+            'id' => '750',
+            'deleted_at' => null
+        ]);
+
+        $response->assertRedirect(route('vistaVerParadas', ['idRuta' => 750]));
+
+        Parada::withTrashed()->where("id",750)->restore();
+
+        $user->delete();
+    }
+
+    public function test_EliminarParadaInexistente()
+    {
+        $user = User::factory()->create();
+        $this->actingAs($user);
+
+        $response = $this->delete('/rutas/eliminarParada/752312310');
+
+        $response->assertStatus(404);
+
+        $user->delete();
+    }
+
 }

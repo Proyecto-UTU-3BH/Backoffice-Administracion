@@ -52,4 +52,12 @@ class ParadaController extends Controller
             "idRuta" => $idRuta
         ]);
     }
+
+    public function EliminarParada(Request $request, $idParada){
+        $parada= Parada::findOrFail($idParada);
+
+        $parada -> delete();
+
+        return redirect()->route('vistaVerParadas', ['idRuta' => $parada->ruta_id]);
+    }
 }

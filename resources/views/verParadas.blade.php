@@ -24,6 +24,7 @@
                     <th>Ruta ID</th>
                     <th>Latitud</th>
                     <th>Longitud</th>
+                    <th class="eliminar"></th>
                 </tr>
             </thead>
             <tbody>
@@ -32,6 +33,13 @@
                     <td>{{ $parada->ruta_id }}</td>
                     <td>{{ $parada->latitud }}</td>
                     <td>{{ $parada->longitud }}</td>
+                    <td class="eliminar">
+                        <form action="{{ route('eliminarParada', ['idParada' => $parada->id]) }}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit"> Eliminar </button> 
+                        </form>
+                    </td>
                 </tr>
                 @endforeach
             </tbody>

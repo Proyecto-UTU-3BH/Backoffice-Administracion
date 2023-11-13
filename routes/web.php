@@ -140,7 +140,9 @@ Route::middleware(['auth'])->group(function () {
 
     Route::post('/rutas/crearParada', [ParadaController::class,'CrearParada']);
 
-
+    Route::delete('/rutas/eliminarParada/{idParada}', [ParadaController::class,'EliminarParada'])->name('eliminarParada');
+    
+    
     Route::get('/listarLotes', [GestionaController::class,'ListarLotes'])->name('listarLotes');
 
     Route::get('/gestiona/asignarLote', function () {
