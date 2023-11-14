@@ -23,7 +23,6 @@
                 <tr>
                     <th>ID</th>
                     <th>Destino</th>
-                    <th>Recorrido</th>
                     <th class="modificar"></th>
                     <th class="eliminar"></th>
                     <th class="asignarParadas"></th>
@@ -35,7 +34,6 @@
                 <tr>
                     <td>{{ $ruta->id }}</td>
                     <td>{{ $ruta->destino }}</td>
-                    <td>{{ $ruta->recorrido }}</td>
                     <td class="modificar">
                         <a href="{{ route('modificarRuta', ['idRuta' => $ruta->id]) }}"> <button> Modificar </button> </a>
                     </td>
