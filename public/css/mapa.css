@@ -8,3 +8,30 @@ html, body, #map {
   height: 100%;
   width: 100vw;
 }
+
+.custom-alert {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #f44336;
+  color: white;
+  padding: 15px;
+  text-align: center;
+  font-size: 18px;
+  font-family: Arial, sans-serif;
+}
+
+.custom-alert .close-btn {
+  cursor: pointer;
+  position: absolute;
+  top: 5px;
+  right: 10px;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+#customAlert{
+  z-index: 9000;
+}

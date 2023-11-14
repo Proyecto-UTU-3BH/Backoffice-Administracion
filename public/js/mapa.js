@@ -47,7 +47,23 @@ function calcularRuta(destinos) {
     }).addTo(map);
 }
 
+function showCustomAlert() {
+    var customAlert = document.getElementById("customAlert");
+    customAlert.style.display = "block";
+
+    setTimeout(function () {
+        customAlert.style.display = "none";
+    }, 7000);
+}
+
+function closeCustomAlert() {
+    var customAlert = document.getElementById("customAlert");
+    customAlert.style.display = "none";
+}
+
 document.addEventListener("DOMContentLoaded", function () {
+
+    showCustomAlert();
 
     var urlParams = new URLSearchParams(window.location.search);
     var coordenadasJSON = urlParams.get('coordenadas');

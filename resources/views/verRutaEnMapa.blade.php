@@ -12,6 +12,12 @@
 <body>
     <div id="map"></div>
 
+    <div id="customAlert" class="custom-alert">
+        <span class="close-btn" onclick="closeCustomAlert()">&times;</span>
+        Al ingresar las paradas de una ruta deberá realizarlo en el orden que usted crea que sea más optimo. De otra manera
+        la ruta no se armará correctamente. 
+    </div>
+
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
     integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
     <script src="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.js"></script>
