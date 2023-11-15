@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Almacena;
+use App\Models\Almacen;
 use Illuminate\Support\Facades\Validator;
 
 class AlmacenaController extends Controller
@@ -86,5 +87,21 @@ class AlmacenaController extends Controller
         $almacena -> delete();
 
         return redirect()->route('listarAlmacena');
+    }
+
+    public function ListarProductosEnUnAlmacen (Request $request) {
+        $almacen= Almacen::findOrFail($request->input('almacen_id'));
+
+        $productos= $almacen->Productos()->
+            whereNull('almacena.deleted_at')
+            ->withPivot('id')
+            ->get();
+
+        //dd($productos);
+
+        return view('verProductosEnAlmacen', [
+            "productos" => $productos,
+            "almacen" => $almacen->id
+        ]);
     }
 }

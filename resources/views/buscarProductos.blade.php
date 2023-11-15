@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <title>Buscar Lotes de un Chofer</title>
+        <title>Buscar Productos de un Almacen</title>
 
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
 
@@ -15,19 +15,14 @@
 </head>
 <body>
     @include('layouts.navigation')
-    <h2>Buscar Lotes de un Chofer</h2>
+    <h2>Buscar Productos de un Almacen</h2>
     <div id="container">
-        <form action="/gestiona/verLotes/" method="get">
+        <form action="/almacena/verProductosEnAlmacen/" method="get">
             @csrf
 
             <div class="form-group">
-                <label for="name">ID Chofer:</label>
-                <input type="number" id="chofer_id" name="chofer_id" required>
-            </div>
-
-            <div class="form-group">
-                <label for="fecha">Fecha:</label>
-                <input type="date" id="fecha" name="fecha" required>
+                <label for="name">ID Almacen:</label>
+                <input type="number" id="almacen_id" name="almacen_id" required>
             </div>
 
             <input type="submit" value="Buscar">

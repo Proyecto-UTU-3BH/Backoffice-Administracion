@@ -184,6 +184,12 @@ Route::middleware(['auth'])->group(function () {
 
     Route::delete('/almacena/eliminarAlmacena/{idAlmacena}', [AlmacenaController::class,'EliminarAlmacena'])->name('eliminarAlmacena');
 
+    Route::get('/almacena/buscarProductos', function () {
+        return view('buscarProductos');
+    })->name('buscarProductos');
+
+    Route::get('/almacena/verProductosEnAlmacen', [AlmacenaController::class,'ListarProductosEnUnAlmacen'])->name('verProductos');
+
 
     Route::get('/listarManeja', [ManejaController::class,'ListarManeja'])->name('listarManeja');
 
